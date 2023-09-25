@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        tr.row:hover {
+            background-color: yellow;
+        }
+
+        form#company-form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<table>
+    <thead>
+    <tr>
+        <th>Company Name</th>
+        <th>Ownership</th>
+        <th>Economic Activity</th>
+        <th>Address</th>
+    </tr>
+    </thead>
+    <tbody id="companies-table-body">
+
+    </tbody>
+</table>
+
+<button onclick="addCompany()">
+    add default
+</button>
+
+<script>
+    let companies = [];
+
+    rebuiltTable();
+
+    function buildCompanyTable(companies) {
+        let tableBody = document.getElementById("companies-table-body");
+        tableBody.innerHTML = "";
+        for (let i = 0; i < companies.length; i++) {
+            let row =
+                `<tr>
+                   <td>${companies[i].companyName}</td>
+                   <td>${companies[i].ownership}</td>
+                   <td>${companies[i].economicActivity}</td>
+                   <td>${companies[i].address}</td>
+                </tr>`
+            tableBody.innerHTML += row;
+        }
+    }
+
+    function addCompany() {
+        let company = {
+            "companyId": null,
+            "companyName": "new company",
+            "ownership": "new ownership",
+            "economicActivity": "new economicActivity",
+            "address": "new address"
+        }
+        $.ajax(
+            {
+                method: 'POST',
+                url: 'http://localhost:8080/company',
+                contentType: 'application/json',
+                data: JSON.stringify(company),
+                success: function(response){
+                    rebuiltTable();
+                }
+            }
+        )
+    }
+
+
+    function rebuiltTable() {
+        $.ajax(
+            {
+                method: 'GET',
+                url: 'http://localhost:8080/companyList',
+                success: function (response) {
+                    companies = response;
+                    console.log(companies);
+                    buildCompanyTable(companies);
+                }
+            }
+        )
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thyelead.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        tr.row:hover {
+            background-color: yellow;
+        }
+
+        form#company-form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<h1>Companies</h1>
+<table>
+    <thead>
+        <th>Company Name</th>
+        <th>Ownership</th>
+        <th>Economic Activity</th>
+        <th>Address</th>
+    </thead>
+    <tr th:each="company :${companies}" class="row">
+        <td class="cell" th:text="${company.companyId}" style="display: none"></td>
+        <td class="cell" th:text="${company.companyName}"></td>
+        <td class="cell" th:text="${company.ownership}"></td>
+        <td class="cell" th:text="${company.economicActivity}"></td>
+        <td class="cell" th:text="${company.address}"></td>
+    </tr>
+</table>
+
+<form id="company-form" method="get" action="/company">
+    <input type="text" id="companyId" name="companyId">
+    <input type="text" id="companyName" name="companyName">
+    <input type="text" id="ownership" name="ownership">
+    <input type="text" id="economicActivity" name="economicActivity">
+    <input type="text" id="address" name="address">
+</form>
+<script type="text/javascript" th:src="@{/js/company.js}"></script>
+</body>
+</html>

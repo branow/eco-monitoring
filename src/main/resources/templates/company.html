@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="/js/request-company.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+<script>
+    console.log("SCRIPT")
+
+    findAllCompanies(success, error);
+
+    function success(response) {
+        let companies = response;
+        console.log(companies);
+
+        let tableBody = document.getElementById("companies-table-body");
+        tableBody.innerHTML = "";
+
+        for (let i = 0; i < companies.length; i++) {
+            let row =
+                `<tr>
+                   <td>${companies[i].companyName}</td>
+                   <td>${companies[i].ownership}</td>
+                   <td>${companies[i].economicActivity}</td>
+                   <td>${companies[i].address}</td>
+                </tr>`
+            tableBody.innerHTML += row;
+        }
+    }
+    function error(xhr, status, error) {
+        document.getElementById("error").innerText = xhr;
+        console.log(xhr);
+        console.log(status);
+        console.log(error);
+    }
+</script>
+</body>
+</html>
