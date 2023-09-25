@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>test-table-creators</title>
+    <script type="text/javascript" src="/js/table-functions.js"></script>
     <script type="text/javascript" src="/js/table-creators.js"></script>
     <script type="text/javascript" src="/js/request-company.js"></script>
     <script type="text/javascript" src="/js/request-pollutant.js"></script>
@@ -25,6 +26,7 @@
     function successCompany(response) {
         console.log(response);
         let table = tableCompany(response);
+        hideTableIdColumns(table);
         console.log(body);
         body.appendChild(table);
         body.appendChild(document.createElement("hr"))
@@ -32,6 +34,7 @@
     function successPollutant(response) {
         console.log(response);
         let table = tablePollutant(response);
+        hideTableIdColumns(table);
         console.log(body);
         body.appendChild(table);
         body.appendChild(document.createElement("hr"))
@@ -40,6 +43,7 @@
     function successPollution(response) {
         console.log(response);
         let table = tablePollution(response);
+        hideTableIdColumns(table);
         console.log(body);
         body.appendChild(table);
         body.appendChild(document.createElement("hr"))
