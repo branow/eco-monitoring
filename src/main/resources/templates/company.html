@@ -16,23 +16,8 @@
     function success(response) {
         let companies = response;
         console.log(companies);
-
-        let tableBody = document.getElementById("companies-table-body");
-        tableBody.innerHTML = "";
-
-        for (let i = 0; i < companies.length; i++) {
-            let row =
-                `<tr>
-                   <td>${companies[i].companyName}</td>
-                   <td>${companies[i].ownership}</td>
-                   <td>${companies[i].economicActivity}</td>
-                   <td>${companies[i].address}</td>
-                </tr>`
-            tableBody.innerHTML += row;
-        }
     }
     function error(xhr, status, error) {
-        document.getElementById("error").innerText = xhr;
         console.log(xhr);
         console.log(status);
         console.log(error);
