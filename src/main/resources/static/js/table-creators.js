@@ -35,7 +35,7 @@ function tableCompany(companies) {
 }
 
 function tablePollutant(pollutants) {
-    let columnNames = ['Pollutant Id', 'Pollutant Name', 'Mass Consumption (tons/year)', 'GDK', 'Hazard Class'];
+    let columnNames = ['Pollutant Id', 'Pollutant Name', 'Mass Consumption (tons/year)', 'GDK (g/m cub)', 'Hazard Class'];
     let fieldNames = ['pollutantId', 'pollutantName', 'massConsumption', 'gdk', 'hazardClass'];
     return table(pollutants, columnNames, fieldNames)
 }
