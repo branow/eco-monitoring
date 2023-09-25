@@ -1,6 +1,6 @@
 
 
-function findAllPollutant(success, error) {
+function findAllPollutants(success, error) {
     $.ajax(
         {
             method: 'GET',
