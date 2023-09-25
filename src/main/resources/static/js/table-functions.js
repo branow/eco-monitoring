@@ -1,3 +1,33 @@
+
+/*Add a copy of the given button to each body table row setting the button visibility = hidden.*/
+function addNonVisibleDeleteRowButtons(table, button) {
+    let rows = table.querySelectorAll('tbody > tr');
+    for (let i = 0; i<rows.length; i++) {
+        let td = document.createElement("td");
+        let deleteButton = document.createElement("button");
+        cloneAttributes(deleteButton, button)
+
+        deleteButton.innerText = button.innerText;
+        deleteButton.className = button.className;
+        deleteButton.onclick = button.onclick;
+
+        rows[i].addEventListener('mouseover', function () {
+            deleteButton.style.visibility = 'visible'
+        })
+        rows[i].addEventListener('mouseout', function () {
+            deleteButton.style.visibility = 'hidden'
+        })
+        deleteButton.style.visibility = 'hidden'
+
+        td.appendChild(deleteButton);
+        rows[i].appendChild(td);
+    }
+}
+
+function cloneAttributes(target, source) {
+    [...source.attributes].forEach( attr => { target.setAttribute(attr.nodeName ,attr.nodeValue) })
+}
+
 /*Set property (style.display = 'none') for all cells of the columns
 which names contains substring 'Id'*/
 function hideTableIdColumns(table) {

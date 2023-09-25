@@ -9,6 +9,11 @@
     <script type="text/javascript" src="/js/request-pollutant.js"></script>
     <script type="text/javascript" src="/js/request-pollution.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        tr:hover {
+            background-color: #dddddd;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,33 +23,34 @@
 <script>
     console.log("SCRIPT")
     let body = $("body")[0];
+    let deleteButton = document.createElement("button");
+    deleteButton.innerText = "del";
+    deleteButton.className = "del";
 
     findAllCompanies(successCompany, error);
     findAllPollutants(successPollutant, error);
     findAllPollutions(successPollution, error);
 
     function successCompany(response) {
-        console.log(response);
         let table = tableCompany(response);
         hideTableIdColumns(table);
-        console.log(body);
+        addNonVisibleDeleteRowButtons(table, deleteButton);
         body.appendChild(table);
         body.appendChild(document.createElement("hr"))
     }
+
     function successPollutant(response) {
-        console.log(response);
         let table = tablePollutant(response);
         hideTableIdColumns(table);
-        console.log(body);
+        addNonVisibleDeleteRowButtons(table, deleteButton);
         body.appendChild(table);
         body.appendChild(document.createElement("hr"))
     }
 
     function successPollution(response) {
-        console.log(response);
         let table = tablePollution(response);
         hideTableIdColumns(table);
-        console.log(body);
+        addNonVisibleDeleteRowButtons(table, deleteButton);
         body.appendChild(table);
         body.appendChild(document.createElement("hr"))
     }
