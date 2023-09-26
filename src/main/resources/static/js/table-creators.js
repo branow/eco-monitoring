@@ -11,8 +11,10 @@ function tablePollution(pollutions) {
         for (let j = 0; j < fieldNames.length; j++) {
             let td = document.createElement("td");
             if (fieldNames[j] === 'company') {
+                td.dataset.id = pollutions[i][fieldNames[j]]['companyId'];
                 td.innerText = pollutions[i][fieldNames[j]]['companyName'];
             } else if (fieldNames[j] === 'pollutant') {
+                td.dataset.id = pollutions[i][fieldNames[j]]['pollutantId'];
                 td.innerText = pollutions[i][fieldNames[j]]['pollutantName'];
             } else {
                 td.innerText = pollutions[i][fieldNames[j]];
@@ -24,28 +26,30 @@ function tablePollution(pollutions) {
 
     table.appendChild(thead);
     table.appendChild(tbody);
+    table.dataset.type = 'pollutions';
     return table;
 }
 
 function tableCompany(companies) {
    let columnNames = ['Company Id', 'Company Name', 'Ownership', 'Economic Activity', 'Address'];
    let fieldNames = ['companyId', 'companyName', 'ownership', 'economicActivity', 'address'];
-   return table(companies, columnNames, fieldNames)
+   return table(companies, columnNames, fieldNames, 'companies')
 }
 
 function tablePollutant(pollutants) {
     let columnNames = ['Pollutant Id', 'Pollutant Name', 'Mass Consumption (tons/year)', 'GDK (g/m cub)', 'Hazard Class'];
     let fieldNames = ['pollutantId', 'pollutantName', 'massConsumption', 'gdk', 'hazardClass'];
-    return table(pollutants, columnNames, fieldNames)
+    return table(pollutants, columnNames, fieldNames, 'pollutants')
 }
 
 
-function table(data, columnNames, fieldNames) {
+function table(data, columnNames, fieldNames, type) {
     let table = document.createElement("table");
     let thead = tableHead(columnNames);
     let tbody = tableBody(data, fieldNames);
     table.appendChild(thead);
     table.appendChild(tbody);
+    table.dataset.type = type;
     return table;
 }
 
