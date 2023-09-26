@@ -5,7 +5,6 @@ function tablePollution(pollutions) {
 
     let table = document.createElement("table");
     let thead = tableHead(columnNames);
-
     let tbody = document.createElement("tbody");
     for (let i = 0; i < pollutions.length; i++) {
         let tr = document.createElement("tr");
