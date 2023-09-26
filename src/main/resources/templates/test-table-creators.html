@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>test-table-creators</title>
+    <script type="text/javascript" src="/js/table-elements.js"></script>
     <script type="text/javascript" src="/js/table-functions.js"></script>
     <script type="text/javascript" src="/js/table-creators.js"></script>
     <script type="text/javascript" src="/js/request-company.js"></script>
@@ -23,9 +24,6 @@
 <script>
     console.log("SCRIPT")
     let body = $("body")[0];
-    let deleteButton = document.createElement("button");
-    deleteButton.innerText = "del";
-    deleteButton.className = "del";
 
     findAllCompanies(successCompany, error);
     findAllPollutants(successPollutant, error);
@@ -33,24 +31,21 @@
 
     function successCompany(response) {
         let table = tableCompany(response);
-        hideTableIdColumns(table);
-        addNonVisibleDeleteRowButtons(table, deleteButton);
+        configureTable(table);
         body.appendChild(table);
         body.appendChild(document.createElement("hr"))
     }
 
     function successPollutant(response) {
         let table = tablePollutant(response);
-        hideTableIdColumns(table);
-        addNonVisibleDeleteRowButtons(table, deleteButton);
+        configureTable(table);
         body.appendChild(table);
         body.appendChild(document.createElement("hr"))
     }
 
     function successPollution(response) {
         let table = tablePollution(response);
-        hideTableIdColumns(table);
-        addNonVisibleDeleteRowButtons(table, deleteButton);
+        configureTable(table);
         body.appendChild(table);
         body.appendChild(document.createElement("hr"))
     }
