@@ -23,48 +23,34 @@
 <script>
     console.log("SCRIPT")
     let body = $("body")[0];
-
-    let addButton = document.createElement("button");
-    addButton.innerText = "add";
-    addButton.className = "add";
-
     let deleteButton = document.createElement("button");
     deleteButton.innerText = "del";
     deleteButton.className = "del";
-    initButtons(addButton, deleteButton);
 
     findAllCompanies(successCompany, error);
     findAllPollutants(successPollutant, error);
     findAllPollutions(successPollution, error);
 
     function successCompany(response) {
-        console.log(response);
         let table = tableCompany(response);
         hideTableIdColumns(table);
-        console.log(body);
-        addNonVisibleDeleteRowButtons(table);
-        addAddingRowButtons(table);
+        addNonVisibleDeleteRowButtons(table, deleteButton);
         body.appendChild(table);
         body.appendChild(document.createElement("hr"))
     }
+
     function successPollutant(response) {
-        console.log(response);
         let table = tablePollutant(response);
         hideTableIdColumns(table);
-        console.log(body);
-        addNonVisibleDeleteRowButtons(table);
-        addAddingRowButtons(table);
+        addNonVisibleDeleteRowButtons(table, deleteButton);
         body.appendChild(table);
         body.appendChild(document.createElement("hr"))
     }
 
     function successPollution(response) {
-        console.log(response);
         let table = tablePollution(response);
         hideTableIdColumns(table);
-        console.log(body);
-        addNonVisibleDeleteRowButtons(table);
-        addAddingRowButtons(table);
+        addNonVisibleDeleteRowButtons(table, deleteButton);
         body.appendChild(table);
         body.appendChild(document.createElement("hr"))
     }
