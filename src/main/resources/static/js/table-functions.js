@@ -8,6 +8,7 @@ function initButtons(addButton, delButton){
     delButtonTemplate = delButton;
 }
 
+
 /*Adds a button to the right part of the row, it can be adding button or deleting button*/
 function addRightButton(row, button){
     let deleteButton = document.createElement("button");
