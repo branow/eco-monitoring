@@ -29,4 +29,13 @@ public class PollutionService {
         repository.deleteById(id);
     }
 
+
+    public void deleteAllByCompanyId(Long id) {
+        repository.deleteAllByCompanyCompanyId(id);
+    }
+
+    public void deleteAllByPollutantId(Long id) {
+        repository.deleteAllByPollutantPollutantId(id);
+    }
+
 }

@@ -39,8 +39,7 @@ function deleteCompany(id, success, error) {
     $.ajax(
         {
             method: 'DELETE',
-            url: 'http://localhost:8080/company',
-            data: JSON.stringify(id),
+            url: 'http://localhost:8080/company?id=' + id,
             success: success,
             error: error
         }

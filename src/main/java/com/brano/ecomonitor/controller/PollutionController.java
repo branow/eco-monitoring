@@ -43,8 +43,8 @@ public class PollutionController {
     }
 
     @DeleteMapping("/pollution")
-    public ResponseEntity<String> deletePollution(@RequestBody Long id) {
-        return wrap(() -> pollutionService.deleteById(id), new ResponseEntity<>("Success", HttpStatus.ACCEPTED));
+    public ResponseEntity<String> deletePollution(@RequestParam String id) {
+        return wrap(() -> pollutionService.deleteById(Long.parseLong(id)), new ResponseEntity<>("Success", HttpStatus.ACCEPTED));
     }
 
     private ResponseEntity<String> wrap(Runnable runnable, ResponseEntity<String> successResponse) {

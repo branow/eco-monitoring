@@ -37,11 +37,11 @@ function updatePollution(pollution, success, error) {
 }
 
 function deletePollution(id, success, error) {
+    console.log('http://localhost:8080/pollution?id=' + id);
     $.ajax(
         {
             method: 'DELETE',
-            url: 'http://localhost:8080/pollution',
-            data: JSON.stringify(id),
+            url: 'http://localhost:8080/pollution?id=' + id,
             success: success,
             error: error
         }

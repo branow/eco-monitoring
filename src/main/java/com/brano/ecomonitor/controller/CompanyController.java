@@ -40,13 +40,13 @@ public class CompanyController {
     }
 
     @PutMapping("/company")
-    public ResponseEntity<String> updateCompany(@RequestParam Company company) {
+    public ResponseEntity<String> updateCompany(@RequestBody Company company) {
         return wrap(() -> companyService.save(company), new ResponseEntity<>("Success", HttpStatus.CREATED));
     }
 
     @DeleteMapping("/company")
-    public ResponseEntity<String> deleteCompany(@RequestBody Long id) {
-        return wrap(() -> companyService.deleteById(id), new ResponseEntity<>("Success", HttpStatus.ACCEPTED));
+    public ResponseEntity<String> deleteCompany(@RequestParam String id) {
+        return wrap(() -> companyService.deleteById(Long.parseLong(id)), new ResponseEntity<>("Success", HttpStatus.ACCEPTED));
     }
 
     private ResponseEntity<String> wrap(Runnable runnable, ResponseEntity<String> successResponse) {

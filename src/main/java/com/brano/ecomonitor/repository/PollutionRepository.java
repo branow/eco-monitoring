@@ -6,4 +6,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PollutionRepository extends JpaRepository<Pollution, Long> {
+
+    void deleteAllByCompanyCompanyId(Long id);
+
+    void deleteAllByPollutantPollutantId(Long id);
+
 }

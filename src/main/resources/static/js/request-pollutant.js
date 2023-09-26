@@ -36,11 +36,11 @@ function updatePollutant(pollutant, success, error) {
 }
 
 function deletePollutant(id, success, error) {
+    console.log('http://localhost:8080/pollutant?id=' + id);
     $.ajax(
         {
             method: 'DELETE',
-            url: 'http://localhost:8080/pollutant',
-            data: JSON.stringify(id),
+            url: 'http://localhost:8080/pollutant?id=' + id,
             success: success,
             error: error
         }
