@@ -8,22 +8,32 @@ function initButtons(addButton, delButton){
     delButtonTemplate = delButton;
 }
 
+/*Deletes a row from the table*/
+function deleteRow(row){
+    let table = row.closest('table');
+    table.deleteRow(row.rowIndex);
+}
 
 /*Adds a button to the right part of the row, it can be adding button or deleting button*/
 function addRightButton(row, button){
-    let deleteButton = document.createElement("button");
-    cloneAttributes(deleteButton, delButtonTemplate)
-    deleteButton.innerText = button.innerText;
-    deleteButton.className = button.className;
-    deleteButton.onclick = button.onclick;
-    row.addEventListener('mouseover', function () {
-        deleteButton.style.visibility = 'visible'
-    })
-    row.addEventListener('mouseout', function () {
-        deleteButton.style.visibility = 'hidden'
-    })
-    deleteButton.style.visibility = 'hidden'
-    return deleteButton;
+    let currentButton = document.createElement("button");
+    cloneAttributes(currentButton, button)
+    currentButton.innerText = button.innerText;
+    currentButton.className = button.className;
+    currentButton.onclick = button.onclick;
+    if (button === delButtonTemplate){
+        row.addEventListener('mouseover', function () {
+            currentButton.style.visibility = 'visible'
+        })
+        row.addEventListener('mouseout', function () {
+            currentButton.style.visibility = 'hidden'
+        })
+        currentButton.style.visibility = 'hidden'
+        currentButton.addEventListener('click', function () {
+            deleteRow(row);
+        });
+    }
+    return currentButton;
 }
 /*Adds an empty row to the table is it a row for information or is it a row to add a new row to*/
 function addRow(table, rowIndex, flagIsDelBtn){
