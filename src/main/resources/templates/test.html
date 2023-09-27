@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="/js/validator.js"></script>
+    <script type="text/javascript" src="/js/element-on-built.js"></script>
+    <script type="text/javascript" src="/js/table-builder.js"></script>
+    <script type="text/javascript" src="/js/table-structure.js"></script>
+    <script type="text/javascript" src="/js/table-structure-impl.js"></script>
+    <script type="text/javascript" src="/js/element-prototype.js"></script>
+    <script type="text/javascript" src="/js/table-reader.js"></script>
+    <script type="text/javascript" src="/js/table-actions.js"></script>
+    <script type="text/javascript" src="/js/request.js"></script>
+    <script type="text/javascript" src="/js/data-operation.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        tr:hover {
+            background-color: #dddddd;
+        }
+        #error-box {
+            font-family: Calibri;
+            font-size: 20px;
+            background-color: bisque;
+            color: darkred;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="error-box">
+
+</div>
+<script>
+
+    // findAllCompanies(companySuccess, failed);
+    // findAllPollutants(pollutantSuccess, throwError);
+    findAllPollutions(pollutionSuccess, failed);
+
+    let body = $('body')[0];
+
+    function companySuccess(response) {
+        let tab = buildTable(companyTableSchema(), response);
+        body.appendChild(tab);
+        body.appendChild(document.createElement('br'));
+    }
+
+    function pollutantSuccess(response) {
+        let tab = buildTable(pollutantTableSchema(), response);
+        body.appendChild(tab);
+        body.appendChild(document.createElement('br'));
+    }
+
+    function pollutionSuccess(response) {
+        let tab = buildTable(pollutionTableSchema(), response);
+        body.appendChild(tab);
+        body.appendChild(document.createElement('br'));
+    }
+
+    function failed(response) {
+        console.log(response);
+    }
+
+</script>
+</body>
+</html>
