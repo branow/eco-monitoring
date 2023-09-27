@@ -1,7 +1,9 @@
 package com.brano.ecomonitor.service;
 
+import com.brano.ecomonitor.entity.Company;
 import com.brano.ecomonitor.entity.Pollutant;
 import com.brano.ecomonitor.repository.PollutantRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,11 +13,15 @@ import java.util.List;
 public class PollutantService {
 
     private final PollutantRepository repository;
-    private final PollutionService pollutionService;
+    @Autowired
+    private PollutionService pollutionService;
 
-    public PollutantService(PollutantRepository repository, PollutionService pollutionService) {
+    public PollutantService(PollutantRepository repository) {
         this.repository = repository;
-        this.pollutionService = pollutionService;
+    }
+
+    public Pollutant findById(Long id) {
+        return repository.findById(id).orElseThrow();
     }
 
     public List<Pollutant> findAll() {

@@ -38,7 +38,7 @@ public class PollutantController {
     }
 
     @PutMapping("/pollutant")
-    public ResponseEntity<String> updatePollutant(@RequestParam Pollutant pollutant) {
+    public ResponseEntity<String> updatePollutant(@RequestBody Pollutant pollutant) {
         return wrap(() -> pollutantService.save(pollutant), new ResponseEntity<>("Success", HttpStatus.CREATED));
     }
 
@@ -52,6 +52,7 @@ public class PollutantController {
             runnable.run();
             return successResponse;
         } catch (Exception e) {
+            System.err.println("BAD REQUEST: " + e.getMessage());
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }

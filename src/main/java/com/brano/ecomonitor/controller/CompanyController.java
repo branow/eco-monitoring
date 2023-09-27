@@ -54,6 +54,7 @@ public class CompanyController {
             runnable.run();
             return successResponse;
         } catch (Exception e) {
+            System.err.println("BAD REQUEST: " + e.getMessage());
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }

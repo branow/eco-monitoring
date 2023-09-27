@@ -1,6 +1,7 @@
 package com.brano.ecomonitor.controller;
 
 import com.brano.ecomonitor.entity.Pollution;
+import com.brano.ecomonitor.model.PollutionModel;
 import com.brano.ecomonitor.service.PollutionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,12 +34,12 @@ public class PollutionController {
     }
 
     @PostMapping("/pollution")
-    public ResponseEntity<String> addPollution(@RequestBody Pollution pollution) {
+    public ResponseEntity<String> addPollution(@RequestBody PollutionModel pollution) {
         return wrap(() -> pollutionService.save(pollution), new ResponseEntity<>("Success", HttpStatus.CREATED));
     }
 
     @PutMapping("/pollution")
-    public ResponseEntity<String> updatePollution(@RequestParam Pollution pollution) {
+    public ResponseEntity<String> updatePollution(@RequestBody PollutionModel pollution) {
         return wrap(() -> pollutionService.save(pollution), new ResponseEntity<>("Success", HttpStatus.CREATED));
     }
 
@@ -52,6 +53,7 @@ public class PollutionController {
             runnable.run();
             return successResponse;
         } catch (Exception e) {
+            System.err.println("BAD REQUEST: " + e.getMessage());
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
