@@ -1,5 +1,6 @@
 package com.brano.ecomonitor.controller;
 
+import com.brano.ecomonitor.entity.Company;
 import com.brano.ecomonitor.entity.Pollutant;
 import com.brano.ecomonitor.service.PollutantService;
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+
+import static com.brano.ecomonitor.controller.ResponseWrapper.wrap;
 
 @RestController
 public class PollutantController {
@@ -19,42 +22,26 @@ public class PollutantController {
     }
 
     @GetMapping("/pollutant")
-    public ModelAndView pollutant() {
-        return new ModelAndView("pollutant");
-    }
-
-    @GetMapping("/pollutants")
-    public ResponseEntity<List<Pollutant>> pollutants() {
-        try {
-            return new ResponseEntity<>(pollutantService.findAll(), HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity<?> pollutant() {
+        return wrap(pollutantService::findAll, HttpStatus.OK);
     }
 
     @PostMapping("/pollutant")
-    public ResponseEntity<String> addPollutant(@RequestBody Pollutant pollutant) {
-        return wrap(() -> pollutantService.save(pollutant), new ResponseEntity<>("Success", HttpStatus.CREATED));
+    public ResponseEntity<?> addPollutant(@RequestBody Pollutant pollutant) {
+        return wrap(() -> pollutantService.save(pollutant), HttpStatus.CREATED);
     }
 
     @PutMapping("/pollutant")
-    public ResponseEntity<String> updatePollutant(@RequestBody Pollutant pollutant) {
-        return wrap(() -> pollutantService.save(pollutant), new ResponseEntity<>("Success", HttpStatus.CREATED));
+    public ResponseEntity<?> updatePollutant(@RequestBody Pollutant pollutant) {
+        return wrap(() -> pollutantService.save(pollutant), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/pollutant")
-    public ResponseEntity<String> deletePollutant(@RequestParam String id) {
-        return wrap(() -> pollutantService.deleteById(Long.parseLong(id)), new ResponseEntity<>("Success", HttpStatus.ACCEPTED));
-    }
-
-    private ResponseEntity<String> wrap(Runnable runnable, ResponseEntity<String> successResponse) {
-        try {
-            runnable.run();
-            return successResponse;
-        } catch (Exception e) {
-            System.err.println("BAD REQUEST: " + e.getMessage());
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity<?> deletePollutant(@RequestParam String id) {
+        return wrap(() -> {
+            pollutantService.deleteById(Long.parseLong(id));
+            return "Success";
+        }, HttpStatus.ACCEPTED);
     }
 
 }
