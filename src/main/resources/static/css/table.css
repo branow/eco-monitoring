@@ -1,0 +1,73 @@
+table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+}
+
+table input {
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    width: 100%;
+}
+
+table td, table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tbody tr:hover {
+    background-color: #ddd;
+}
+td.del-cell {
+    display: none;
+}
+
+table tbody tr:hover td.del-cell {
+    display: table-cell;
+}
+
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+
+td.del-cell, td.add-row-cell {
+    padding: 1px;
+}
+
+table td .add-row-button {
+    padding: 1px;
+}
+
+.del-button {
+    border: solid 2px white;
+    background: #FF2200;
+    border-radius: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+.del-button:hover {
+    border: none;
+}
+
+.del-button:active {
+    background: #FFAA00;
+}
+
+.add-row-button {
+    width: 100%;
+    background-color: #00EEAD;
+    color: white;
+    border: none;
+}
+
+tfoot tr td button {
+    width: 100%;
+}

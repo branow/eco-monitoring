@@ -9,7 +9,6 @@ public class DefaultController {
 
     @GetMapping("/")
     public ModelAndView index() {
-        return new ModelAndView("test-table-creators");
+        return new ModelAndView("test2");
     }
-
 }
