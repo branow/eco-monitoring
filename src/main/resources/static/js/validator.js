@@ -1,13 +1,37 @@
 
 
-function Validator(conditions) {
-    this.message = function (columnName) {
-        return  columnName + ' value must be: ' + joinConditionNames(', ', conditions);
+function ValidatorNotEmpty(name) {
+    return new Validator(name, [notEmptyCondition()]);
+}
+
+function ValidatorNotEmptyDouble(name) {
+    return new Validator(name, [notEmptyCondition(), isDouble()]);
+}
+
+function ValidatorNotEmptyNotNegativeDouble(name) {
+    return new Validator(name, [notEmptyCondition(), isDouble(), notNegative()]);
+}
+
+function ValidatorNotEmptyInteger(name) {
+    return new Validator(name, [notEmptyCondition(), isInteger()]);
+}
+
+function ValidatorNotEmptyIntegerInScope(name, min, max) {
+    return new Validator(name, [notEmptyCondition(), isInteger(), isInScope(min, max)]);
+}
+
+
+function Validator(name, conditions) {
+    this.name = name;
+    this.message = () => {
+        return this.name + ' value must be: ' + joinConditionNames(', ', conditions);
     }
     this.validate = function (value) {
         for (let i in conditions) {
             value = conditions[i].check(value);
         }
+        if (value == null)
+            throwError(this.message());
         return value;
     }
 }
@@ -44,15 +68,26 @@ function isDouble() {
 }
 
 function isInScope(min, max) {
-    return new Condition('an integer in scope',
-        function (value) {
+    return new Condition('in scope from ' + min + ' to ' + max,
+        (value) => {
+            let num = parseFloat(value);
+            if (num >= min && num <= max) {
+                return num;
+            } else {
+                return null;
+            }
+        });
+}
+
+function notNegative() {
+    return new Condition('not negative', (value) => {
         let num = parseFloat(value);
-        if (num >= min && num <= max) {
+        if (num >= 0) {
             return num;
         } else {
             return null;
         }
-    });
+    })
 }
 
 function notLongerThanCondition(length) {

@@ -5,21 +5,22 @@ function readObjectId(row) {
 }
 
 function readObject(row) {
-    let columns = findColumnSchemas(row.dataset.object)
+    let headRow = row.closest('table').querySelector('thead > tr');
+    let headCells = headRow.querySelectorAll('th');
     let cells = row.querySelectorAll("td");
     let object = {};
-    for (let i=0; i<columns.length; i++) {
-        setField(object, columns[i], readField(columns[i], cells[i]))
+    for (let i=0; i<headCells.length; i++) {
+        setField(object, headCells[i].dataset.fieldName, readCell(cells[i]))
     }
     return object;
 }
 
-function setField(object, column, value) {
-    object[column.objectFieldName] = value;
+function setField(object, fieldName, value) {
+    object[fieldName] = value;
 }
 
-function readField(column, cell) {
-    let text = readText(column, cell);
+function readCell(cell) {
+    let text = readText(cell);
     if (text) {
         return text;
     } else {
@@ -27,8 +28,8 @@ function readField(column, cell) {
     }
 }
 
-function readText(column, cell) {
-    if (column.joint) {
+function readText(cell) {
+    if (cell.dataset.id) {
         let select = cell.querySelector('select');
         if (select != null) {
             return select.value;
