@@ -1,52 +1,35 @@
 
-function findAllCompanies(success, error) {
-    findAll('companies', success, error);
-}
-
-function addCompany(company, success, error) {
-    add(company, 'company', success, error);
-}
-
-function updateCompany(company, success, error) {
-    update(company, 'company', success, error);
-}
-
-function deleteCompany(id, success, error) {
-    remove(id, 'company', success, error);
+function findRequester(tableName) {
+    if (tableName === 'pollution') {
+        return PollutionRequester();
+    } else if (tableName === 'pollutant') {
+        return PollutantRequester();
+    } else if (tableName === 'company') {
+        return CompanyRequester();
+    } else {
+        throwError('Requester with such table name not found: ' + tableName);
+    }
 }
 
 
-function findAllPollutants(success, error) {
-    findAll('pollutants', success, error);
+function PollutionRequester() {
+    return new RequesterCRUD('pollution');
 }
 
-function addPollutant(company, success, error) {
-    add(company, 'pollutant', success, error);
+function PollutantRequester() {
+    return new RequesterCRUD('pollutant');
 }
 
-function updatePollutant(company, success, error) {
-    update(company, 'pollutant', success, error);
-}
-
-function deletePollutant(id, success, error) {
-    remove(id, 'pollutant', success, error);
+function CompanyRequester() {
+    return new RequesterCRUD('company');
 }
 
 
-function findAllPollutions(success, error) {
-    findAll('pollutions', success, error);
-}
-
-function addPollution(company, success, error) {
-    add(company, 'pollution', success, error);
-}
-
-function updatePollution(company, success, error) {
-    update(company, 'pollution', success, error);
-}
-
-function deletePollution(id, success, error) {
-    remove(id, 'pollution', success, error);
+function RequesterCRUD(location) {
+    this.findAll = (success, error) => findAll(location, success, error);
+    this.add = (data, success, error) => add(data, location, success, error);
+    this.update = (data, success, error) => update(data, location, success, error);
+    this.delete = (data, success, error) => remove(data, location, success, error);
 }
 
 

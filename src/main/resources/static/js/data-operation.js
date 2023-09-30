@@ -1,49 +1,44 @@
 
-
-function findAllByObject(objectName, success, error) {
-    if (objectName === 'company') {
-        findAllCompanies(success, error);
-    } else if (objectName === 'pollutant') {
-        findAllPollutants(success, error);
-    } else if (objectName === 'pollution') {
-        findAllPollutions(success, error);
+function deleteObjectOfRow(row, success) {
+    if (row.closest('table').dataset.independent) {
+        success();
     } else {
-        throw new Error("ERROR: object name for finding operation is invalid - " + objectName)
+        deleteObjectOfRowConnected(row, success)
     }
 }
 
-function addObject(object, objectName, success, error) {
-    if (objectName === 'company') {
-        addCompany(object, success, error);
-    } else if (objectName === 'pollutant') {
-        addPollutant(object, success, error);
-    } else if (objectName === 'pollution') {
-        addPollution(object, success, error);
+function deleteObjectOfRowConnected(row, success) {
+    let object = readObjectId(row);
+    deleteObject(object, row.dataset.object, success, throwResponseError);
+}
+
+function updateObjectOfRow(row, success) {
+    if (row.closest('table').dataset.independent) {
+        success();
     } else {
-        throw new Error("ERROR: object name for adding operation is invalid - " + objectName)
+        updateObjectOfRowConnected(row, success)
     }
 }
 
-function updateObject(object, objectName, success, error) {
-    if (objectName === 'company') {
-        updateCompany(object, success, error);
-    } else if (objectName === 'pollutant') {
-        updatePollutant(object, success, error);
-    } else if (objectName === 'pollution') {
-        updatePollution(object, success, error);
-    } else {
-        throw new Error("ERROR: object name for updating operation is invalid - " + objectName)
-    }
+function updateObjectOfRowConnected(row, success) {
+    let object = readObject(row);
+    updateObject(object, row.dataset.object, success, throwResponseError);
 }
 
-function removeObject(id, objectName, success, error) {
-    if (objectName === 'company') {
-        deleteCompany(id, success, error);
-    } else if (objectName === 'pollutant') {
-        deletePollutant(id, success, error);
-    } else if (objectName === 'pollution') {
-        deletePollution(id, success, error);
-    } else {
-        throw new Error("ERROR: object name for deleting operation is invalid - " + objectName)
-    }
+
+
+function findAllByObject(tableName, success) {
+    findRequester(tableName).findAll(success, throwResponseError);
+}
+
+function addObject(object, tableName, success) {
+    findRequester(tableName).add(object, success, throwResponseError);
+}
+
+function updateObject(object, tableName, success, error) {
+    findRequester(tableName).update(object, success, throwResponseError);
+}
+
+function deleteObject(id, tableName, success, error) {
+    findRequester(tableName).delete(id, success, throwResponseError);
 }
