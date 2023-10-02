@@ -1,48 +1,44 @@
-
-body{
-    background-color: #a3a3a3;
-}
-.choosing-table-section{
-    position: relative; 
+.choosing-table-section {
+    position: relative;
     height: 60vh;
     width: 100%;
     text-align: center;
 }
 
-
-.choose-table-div{
+.choose-table-div {
     position: relative;
     top: 15vh;
     width: 40vw;
     font-family: Raleway, serif;
     font-style: normal;
     line-height: normal;
-    text-align:center;
+    text-align: center;
     bottom: 40vh;
     font-size: 20px;
     margin: auto;
     color: #000000c7;
-  }
-  .choose-text{
+}
+
+.choose-text {
     font-size: 34px;
-  }
+}
 
-  .choose-buttons{
+.choose-buttons {
     margin-top: 30px;
-  }
+}
 
-  .table-nav-button{
-      display: block;
-      width: 60%;
-      height: 40px;
-      margin: 20px auto auto;
-      appearance: none;
-      backface-visibility: hidden;
-      background-color: #cbc217;
-      border-radius: 8px;
-      border-style: none;
-      box-shadow: rgba(188, 196, 34, 0.15) 0 4px 9px;
-  }
+.table-nav-button {
+    display: block;
+    width: 60%;
+    height: 40px;
+    margin: 20px auto auto;
+    appearance: none;
+    backface-visibility: hidden;
+    background-color: #cbc217;
+    border-radius: 8px;
+    border-style: none;
+    box-shadow: rgba(188, 196, 34, 0.15) 0 4px 9px;
+}
 
 .table-nav-button:hover {
     background-color: #9a8600;
@@ -50,55 +46,71 @@ body{
     transform: translateY(0);
     transition-duration: .35s;
 }
+
 .table-nav-button:active {
     transform: translateY(2px);
     transition-duration: .35s;
 }
 
 
-  .tab {
-      background-color: rgba(241, 241, 241, 0.74);
-    width: 70%;
-    border-collapse: collapse;
-    color: #000000;
-      margin: 20px auto auto;
-      font-size: 18px;
-  }
-
- .tab td,.info-table th {
-    padding: 10px;
-      border: #68a369 solid 2px;
-  }
-
- .tab thead {
-      background-color: #27ae60;
-      color: #ffffff;
-  }
-
-
-.del-button {
-    border: solid 2px white;
-    background: #FF2200;
-    border-radius: 10px;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
+.chosen-table-div {
+    padding: 5vh 10%;
 }
 
-.del-button:hover {
+.table-container {
+    margin: 8vh 0;
+}
+
+/*----------------TABLE-----------------*/
+
+.tab {
+    border-collapse: collapse;
+    color: #222222;
+    margin: 5vh 0;
+    font-size: 18px;
+}
+
+.tab td.cell, .info-table th {
+    padding: 10px;
+    border: #68a369 solid 2px;
+}
+
+.tab thead {
+    background-color: #27ae60;
+    color: #ffffff;
+}
+
+th {
+    padding: 10px;
+    border: #27ae60 solid 2px;
+}
+
+tr:hover td.cell {
+    background-color: #e0e0e0;
+}
+
+td.add-row-cell, td.accept-cell, td.cancel-cell, .tab-head, .tab-foot {
     border: none;
 }
 
-.del-button:active {
-    background: #FFAA00;
+td.del-cell {
+    display: none;
+    position: absolute;
 }
 
+tr:hover td.del-cell {
+    display: table-cell;
+}
 
-.table-nav-button, .add-row-button, .accept-add, .cancel-add{
+tfoot td {
+    padding: 5px;
+}
+
+.table-nav-button, .add-row-button, .accept-add, .cancel-add {
     box-sizing: border-box;
     color: #fff;
     cursor: pointer;
-    font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
     font-size: 18px;
     font-weight: 300;
     letter-spacing: normal;
@@ -117,16 +129,16 @@ body{
     white-space: nowrap;
 }
 
-.add-row-button, .accept-add, .cancel-add{
+.add-row-button, .accept-add, .cancel-add {
     display: block;
     width: 100%;
     height: 40px;
     appearance: none;
     backface-visibility: hidden;
     background-color: #27ae60;
-    border-radius: 8px;
+    border-radius: 15px;
     border-style: none;
-    box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
+    box-shadow: rgba(39, 174, 96, .30) 0 4px 9px;
 }
 
 .add-row-button:hover, .accept-add:hover, .cancel-add:hover {
@@ -142,41 +154,30 @@ body{
 }
 
 
-    td.add-row-cell, td.accept-cell, td.cancel-cell, .tab-head, .tab-foot{
-      border: none;
-  }
-
-td.del-cell{
-    visibility: hidden;
-    border: none;
-}
-tr:hover td.del-cell{
-    visibility: visible;
-}
-
-th{
-    padding: 10px;
-}
-
-input, select{
-    background-color: rgb(221 221 221 / 74%);
-    color: #000000;
+input, select {
+    background-color: whitesmoke;
+    color: #222222;
     font-size: 18px;
     border-radius: 10px;
-    border-width: thin;
-}
-#error-box {
-    visibility: hidden;
-    position: relative;
-    font-family: Calibri, serif;
-    font-size: 20px;
-    background-color: bisque;
-    color: darkred;
-    padding: 10px;
-    text-align: center;
-    top: 100px;
+    padding: 5px;
+    border: none;
+    width: 90%;
 }
 
+#error-box {
+    position: fixed;
+    top: 15vh;
+    opacity: 0;
+    font-family: Calibri, serif;
+    font-size: 24px;
+    background-color: bisque;
+    color: darkred;
+    padding: 12px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    z-index: 5;
+}
 
 .dropbtn {
     background-color: inherit;
@@ -185,7 +186,6 @@ input, select{
     padding: 18px;
     font-size: 18px;
     border: none;
-    cursor: pointer;
 }
 
 .dropbtn:hover {
@@ -202,7 +202,7 @@ input, select{
     position: absolute;
     background-color: #cbc217;
     min-width: 160px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
@@ -218,19 +218,50 @@ input, select{
     transition: .5s;
 }
 
-.background-div{
+.background-div {
     position: relative;
-    top: 10vh;
-    min-height: 120%;
-    background-color: #ececec;
-    width: 90%;
-    margin: auto;
+    background-color: #efefef;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    width: 60%;
+    margin: 0 auto;
+}
+
+button.del-button {
+    padding: 0;
+    width: 35px;
+    height: 35px;
+    border-radius: 25px;
+    border: 2px solid rgb(231, 50, 50);
+    box-shadow: 0 0 10px #333;
+    overflow: hidden;
+    transition: .3s;
+    margin: 10px;
+    cursor: pointer;
+}
+button.del-button:hover {
+    background-color: rgb(245, 207, 207);
+    box-shadow: 0 0 4px #111;
+    transition: .3s;
+}
+
+button.del-button:active {
+    background-color: rgb(245, 100, 100);
+    transition: .3s;
 }
 
 
-.chosen-table-div{
-    position: relative;
-    align-items: center;
-    margin: auto;
-    padding-top: 50px;
+.del-row-img {
+    margin: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 20px;
 }
+
+
+@media (max-width: 1000px) {
+    .background-div {
+        width: 90%;
+    }
+}
+

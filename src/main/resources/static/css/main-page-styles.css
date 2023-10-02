@@ -2,10 +2,10 @@
 
 * {box-sizing: border-box;}
 
-body { 
+body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background-color: #0000005C;
+  background-color: #0000003C;
 }
 
 
@@ -28,7 +28,7 @@ body {
   transition: .5s;
 }
 
- a.dropbtn-link{
+a.dropbtn-link{
   padding: 0;
 }
 
@@ -38,28 +38,28 @@ body {
 
 .header a.nav_button:hover {
   background: #227056;
-  }
+}
 
 
-  .logo-icon {
-    width: 54px;
-    height: 50px;
-  }
+.logo-icon {
+  width: 54px;
+  height: 50px;
+}
 
-  .logo_container {
-    position: relative;
-  }
+.logo_container {
+  position: relative;
+}
 
-  
-  .logo-name {
-    display: inline;
-    font-size: 30px;
-    margin-left: 15px;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-  }
+
+.logo-name {
+  display: inline;
+  font-size: 30px;
+  margin-left: 15px;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
 
 .header-right {
   float: right;
@@ -89,7 +89,7 @@ body {
 
 
 .get_started_section{
-  position: relative; 
+  position: relative;
   height: 60vh;
   width: 100%;
 }
@@ -108,7 +108,7 @@ body {
 
 
 .get_started_div{
-  position: relative; 
+  position: relative;
   top: 20vh;
   left: 10vw;
   width: 70vw;
@@ -122,14 +122,14 @@ body {
 
 
 .memorize_section{
-  position: relative; 
+  position: relative;
   height: 60vh;
   width: 100%;
   text-align: center;
 
 }
 .memorize_text_div{
-  position: relative; 
+  position: relative;
   display: inline-block;
   width: 40vw;
   color: #000000c7;
@@ -141,8 +141,8 @@ body {
 }
 .memorize_img_div{
   display: inline-block;
-  max-width: 50vw;  
-  height: 30vw;  
+  max-width: 50vw;
+  height: 30vw;
   margin-top: 5vh;
   margin-left: 10vh;
 }
@@ -157,7 +157,7 @@ body {
 }
 
 .footer_section{
-  position: relative; 
+  position: relative;
   height: 40vh;
   width: 100%;
   text-align: center;
@@ -181,7 +181,7 @@ body {
   font-size: 26px;
   margin: 0;
   padding: 0;
-  
+
 }
 
 .company_ul{

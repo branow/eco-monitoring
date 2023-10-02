@@ -23,8 +23,13 @@ function ObjectTableContainer(requesterCRUD, tableConstructor) {
 }
 
 function TableContainer(className, table) {
+    let div = Container(className);
+    div.appendChild(table);
+    return div;
+}
+
+function Container(className) {
     let div = document.createElement('div');
     div.className = className;
-    div.appendChild(table);
     return div;
 }

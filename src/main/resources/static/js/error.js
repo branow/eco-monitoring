@@ -12,7 +12,14 @@ function throwResponseError(response) {
 
 function throwError(message) {
     let box = $('#error-box')[0];
-    box.style.visibility = "visible";
+    box.style.transition = '0s';
+    box.style.opacity = '1';
     box.innerText = message;
+
+    setTimeout( () => {
+        box.style.transition = '3s';
+        box.style.opacity = '0';
+    }, 2000)
+
     throw new Error(message);
 }

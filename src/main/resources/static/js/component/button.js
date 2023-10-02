@@ -2,7 +2,7 @@ function AddRowButton(className, show, close) {
     let onclick = (event) => {
         let table = event.target.closest('table');
         let auxTable = AddRowAuxiliaryTable(table, close)
-        show(auxTable);
+        show(auxTable, table);
         let cells = auxTable.querySelectorAll('body td');
         for (let i in cells) {
             if (cells[i].ondblclick != null) {
@@ -67,7 +67,9 @@ function DeleteRowButton(className) {
         table.deleteRow(row.rowIndex);
     }
     let innerText = '';
-    return Button(className, innerText, onclick);
+    let btn = Button(className, innerText, onclick);
+    btn.append(DeleteRowImage());
+    return btn;
 }
 
 

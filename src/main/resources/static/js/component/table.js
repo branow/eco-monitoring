@@ -7,6 +7,7 @@ function AddRowAuxiliaryTable(parentTable, close) {
     let newTfoot =
         AcceptCancelAddRowTableFoot('accept-cancel-tab-foot', parentTable, close);
     table.appendChild(newTfoot);
+    table.querySelector('.del-cell').remove();
     table.dataset.independent = 'true';
     return table;
 }

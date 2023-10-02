@@ -32,7 +32,7 @@ function ObjectSelectEditableCell(className, object, field,  fieldId, fieldName)
 
 function AcceptAddRowCell(className, collSpan, parentTable, close) {
     let td = TableDataCell(className, '');
-    td.append(AcceptAddRowButton('accept-add', className, close));
+    td.append(AcceptAddRowButton('accept-add', parentTable, close));
     td.colSpan = collSpan;
     return td;
 }
