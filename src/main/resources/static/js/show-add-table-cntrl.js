@@ -7,7 +7,7 @@ function AddRowShowCloseController() {
         this.close();
         this.set(newTable);
 
-        $('#add-row-container')[0].appendChild(this.table);
+        ChosenTableWrapper.appendChild(this.table);
     };
     this.close = () => {
         if (this.table != null) {
