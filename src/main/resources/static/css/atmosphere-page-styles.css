@@ -56,13 +56,6 @@ body{
 }
 
 
-  .chosen-table-div{
-      position: relative;
-      top: 10vh;
-      align-items: center;
-      margin: auto;
-  }
-
   .tab {
       background-color: rgba(241, 241, 241, 0.74);
     width: 70%;
@@ -84,16 +77,15 @@ body{
 
 
 .del-button {
-
     border: solid 2px white;
     background: #FF2200;
     border-radius: 10px;
     width: 20px;
     height: 20px;
+    cursor: pointer;
 }
 
 .del-button:hover {
-
     border: none;
 }
 
@@ -155,10 +147,11 @@ body{
   }
 
 td.del-cell{
-    display: none;
+    visibility: hidden;
+    border: none;
 }
 tr:hover td.del-cell{
-    display: table-cell;
+    visibility: visible;
 }
 
 th{
@@ -192,6 +185,7 @@ input, select{
     padding: 18px;
     font-size: 18px;
     border: none;
+    cursor: pointer;
 }
 
 .dropbtn:hover {
@@ -226,9 +220,17 @@ input, select{
 
 .background-div{
     position: relative;
-    top: 37px;
-    min-height: 150%;
+    top: 10vh;
+    min-height: 120%;
     background-color: #ececec;
     width: 90%;
     margin: auto;
+}
+
+
+.chosen-table-div{
+    position: relative;
+    align-items: center;
+    margin: auto;
+    padding-top: 50px;
 }
