@@ -29,32 +29,5 @@ class MyHeader extends HTMLElement {
 }
 
 
-class MyFooter extends HTMLElement {
-    connectedCallback() {
-        this.innerHTML = `
-        <footer>
-      <section class="footer_section">
-        <div class="logo_footer">
-          <img class="logo-icon" alt="" src="/img/logo.png" />
-          <div class="logo-name">EcoMetricsMonitoring</div>
-        </div>
-
-        <div class="company_footer">
-          <span>Company</span>
-          <ul class="company_ul">
-            <a href="#default">
-              <li class="company_il">About us</li>
-            </a>
-            <a href="#default">
-              <li class="company_il">Contact</li>
-            </a>
-          </ul>
-        </div>
-      </section>
-    </footer>
-        `
-    }
-}
-
 customElements.define('my-header', MyHeader)
 
