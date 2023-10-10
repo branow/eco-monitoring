@@ -25,6 +25,18 @@ public class PollutionController {
     }
 
 
+    @GetMapping("/pollution-by-company")
+    public ResponseEntity<?> get(@RequestParam("companyId") String companyId, @RequestParam("year") String year) {
+        return wrap(() -> {
+            long id = Long.parseLong(companyId);
+            if (year.equals("all")) {
+                return pollutionService.findAllByCompanyId(id);
+            } else  {
+                return pollutionService.findAllByCompanyIdAndYear(id, Integer.parseInt(year));
+            }
+        }, HttpStatus.ACCEPTED);
+    }
+
     @GetMapping("/pollution")
     public ResponseEntity<?> pollution() {
         return wrap(pollutionService::findAll, HttpStatus.OK);

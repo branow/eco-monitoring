@@ -35,7 +35,16 @@ function requesters() {
     ]
 }
 
-
+function getPollutionsByCompanyIdAndYear(companyId, year, success, error) {
+    $.ajax(
+        {
+            method: 'GET',
+            url: 'http://localhost:8080/pollution-by-company?compnayId=' + companyId + '&' + 'year=' + year,
+            success: success,
+            error: error
+        }
+        )
+}
 
 function OrganRequester() {
     return new RequesterCRUD('organ');

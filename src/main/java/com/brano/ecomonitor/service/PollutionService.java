@@ -21,6 +21,14 @@ public class PollutionService {
         this.repository = repository;
     }
 
+    public List<Pollution> findAllByCompanyId(Long companyId) {
+        return repository.findAllByCompanyCompanyId(companyId);
+    }
+
+    public List<Pollution> findAllByCompanyIdAndYear(Long companyId, Integer year) {
+        return repository.findAllByCompanyCompanyIdAndYear(companyId, year);
+    }
+
     public List<Pollution> findAll() {
         return repository.findAll();
     }
