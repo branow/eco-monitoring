@@ -13,6 +13,7 @@ public class PollutionModel {
 
     private Long pollutionId;
     private Double emissionMass;
+    private Double concentration;
     private Integer year;
     private Long company;
     private Long pollutant;

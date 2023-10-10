@@ -1,14 +1,13 @@
 package com.brano.ecomonitor.entity;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -29,6 +28,19 @@ public class Pollutant {
 
     @Column(scale = 2, nullable = false)
     private Double gdk;
+
+    @Column(scale = 6)
+    private Double rfc;
+
+    @Column(scale = 4)
+    private Double sf;
+
+    @ManyToMany()
+    @JoinTable(
+            name = "pollutant_impact",
+            joinColumns = @JoinColumn(name = "pollutant", referencedColumnName = "pollutantId", foreignKey = @ForeignKey(name = "fk_pollutant_impact_pollutant")),
+            inverseJoinColumns = @JoinColumn(name = "organ", referencedColumnName = "organId", foreignKey = @ForeignKey(name = "fk_pollutant_impact_organ")))
+    private List<CriticalOrgan> impact;
 
     private Integer hazardClass;
 

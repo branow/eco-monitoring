@@ -20,14 +20,17 @@ public class Pollution {
     @Column(scale = 3, nullable = false)
     private Double emissionMass;
 
+    @Column(scale = 3, nullable = false)
+    private Double concentration;
+
     private Integer year;
 
     @ManyToOne()
-    @JoinColumn(name = "company", referencedColumnName = "companyId", foreignKey = @ForeignKey(name = "fk_pollution_company"))
+    @JoinColumn(nullable = false, name = "company", referencedColumnName = "companyId", foreignKey = @ForeignKey(name = "fk_pollution_company"))
     private Company company;
 
     @ManyToOne()
-    @JoinColumn(name = "pollutant", referencedColumnName = "pollutantId", foreignKey = @ForeignKey(name = "fk_pollution_pollutant"))
+    @JoinColumn(nullable = false, name = "pollutant", referencedColumnName = "pollutantId", foreignKey = @ForeignKey(name = "fk_pollution_pollutant"))
     private Pollutant pollutant;
 
 }

@@ -52,6 +52,7 @@ public class PollutionService {
                 .company(companyService.findById(model.getCompany()))
                 .pollutant(pollutantService.findById(model.getPollutant()))
                 .emissionMass(model.getEmissionMass())
+                .concentration(model.getConcentration())
                 .year(model.getYear())
                 .build();
     }
