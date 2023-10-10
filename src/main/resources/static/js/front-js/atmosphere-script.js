@@ -12,7 +12,11 @@ if (table != null){
         ChosenTableWrapper.appendChild(PollutantTableContainer());
     } else if (table === 'pollutions'){
         ChosenTableWrapper.appendChild(PollutionTableContainer());
-    } else {
+    } else if (table === 'organ'){
+        ChosenTableWrapper.appendChild(OrganTableContainer());
+    } else if (table === 'pollutant-impact'){
+        ChosenTableWrapper.appendChild(PollutantImpactTableContainer());
+    }  else {
         ChosenTableWrapper.appendChild(PollutantTableContainer());
         ChosenTableWrapper.appendChild(PollutantTableContainer());
         ChosenTableWrapper.appendChild(PollutionTableContainer());

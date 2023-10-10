@@ -1,4 +1,11 @@
 
+function OrganTableContainer() {
+    return ObjectTableContainer(new OrganRequester(), OrganTable);
+}
+
+function PollutantImpactTableContainer() {
+    return ObjectTableContainer(new PollutantImpactRequester(), PollutantImpactTable);
+}
 
 function PollutionTableContainer() {
     return ObjectTableContainer(new PollutionRequester(), PollutionTable);

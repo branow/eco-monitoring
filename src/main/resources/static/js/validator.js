@@ -12,6 +12,10 @@ function ValidatorNotEmptyNotNegativeDouble(name) {
     return new Validator(name, [notEmptyCondition(), isDouble(), notNegative()]);
 }
 
+function ValidatorNotNegativeDouble(name) {
+    return new Validator(name, [isDouble(), notNegative()]);
+}
+
 function ValidatorNotEmptyInteger(name) {
     return new Validator(name, [notEmptyCondition(), isInteger()]);
 }
@@ -63,7 +67,9 @@ function isInteger() {
 
 function isDouble() {
     return new Condition('a number', function (value) {
-        return parseFloat(value)
+        if (value !== "") {
+            return parseFloat(value)
+        }
     });
 }
 
@@ -81,11 +87,13 @@ function isInScope(min, max) {
 
 function notNegative() {
     return new Condition('not negative', (value) => {
-        let num = parseFloat(value);
-        if (num >= 0) {
-            return num;
-        } else {
-            return null;
+        if (value !== "") {
+            let num = parseFloat(value);
+            if (num >= 0) {
+                return num;
+            } else {
+                return null;
+            }
         }
     })
 }

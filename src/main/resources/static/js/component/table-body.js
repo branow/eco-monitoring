@@ -1,5 +1,11 @@
 
+function OrganTableBody(className, objects) {
+    return new ObjectTableBody(className, objects, OrganRow)
+}
 
+function PollutantImpactTableBody(className, objects) {
+    return new ObjectTableBody(className, objects, PollutantImpactRow)
+}
 
 
 function PollutionTableBody(className, objects) {

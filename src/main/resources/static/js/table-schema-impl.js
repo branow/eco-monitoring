@@ -25,8 +25,18 @@ function tableSchemas() {
     return [
         companyTableSchema(),
         pollutantTableSchema(),
-        pollutionTableSchema()
+        pollutionTableSchema(),
+        pollutantImpactTableSchema(),
+        organTableSchema(),
     ];
+}
+
+function pollutantImpactTableSchema() {
+    return new TableSchema('pollutant-impact', pollutantImpactColumnSchemas());
+}
+
+function organTableSchema() {
+    return new TableSchema('organ', organColumnSchemas());
 }
 
 function pollutionTableSchema() {
@@ -39,6 +49,44 @@ function pollutantTableSchema() {
 
 function companyTableSchema() {
     return new TableSchema('company', companyColumnSchemas());
+}
+
+
+function pollutantImpactColumnSchemas() {
+    return [
+        new ColumnSchema(
+            'Pollutant Impact Id',
+            'pollutantImpactId'
+            ),
+        new ColumnSchema(
+            'Pollutant',
+            'pollutant',
+            true,
+            new Joint('pollutantId', 'pollutantName')
+            ),
+        new ColumnSchema(
+            'Organ/System',
+            'organ',
+            true,
+            new Joint('organId', 'organName')
+            ),
+    ];
+}
+
+function organColumnSchemas() {
+    return [
+        new ColumnSchema(
+            'Critical Organ/System Id',
+            'organId',
+            ),
+        new ColumnSchema(
+            'Critical Organ/System Name',
+            'organName',
+            true,
+            null,
+            new ValidatorNotEmpty('Pollutant Name')
+            ),
+    ];
 }
 
 function pollutionColumnSchemas() {
@@ -65,6 +113,13 @@ function pollutionColumnSchemas() {
             true,
             null,
             new ValidatorNotEmptyNotNegativeDouble('Emission Mass')
+            ),
+        new ColumnSchema(
+            'Concentration',
+            'concentration',
+            true,
+            null,
+            new ValidatorNotEmptyNotNegativeDouble('Concentration')
             ),
         new ColumnSchema(
             'Year',
@@ -102,6 +157,20 @@ function pollutantColumnSchemas() {
             true,
             null,
             new ValidatorNotEmptyNotNegativeDouble('GDK'),
+            ),
+        new ColumnSchema(
+            'RFC',
+            'rfc',
+            true,
+            null,
+            new ValidatorNotNegativeDouble('RFC'),
+            ),
+        new ColumnSchema(
+            'SF',
+            'sf',
+            true,
+            null,
+            new ValidatorNotNegativeDouble('SF'),
             ),
         new ColumnSchema(
             'Hazard Class',

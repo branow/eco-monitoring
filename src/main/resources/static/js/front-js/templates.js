@@ -17,6 +17,8 @@ class MyHeader extends HTMLElement {
         <div class="dropdown-content">
         <a href="/atmosphere-page?tables=companies">Companies</a>
         <a href="/atmosphere-page?tables=pollutants">Pollutants</a>
+        <a href="/atmosphere-page?tables=organ">Organs/Systems</a>
+        <a href="/atmosphere-page?tables=pollutant-impact">Pollutant Impact</a>
         <a href="/atmosphere-page?tables=pollutions" >Pollutions</a>
         <a href="/atmosphere-page?tables=all" >All tables</a>
 </div>

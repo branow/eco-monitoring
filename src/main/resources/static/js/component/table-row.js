@@ -16,6 +16,15 @@ function findObjectRow(className, tableName, object) {
     return DeletableObjectTableRow(className, object, findTableSchema(tableName));
 }
 
+
+function OrganRow(className, object) {
+    return DeletableObjectTableRow(className, object, organTableSchema());
+}
+
+function PollutantImpactRow(className, object) {
+    return DeletableObjectTableRow(className, object, pollutantImpactTableSchema());
+}
+
 function CompanyRow(className, object) {
     return DeletableObjectTableRow(className, object, companyTableSchema());
 }
@@ -58,6 +67,14 @@ function DeletableObjectRow(className, cells) {
     return tr;
 }
 
+
+function PollutantImpactHeader(className) {
+    return ObjectHeadRow(className, pollutantImpactColumnSchemas());
+}
+
+function OrganHeader(className) {
+    return ObjectHeadRow(className, organColumnSchemas());
+}
 
 function CompanyHeader(className) {
     return ObjectHeadRow(className, companyColumnSchemas());

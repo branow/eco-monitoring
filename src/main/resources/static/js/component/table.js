@@ -25,6 +25,16 @@ function foundObjectTable(objectName, objects) {
     }
 }
 
+
+function OrganTable(objects) {
+    return ObjectTable('organ', objects, OrganTableHead, OrganTableBody, OrganTableFoot);
+}
+
+function PollutantImpactTable(objects) {
+    return ObjectTable('pollutant-impact', objects, PollutantImpactTableHead, PollutantImpactTableBody, PollutantImpactTableFoot);
+}
+
+
 function PollutionTable(objects) {
     return ObjectTable('pollution', objects, PollutionTableHead, PollutionTableBody, PollutionTableFoot);
 }

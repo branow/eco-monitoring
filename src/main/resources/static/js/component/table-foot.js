@@ -1,3 +1,11 @@
+function PollutantImpactTableFoot(className) {
+    return AddRowButtonTableFoot(className, findTableSchema('pollutant-impact').columns.length);
+}
+
+function OrganTableFoot(className) {
+    return AddRowButtonTableFoot(className, findTableSchema('organ').columns.length);
+}
+
 
 function PollutionTableFoot(className) {
     return AddRowButtonTableFoot(className, findTableSchema('pollution').columns.length);

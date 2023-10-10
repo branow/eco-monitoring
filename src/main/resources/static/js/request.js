@@ -1,16 +1,49 @@
 
 function findRequester(tableName) {
-    if (tableName === 'pollution') {
-        return PollutionRequester();
-    } else if (tableName === 'pollutant') {
-        return PollutantRequester();
-    } else if (tableName === 'company') {
-        return CompanyRequester();
-    } else {
-        throwError('Requester with such table name not found: ' + tableName);
+    let requestersList = requesters();
+    for (let i in requestersList) {
+        if (requestersList[i].name === tableName) {
+            return requestersList[i].requester();
+        }
     }
+    throwError('Requester with such table name not found: ' + tableName);
 }
 
+
+function requesters() {
+    return [
+        {
+            name : "organ",
+            requester : OrganRequester
+        },
+        {
+            name : "pollutantImpact",
+            requester : PollutantImpactRequester
+        },
+        {
+            name : "pollutant",
+            requester : PollutantRequester
+        },
+        {
+            name : "pollution",
+            requester : PollutionRequester
+        },
+        {
+            name : "company",
+            requester : CompanyRequester
+        },
+    ]
+}
+
+
+
+function OrganRequester() {
+    return new RequesterCRUD('organ');
+}
+
+function PollutantImpactRequester() {
+    return new RequesterCRUD('pollutant-impact');
+}
 
 function PollutionRequester() {
     return new RequesterCRUD('pollution');
