@@ -1,3 +1,37 @@
+
+
+function HealthRiskCalculateButton() {
+    let onclick = (event) => {
+        let div = event.target.closest('.health-risk');
+        let companyId = div.querySelector("select.comp-select").value;
+        let year = div.querySelector("select.year-select").value;
+
+        let success = (pollutions) => {
+            let hazardRatioResult = calcHazResult(pollutions);
+            let carcinogenicRiskResult = calcCarResult(pollutions);
+
+            let hazCon = div.querySelector(".haz-rat-con");
+            let carCon = div.querySelector(".car-risk-con");
+
+            let hazResCon = hazCon.querySelector(".calc-res-container");
+            let oldHazRes = hazResCon.querySelector(".calc-res");
+            if (oldHazRes != null) oldHazRes.remove();
+            let newHazRes = HazardRatioResultContainer(hazardRatioResult);
+            hazResCon.append(newHazRes);
+
+            let carResCon = carCon.querySelector(".calc-res-container");
+            let oldCarRes = carResCon.querySelector(".calc-res");
+            if (oldCarRes != null) oldCarRes.remove();
+            let newCarRes = CarcinogenicRiskResultContainer(carcinogenicRiskResult);
+            carResCon.append(newCarRes);
+        }
+
+        getPollutionsByCompanyIdAndYear(companyId, year, success, throwResponseError)
+    }
+    return new Button("calc", "calculate", onclick);
+}
+
+
 function AddRowButton(className, show, close) {
     let onclick = (event) => {
         let table = event.target.closest('table');

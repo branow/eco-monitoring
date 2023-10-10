@@ -4,7 +4,7 @@ function YearSelect() {
         let button = div.querySelector('button');
         button.click();
     }
-    let select = Select('calc-select', [], onchange)
+    let select = Select('year-select', [], onchange)
     let success = (years) => {
         for (let i in years) {
             let option = new YearOption(years[i]);
@@ -21,7 +21,7 @@ function CompanySelect() {
         let button = div.querySelector('button');
         button.click();
     }
-    let select = Select('calc-select', [], onchange)
+    let select = Select('comp-select', [], onchange)
     let success = (companies) => {
         for (let i in companies) {
             let option = new CompanyOption(companies[i]);
