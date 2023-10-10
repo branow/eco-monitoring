@@ -14,14 +14,19 @@ function DeleteObjectRowButtonCell(className) {
 
 function ObjectSelectEditableCell(className, object, field,  fieldId, fieldName) {
     let ondblclick = (event) => {
-        let cell = event.target;
-        let selectedId = cell.dataset.id;
-        let success = (response) => {
-            let select = CellEditableObjectSelect('cell-select', response, fieldId, fieldName, selectedId)
-            cell.innerText = '';
-            cell.appendChild(select);
+        let cell = event.target.closest('td');
+        if (!cell.dataset.edit) {
+            cell.dataset.edit = 'true';
+            let selectedId = cell.dataset.id;
+            let success = (response) => {
+                let select = CellEditableObjectSelect('cell-select', response, fieldId, fieldName, selectedId)
+                cell.innerText = '';
+                cell.appendChild(select);
+            }
+            findAllByObject(field, success, throwResponseError);
         }
-        findAllByObject(field, success, throwResponseError);
+
+
     }
     let value = object[field] != null ? object[field][fieldName] : '';
     let td = EditableCell(className, value, field, ondblclick);
@@ -48,10 +53,13 @@ function CancelAddRowCell(className, close) {
 function InputEditableCell(className, innerText, fieldName) {
     let ondblclick = (event) => {
         let cell = event.target;
-        let input = new CellEditableInput(cell.innerText);
-        cell.innerText = '';
-        cell.append(input);
-        input.focus();
+        if (!cell.dataset.edit) {
+            cell.dataset.edit = 'true';
+            let input = new CellEditableInput(cell.innerText);
+            cell.innerText = '';
+            cell.append(input);
+            input.focus();
+        }
     }
     return EditableCell(className, innerText, fieldName, ondblclick);
 }
