@@ -79,7 +79,13 @@ color: #000000c7;
     text-align: center;
     padding-top: 40px;
 }
+.calc-res div {
+    margin: 10px 0;
+}
 
+table {
+    width: 100%;
+}
 
 
 .select-text{

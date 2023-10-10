@@ -49,7 +49,7 @@ function HazardRatioResultContainer(result) {
     tabCon.appendChild(HazardRatioTable(result.table));
 
     let sumCon = document.createElement("div");
-    sumCon.innerText = `Sum: ${result.hq}`
+    sumCon.innerText = `Sum (HQ): ${result.hq}`
 
     let summCon = document.createElement("div");
     summCon.innerText = `Summary: ${getHazardRatioSummary(result.hq)}`
@@ -81,7 +81,7 @@ function CarcinogenicRiskResultContainer(result) {
         tabCon.appendChild(CarcinogenicRiskTable(result.table));
 
         let sumCon = document.createElement("div");
-        sumCon.innerText = `Sum: ${result.cr}`
+        sumCon.innerText = `Sum  (RC): ${result.cr}`
 
         let summCon = document.createElement("div");
         summCon.innerText = `Summary: ${getCarcinogenicRiskSummary(result.cr)}`
