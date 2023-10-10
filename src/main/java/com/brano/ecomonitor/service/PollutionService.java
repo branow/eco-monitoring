@@ -21,6 +21,11 @@ public class PollutionService {
         this.repository = repository;
     }
 
+
+    public List<Long> findAllDistinctYear() {
+        return repository.findAllDistinctYear();
+    }
+
     public List<Pollution> findAllByCompanyId(Long companyId) {
         return repository.findAllByCompanyCompanyId(companyId);
     }
