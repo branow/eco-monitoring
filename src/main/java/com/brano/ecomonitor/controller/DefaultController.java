@@ -21,5 +21,14 @@ public class DefaultController {
     public ModelAndView indexAtmosphere() {
         return new ModelAndView("atmosphere-page");
     }
+    @GetMapping("/health-risk-page")
+    public ModelAndView indexHealthRisk() {
+        return new ModelAndView("health-risk-page");
+    }
+
+    @GetMapping("/test")
+    public ModelAndView indexTest() {
+        return new ModelAndView("test");
+    }
 
 }
