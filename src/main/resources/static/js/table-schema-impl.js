@@ -29,13 +29,34 @@ function tableSchemas() {
         pollutantImpactTableSchema(),
         organTableSchema(),
         hazardRatioTableSchema(),
-        carcinogenicRiskSchema(),
+        carcinogenicRiskTableSchema(),
     ];
 }
 
 
+
+let pollutions = [];
+let pollutant = [new Set(pollutions.map((e) => {e.pollutant}))];
+for (let i in pollutant[i]) {
+     let pollutionsOneP = pollutions.filter((e) => e.pollutant.pollutantId === pollutant[i].pollutantId);
+     let emissionMass = 0;
+     let concentration = 0;
+     let j = 0;
+     for ( ; j < pollutionsOneP.length;  j++) {
+        emissionMass += pollutionsOneP[j].emissionMass;
+        concentration += pollutionsOneP[j].concentration;
+     }
+     emissionMass /= j;
+     concentration /= j;
+
+     result.emissionMas = emissionMass;
+     result.concentration = concentration;
+     result.qh = concentration / pollutant[i].rfc;
+     result.pollutant = pollutant[i].pollutantName;
+}
+
 function hazardRatioTableSchema() {
-    return new TableSchema('hazard-ratio', hazardRatioTableSchema());
+    return new TableSchema('hazard-ratio', hazardRationColumnSchemas());
 }
 
 function carcinogenicRiskTableSchema() {

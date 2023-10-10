@@ -26,7 +26,7 @@ public class PollutionController {
 
 
     @GetMapping("/pollution-by-company")
-    public ResponseEntity<?> get(@RequestParam("companyId") String companyId, @RequestParam("year") String year) {
+    public ResponseEntity<?> getPollutionByCompanyId(@RequestParam("companyId") String companyId, @RequestParam("year") String year) {
         return wrap(() -> {
             long id = Long.parseLong(companyId);
             if (year.equals("all")) {
@@ -34,7 +34,12 @@ public class PollutionController {
             } else  {
                 return pollutionService.findAllByCompanyIdAndYear(id, Integer.parseInt(year));
             }
-        }, HttpStatus.ACCEPTED);
+        }, HttpStatus.OK);
+    }
+
+    @GetMapping("/pollution-years")
+    public ResponseEntity<?> getYears() {
+        return wrap(pollutionService::findAllDistinctYear, HttpStatus.OK);
     }
 
     @GetMapping("/pollution")
