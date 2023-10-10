@@ -25,6 +25,13 @@ function foundObjectTable(objectName, objects) {
     }
 }
 
+function CarcinogenicRiskTable(objects) {
+    return ObjectTable('carcinogenic-risk', objects, CarcinogenicRiskTableHead, CarcinogenicRiskTableBody, CarcinogenicRiskTableFoot);
+}
+
+function HazardRatioTable(objects) {
+    return ObjectTable('hazard-ratio', objects, HazardRatioTableHead, HazardRatioTableBody, HazardRatioTableFoot);
+}
 
 function OrganTable(objects) {
     return ObjectTable('organ', objects, OrganTableHead, OrganTableBody, OrganTableFoot);

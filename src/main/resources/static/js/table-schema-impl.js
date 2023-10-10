@@ -28,7 +28,18 @@ function tableSchemas() {
         pollutionTableSchema(),
         pollutantImpactTableSchema(),
         organTableSchema(),
+        hazardRatioTableSchema(),
+        carcinogenicRiskSchema(),
     ];
+}
+
+
+function hazardRatioTableSchema() {
+    return new TableSchema('hazard-ratio', hazardRatioTableSchema());
+}
+
+function carcinogenicRiskTableSchema() {
+    return new TableSchema('carcinogenic-risk', carcinogenicRiskColumnSchemas());
 }
 
 function pollutantImpactTableSchema() {
@@ -51,6 +62,56 @@ function companyTableSchema() {
     return new TableSchema('company', companyColumnSchemas());
 }
 
+
+function carcinogenicRiskColumnSchemas() {
+    return [
+        new ColumnSchema(
+            'Pollutant',
+            'pollutant',
+            ),
+        new ColumnSchema(
+            'Emission Mass',
+            'emissionMass',
+            ),
+        new ColumnSchema(
+            'Concentration',
+            'concentration',
+            ),
+        new ColumnSchema(
+            'SF',
+            'sf',
+            ),
+        new ColumnSchema(
+            'UR',
+            'ur',
+            ),
+        new ColumnSchema(
+            'CR',
+            'cr',
+            ),
+    ];
+}
+
+function hazardRationColumnSchemas() {
+    return [
+        new ColumnSchema(
+            'Pollutant',
+            'pollutant',
+            ),
+        new ColumnSchema(
+            'Emission Mass',
+            'emissionMass',
+            ),
+        new ColumnSchema(
+            'Concentration',
+            'concentration',
+            ),
+        new ColumnSchema(
+            'HQ',
+            'hq',
+            ),
+    ];
+}
 
 function pollutantImpactColumnSchemas() {
     return [

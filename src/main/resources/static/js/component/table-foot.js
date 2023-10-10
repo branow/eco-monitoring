@@ -29,8 +29,15 @@ function AcceptCancelAddRowTableFoot(className, parentTable, close) {
         [AcceptCancelAddRowButtonsRow('accept-cancel-row', parentTable, close)])
 }
 
+function HazardRatioTableFoot(className) {
+    return new EmptyTableFoot(className);
+}
 
-function EmptyTableFoot(className, show, close) {
+function CarcinogenicRiskTableFoot(className) {
+    return new EmptyTableFoot(className);
+}
+
+function EmptyTableFoot(className) {
     return TableFoot(className, []);
 }
 

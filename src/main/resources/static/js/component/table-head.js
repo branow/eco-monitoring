@@ -1,4 +1,12 @@
 
+function CarcinogenicRiskTableHead(className) {
+    return new TableHead(className, CarcinogenicRiskHeader('head-row'))
+}
+
+function HazardRatioTableHead(className) {
+    return new TableHead(className, HazardRationHeader('head-row'))
+}
+
 function OrganTableHead(className) {
     return new TableHead(className, OrganHeader('head-row'))
 }

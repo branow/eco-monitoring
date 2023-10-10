@@ -17,6 +17,14 @@ function findObjectRow(className, tableName, object) {
 }
 
 
+function CarcinogenicRiskRow(className, object) {
+    return FilledObjectTableRow(className, object, carcinogenicRiskTableSchema());
+}
+
+function HazardRationRow(className, object) {
+    return FilledObjectTableRow(className, object, hazardRatioTableSchema());
+}
+
 function OrganRow(className, object) {
     return DeletableObjectTableRow(className, object, organTableSchema());
 }
@@ -39,6 +47,20 @@ function PollutionRow(className, object) {
 
 
 function DeletableObjectTableRow(className, object, tableSchema) {
+    let tr = DeletableObjectRow(className, cells(object, tableSchema));
+    tr.dataset.object = tableSchema.name;
+    return tr;
+}
+
+
+function FilledObjectTableRow(className, object, tableSchema) {
+    let tr = TableRow(className, cells(object, tableSchema));
+    tr.dataset.object = tableSchema.name;
+    return tr;
+}
+
+
+function cells(object, tableSchema) {
     let cellClassName = 'cell';
     let cells = [];
     let columns = tableSchema.columns;
@@ -55,9 +77,7 @@ function DeletableObjectTableRow(className, object, tableSchema) {
             cells[i] = ObjectTableDataCell(cellClassName, value, column.fieldName);
         }
     }
-    let tr = DeletableObjectRow(className, cells);
-    tr.dataset.object = tableSchema.name;
-    return tr;
+    return cells;
 }
 
 function DeletableObjectRow(className, cells) {
@@ -65,6 +85,14 @@ function DeletableObjectRow(className, cells) {
     let delCell = DeleteObjectRowButtonCell('del-cell');
     tr.append(delCell);
     return tr;
+}
+
+function HazardRationHeader(className) {
+    return ObjectHeadRow(className, hazardRationColumnSchemas());
+}
+
+function CarcinogenicRiskHeader(className) {
+    return ObjectHeadRow(className, carcinogenicRiskColumnSchemas());
 }
 
 

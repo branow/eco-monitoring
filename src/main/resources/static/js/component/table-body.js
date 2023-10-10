@@ -1,4 +1,12 @@
 
+function CarcinogenicRiskTableBody(className, objects) {
+    return new ObjectTableBody(className, objects, CarcinogenicRiskRow)
+}
+
+function HazardRatioTableBody(className, objects) {
+    return new ObjectTableBody(className, objects, HazardRationRow)
+}
+
 function OrganTableBody(className, objects) {
     return new ObjectTableBody(className, objects, OrganRow)
 }
@@ -6,7 +14,6 @@ function OrganTableBody(className, objects) {
 function PollutantImpactTableBody(className, objects) {
     return new ObjectTableBody(className, objects, PollutantImpactRow)
 }
-
 
 function PollutionTableBody(className, objects) {
     return new ObjectTableBody(className, objects, PollutionRow)
