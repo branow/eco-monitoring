@@ -7,8 +7,8 @@ function HealthRiskCalculateButton() {
         let year = div.querySelector("select.year-select").value;
 
         let success = (pollutions) => {
-            let hazardRatioResult = calcHazResult(pollutions);
-            let carcinogenicRiskResult = calcCarResult(pollutions);
+            let hazardRatioResult = calcHazardRatio(pollutions);
+            let carcinogenicRiskResult = calcHazardRatio(pollutions);
 
             let hazCon = div.querySelector(".haz-rat-con");
             let carCon = div.querySelector(".car-risk-con");

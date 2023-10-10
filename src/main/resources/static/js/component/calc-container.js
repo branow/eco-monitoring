@@ -21,7 +21,7 @@ function HealthRiskContainer() {
             <h1>Hazard Ratio</h1>
             <div class="calc-res-container"></div>
         </div>
-        <div class="carz-rat-con">
+        <div class="car-risk-con">
             <h1>Carcinogenic Risk</h1>
             <div class="calc-res-container"></div>
         </div>`
@@ -54,7 +54,7 @@ function HazardRatioResultContainer(result) {
 function getHazardRatioSummary(hq) {
     if (hq < 0) {
         return "HQ < 1 -> Ризик виникнення шкідливих ефектів розглядають як зневажливо малий";
-    } else if (result.sum === 0) {
+    } else if (hq === 0) {
         return "HQ = 1 -> Гранична величина, що не потребує термінових заходів, однак не може розглядатися як досить прийнятна";
     } else {
         return "HQ > 1 -> Імовірність розвитку шкідливих ефектів зростає пропорційно збільшенню HQ";
@@ -75,13 +75,13 @@ function CarcinogenicRiskResultContainer(result) {
     let summCon = document.createElement("div");
     summCon.innerText = `Summary: ${getCarcinogenicRiskSummary(result.cr)}`
 
-    let pcrCon = document.createElement("div");
-    pcr.innerText = `PCR = CR * POP = ${result.sum} * ${result.popul} = ${result.pcr}`
+    let prcCon = document.createElement("div");
+    prcCon.innerText = `PCR = CR * POP = ${result.cr} * ${result.popul} = ${result.prc}`
 
     calcRest.appendChild(tabCon);
     calcRest.appendChild(sumCon);
     calcRest.appendChild(summCon);
-    calcRest.appendChild(pcr);
+    calcRest.appendChild(prcCon);
     return calcRest;
 }
 
