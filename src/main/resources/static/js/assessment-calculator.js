@@ -1,5 +1,36 @@
 
 
+
+function calcHazardRatio(pollutions) {
+    let table = getNonCarcinogenicValues(pollutions);
+    let sum = 0;
+    for (let i in table) {
+        sum += table.hg;
+    }
+    return {
+        hq: sum,
+        table: table,
+    }
+}
+
+
+function calcCarcinogenicRisk(pollutions) {
+    let table = getCarcinogenicValues(pollutions);
+    let rc = 0;
+    for (let i in table) {
+        rc += table.rc;
+    }
+    let popul = 1_687_000;
+    let prc = rc * popul;
+    return {
+        rc: rc,
+        table: table,
+        prc: prc,
+        popul: popul,
+    }
+}
+
+
 function getCarcinogenicValues(pollutionList){
     let objectList = [];
     let pollutantList = [...new Set(pollutionList.map(pollution => pollution.pollutant))];
