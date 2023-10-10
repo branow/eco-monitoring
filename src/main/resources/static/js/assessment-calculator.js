@@ -5,7 +5,7 @@ function calcHazardRatio(pollutions) {
     let table = getNonCarcinogenicValues(pollutions);
     let sum = 0;
     for (let i in table) {
-        sum += table.hg;
+        sum += table[i].hg;
     }
     return {
         hq: sum,
@@ -16,14 +16,14 @@ function calcHazardRatio(pollutions) {
 
 function calcCarcinogenicRisk(pollutions) {
     let table = getCarcinogenicValues(pollutions);
-    let rc = 0;
+    let cr = 0;
     for (let i in table) {
-        rc += table.rc;
+        cr += table[i].cr;
     }
     let popul = 1_687_000;
-    let prc = rc * popul;
+    let prc = cr * popul;
     return {
-        rc: rc,
+        cr: cr,
         table: table,
         prc: prc,
         popul: popul,

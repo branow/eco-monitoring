@@ -66,22 +66,30 @@ function CarcinogenicRiskResultContainer(result) {
     let calcRest = document.createElement("div");
     calcRest.className = 'calc-res';
 
-    let tabCon = document.createElement("div");
-    tabCon.appendChild(CarcinogenicRiskTable(result.table));
+    if (result.cr) {
+        let tabCon = document.createElement("div");
+        tabCon.appendChild(CarcinogenicRiskTable(result.table));
 
-    let sumCon = document.createElement("div");
-    sumCon.innerText = `Sum: ${result.cr}`
+        let sumCon = document.createElement("div");
+        sumCon.innerText = `Sum: ${result.cr}`
 
-    let summCon = document.createElement("div");
-    summCon.innerText = `Summary: ${getCarcinogenicRiskSummary(result.cr)}`
+        let summCon = document.createElement("div");
+        summCon.innerText = `Summary: ${getCarcinogenicRiskSummary(result.cr)}`
 
-    let prcCon = document.createElement("div");
-    prcCon.innerText = `PCR = CR * POP = ${result.cr} * ${result.popul} = ${result.prc}`
+        let prcCon = document.createElement("div");
+        prcCon.innerText = `PCR = CR * POP = ${result.cr} * ${result.popul} = ${result.prc}`
 
-    calcRest.appendChild(tabCon);
-    calcRest.appendChild(sumCon);
-    calcRest.appendChild(summCon);
-    calcRest.appendChild(prcCon);
+        calcRest.appendChild(tabCon);
+        calcRest.appendChild(sumCon);
+        calcRest.appendChild(summCon);
+        calcRest.appendChild(prcCon);
+    } else {
+        let mCon = document.createElement('div');
+        mCon.className = 'mes-con';
+        mCon.innerText = 'There are not Carcinogenic Pollution';
+        calcRest.appendChild(mCon);
+    }
+
     return calcRest;
 }
 
