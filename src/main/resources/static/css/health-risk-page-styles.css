@@ -1,0 +1,98 @@
+.selectors-section{
+    position: relative;
+    top: 15vh;
+}
+
+.selectors-text{
+    color: #000000c7;
+    font-family: Raleway, serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    width: 70vw;
+    margin: auto;
+    text-align: center;
+}
+
+.selectors-section-div{
+    background-color: #efefef;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    width: 30%;
+    padding: 10px 3%;
+    margin: 30px auto auto;
+}
+
+.company-select, .year-select{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+
+
+
+
+
+.button-select{
+    position: relative;
+    margin: auto;
+    padding-top: 20px;
+}
+
+.result-div{
+    position: relative;
+    top: 10vh;
+    font-family: 'Inter', sans-serif;
+}
+
+.haz-rat-con, .car-risk-con{
+    position: relative;
+    background-color: #efefef;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    width: 60%;
+    padding: 20px 5%;
+    margin: 10px auto 50px;
+    bottom: 5vh;
+
+}
+
+
+.calc-res-container {
+position: relative;
+width: 40vw;
+font-style: normal;
+line-height: normal;
+text-align: center;
+font-size: 20px;
+margin: auto;
+color: #000000c7;
+}
+
+.res-table-name{
+    position: relative;
+    margin: auto;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 40px;
+}
+
+
+
+.select-text{
+font-size: 18px;
+margin: 10px;
+font-weight: bold;
+}
+.health-info-tables-section{
+position: relative;
+top: 20vh;
+}
+
+
+.mes-con{
+padding-top: 10px;
+}

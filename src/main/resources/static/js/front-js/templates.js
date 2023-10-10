@@ -11,25 +11,28 @@ class MyHeader extends HTMLElement {
           </div>
         </a>
         <div class="header-right">
-<!--        <a class="nav_button" href="/atmosphere-page">Atmospheric air</a>-->
+        
+        <div class="health-risk-nav-div">
+            <a class="health-btn" href="/health-risk-page">Health risk</a>
+        </div>
+        
         <div class="dropdown">
          <button class="dropbtn">Atmospheric air</button>
-        <div class="dropdown-content">
-        <a href="/atmosphere-page?tables=companies">Companies</a>
-        <a href="/atmosphere-page?tables=pollutants">Pollutants</a>
-        <a href="/atmosphere-page?tables=organ">Organs/Systems</a>
-        <a href="/atmosphere-page?tables=pollutant-impact">Pollutant Impact</a>
-        <a href="/atmosphere-page?tables=pollutions" >Pollutions</a>
-        <a href="/atmosphere-page?tables=all" >All tables</a>
-</div>
-</div>
+            <div class="dropdown-content">
+                <a href="/atmosphere-page?tables=companies">Companies</a>
+                <a href="/atmosphere-page?tables=pollutants">Pollutants</a>
+                <a href="/atmosphere-page?tables=pollutions" >Pollutions</a>
+                <a href="/atmosphere-page?tables=organ">Organs</a>
+                <a href="/atmosphere-page?tables=pollutant-impact" >Pollutants impact</a>
+            </div>
+        </div>
+   
         </div>
       </div>
     </header>
         `
     }
 }
-
 
 customElements.define('my-header', MyHeader)
 
