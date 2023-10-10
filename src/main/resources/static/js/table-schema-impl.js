@@ -109,6 +109,10 @@ function hazardRationColumnSchemas() {
             'HQ',
             'hq',
             ),
+        new ColumnSchema(
+            'Organs/Systems',
+            'organ',
+            ),
     ];
 }
 

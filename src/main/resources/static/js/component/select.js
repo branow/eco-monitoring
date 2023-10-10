@@ -1,6 +1,6 @@
 function YearSelect() {
     let onchange = (event) => {
-        let div = event.target.closest('div.calc');
+        let div = event.target.closest('div.cntrl');
         let button = div.querySelector('button');
         button.click();
     }
@@ -17,7 +17,7 @@ function YearSelect() {
 
 function CompanySelect() {
     let onchange = (event) => {
-        let div = event.target.closest('div.calc');
+        let div = event.target.closest('div.cntrl');
         let button = div.querySelector('button');
         button.click();
     }
