@@ -29,13 +29,12 @@ function tableSchemas() {
         pollutantImpactTableSchema(),
         organTableSchema(),
         hazardRatioTableSchema(),
-        carcinogenicRiskSchema(),
+        carcinogenicRiskTableSchema(),
     ];
 }
 
-
 function hazardRatioTableSchema() {
-    return new TableSchema('hazard-ratio', hazardRatioTableSchema());
+    return new TableSchema('hazard-ratio', hazardRationColumnSchemas());
 }
 
 function carcinogenicRiskTableSchema() {

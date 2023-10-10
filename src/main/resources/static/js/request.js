@@ -35,11 +35,23 @@ function requesters() {
     ]
 }
 
+
+function getPollutionsYears(success, error) {
+    $.ajax(
+        {
+            method: 'GET',
+            url: 'http://localhost:8080/pollution-years',
+            success: success,
+            error: error
+        }
+        )
+}
+
 function getPollutionsByCompanyIdAndYear(companyId, year, success, error) {
     $.ajax(
         {
             method: 'GET',
-            url: 'http://localhost:8080/pollution-by-company?compnayId=' + companyId + '&' + 'year=' + year,
+            url: 'http://localhost:8080/pollution-by-company?companyId=' + companyId + '&' + 'year=' + year,
             success: success,
             error: error
         }

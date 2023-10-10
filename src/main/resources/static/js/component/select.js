@@ -1,4 +1,36 @@
+function YearSelect() {
+    let onchange = (event) => {
+        let div = event.target.closest('div.calc');
+        let button = div.querySelector('button');
+        button.click();
+    }
+    let select = Select('year-select', [], onchange)
+    let success = (years) => {
+        for (let i in years) {
+            let option = new YearOption(years[i]);
+            select.append(option);
+        }
+    }
+    getPollutionsYears(success, throwResponseError);
+    return select;
+}
 
+function CompanySelect() {
+    let onchange = (event) => {
+        let div = event.target.closest('div.calc');
+        let button = div.querySelector('button');
+        button.click();
+    }
+    let select = Select('comp-select', [], onchange)
+    let success = (companies) => {
+        for (let i in companies) {
+            let option = new CompanyOption(companies[i]);
+            select.append(option);
+        }
+    }
+    CompanyRequester().findAll(success, throwResponseError);
+    return select;
+}
 
 function CellEditableObjectSelect(className, objects, valueName, innerTextName, selectedValue) {
     let select = new CellEditableSelect(className, []);
