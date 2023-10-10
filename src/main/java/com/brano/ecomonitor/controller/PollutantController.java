@@ -2,6 +2,7 @@ package com.brano.ecomonitor.controller;
 
 import com.brano.ecomonitor.entity.Company;
 import com.brano.ecomonitor.entity.Pollutant;
+import com.brano.ecomonitor.model.PollutantModel;
 import com.brano.ecomonitor.service.PollutantService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,12 +28,12 @@ public class PollutantController {
     }
 
     @PostMapping("/pollutant")
-    public ResponseEntity<?> addPollutant(@RequestBody Pollutant pollutant) {
+    public ResponseEntity<?> addPollutant(@RequestBody PollutantModel pollutant) {
         return wrap(() -> pollutantService.save(pollutant), HttpStatus.CREATED);
     }
 
     @PutMapping("/pollutant")
-    public ResponseEntity<?> updatePollutant(@RequestBody Pollutant pollutant) {
+    public ResponseEntity<?> updatePollutant(@RequestBody PollutantModel pollutant) {
         return wrap(() -> pollutantService.save(pollutant), HttpStatus.CREATED);
     }
 
