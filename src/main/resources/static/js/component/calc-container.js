@@ -1,13 +1,22 @@
 
 function HealthRiskContainer() {
-    return `
-<div class="health-risk">
-    <div>
-        <div>${CompanySelect()}</div>
-        <div>${YearSelect()}</div>
-        <div>${HealthRiskCalculateButton()}</div>
-    </div>
-    <div>
+    let healthCon = document.createElement("div");
+    healthCon.className = 'health-risk';
+
+    let compSelectCon = document.createElement("div");
+    compSelectCon.appendChild(CompanySelect());
+    let yearSelectCon = document.createElement("div");
+    compSelectCon.appendChild(YearSelect());
+    let butSelectCon = document.createElement("div");
+    compSelectCon.appendChild(HealthRiskCalculateButton());
+
+    let controlDiv = document.createElement("div");
+    controlDiv.append(compSelectCon);
+    controlDiv.append(yearSelectCon);
+    controlDiv.append(butSelectCon);
+
+    let resultDiv = document.createElement("div");
+    resultDiv.innerHTML = `
         <div class="haz-rat-con">
             <h1>Hazard Ratio</h1>
             <div class="calc-res-container"></div>
@@ -15,18 +24,30 @@ function HealthRiskContainer() {
         <div class="carz-rat-con">
             <h1>Carcinogenic Risk</h1>
             <div class="calc-res-container"></div>
-        </div>
-    </div>
-</div>`;
+        </div>`
+
+    healthCon.appendChild(controlDiv);
+    healthCon.appendChild(resultDiv);
+    return healthCon;
 }
 
 function HazardRatioResultContainer(result) {
-    return `
-<div class="calc-res">
-<div>${HazardRatioTable(result.table)}<div/>
-<div>Sum: ${result.hq}</div>
-<div>Summary: ${getHazardRatioSummary(result.hq)}</div>
-</div>`
+    let calcRest = document.createElement("div");
+    calcRest.className = 'calc-res';
+
+    let tabCon = document.createElement("div");
+    tabCon.appendChild(HazardRatioTable(result.table));
+
+    let sumCon = document.createElement("div");
+    sumCon.innerText = `Sum: ${result.hq}`
+
+    let summCon = document.createElement("div");
+    summCon.innerText = `Summary: ${getHazardRatioSummary(result.hq)}`
+
+    calcRest.appendChild(tabCon);
+    calcRest.appendChild(sumCon);
+    calcRest.appendChild(summCon);
+    return calcRest;
 }
 
 
@@ -42,13 +63,26 @@ function getHazardRatioSummary(hq) {
 
 
 function CarcinogenicRiskResultContainer(result) {
-    return `
-<div class="calc-res">
-<div>${CarcinogenicRiskTable(result.table)}<div/>
-<div>Sum: ${result.cr}</div>
-<div>Summary: ${getCarcinogenicRiskSummary(result.cr)}</div>
-<div>PCR = CR * POP = ${result.sum} * ${result.popul} = ${result.pcr}</div>
-</div>`
+    let calcRest = document.createElement("div");
+    calcRest.className = 'calc-res';
+
+    let tabCon = document.createElement("div");
+    tabCon.appendChild(CarcinogenicRiskTable(result.table));
+
+    let sumCon = document.createElement("div");
+    sumCon.innerText = `Sum: ${result.cr}`
+
+    let summCon = document.createElement("div");
+    summCon.innerText = `Summary: ${getCarcinogenicRiskSummary(result.cr)}`
+
+    let pcrCon = document.createElement("div");
+    pcr.innerText = `PCR = CR * POP = ${result.sum} * ${result.popul} = ${result.pcr}`
+
+    calcRest.appendChild(tabCon);
+    calcRest.appendChild(sumCon);
+    calcRest.appendChild(summCon);
+    calcRest.appendChild(pcr);
+    return calcRest;
 }
 
 function getCarcinogenicRiskSummary(cr) {
