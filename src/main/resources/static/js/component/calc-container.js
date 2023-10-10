@@ -11,6 +11,7 @@ function HealthRiskContainer() {
     compSelectCon.appendChild(HealthRiskCalculateButton());
 
     let controlDiv = document.createElement("div");
+    controlDiv.className = 'cntrl';
     controlDiv.append(compSelectCon);
     controlDiv.append(yearSelectCon);
     controlDiv.append(butSelectCon);

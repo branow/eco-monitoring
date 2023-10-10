@@ -5,10 +5,10 @@ function calcHazardRatio(pollutions) {
     let table = getNonCarcinogenicValues(pollutions);
     let sum = 0;
     for (let i in table) {
-        sum += table[i].hg;
+        sum += table[i].hq;
     }
     return {
-        hq: sum,
+        hq: round(sum),
         table: table,
     }
 }
@@ -25,7 +25,7 @@ function calcCarcinogenicRisk(pollutions) {
     return {
         cr: cr,
         table: table,
-        prc: prc,
+        prc: round(prc),
         popul: popul,
     }
 }
@@ -42,11 +42,11 @@ function getCarcinogenicValues(pollutionList){
         let concentration = values[1];
         let urValue = calculateUrForPollution(pollutantList[i].sf)
         crObj['pollutant'] = pollutantList[i].pollutantName;
-        crObj['emissionMass'] = emissionMass;
-        crObj['concentration'] = concentration;
-        crObj['sf'] = pollutantList[i].sf;
-        crObj['ur'] = urValue;
-        crObj['cr'] = concentration * urValue;
+        crObj['emissionMass'] = round(emissionMass);
+        crObj['concentration'] = round(concentration);
+        crObj['sf'] = round(pollutantList[i].sf);
+        crObj['ur'] = round(urValue);
+        crObj['cr'] = round(concentration * urValue);
         objectList.push(crObj);
     }
     console.log(objectList);
@@ -65,9 +65,10 @@ function getNonCarcinogenicValues(pollutionList){
         let emissionMass = values[0];
         let concentration = values[1];
         ncrObj['pollutant'] = pollutantList[i].pollutantName;
-        ncrObj['emissionMass'] = emissionMass;
-        ncrObj['concentration'] = concentration;
-        ncrObj['hq'] = concentration / pollutantList[i].rfc;
+        ncrObj['emissionMass'] = round(emissionMass);
+        ncrObj['concentration'] = round(concentration);
+        ncrObj['organ'] = pollutantList[i].impact.map(organ => organ.organName).join(', ');
+        ncrObj['hq'] = round(concentration / pollutantList[i].rfc);
         objectList.push(ncrObj);
     }
     console.log(objectList);
@@ -105,4 +106,8 @@ function getAverageValues(pollutions){
 
 function calculateUrForPollution(pollutantSfValue){
     return Math.pow(pollutantSfValue, -1)/(70*20);
+}
+
+function round(num) {
+    return Math.round(num * 100_000) / 100_000
 }
