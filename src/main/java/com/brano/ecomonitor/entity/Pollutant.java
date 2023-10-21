@@ -17,29 +17,24 @@ import java.util.List;
 public class Pollutant {
 
     @Id
-    @GeneratedValue
-    private Long pollutantId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer pollutantId;
 
-    @Column(length = 200, nullable = false)
     private String pollutantName;
 
-    @Column(scale = 3, nullable = false)
     private Double massConsumption;
 
-    @Column(scale = 2, nullable = false)
     private Double gdk;
 
-    @Column(scale = 6)
     private Double rfc;
 
-    @Column(scale = 4)
     private Double sf;
 
     @ManyToMany()
     @JoinTable(
             name = "pollutant_impact",
-            joinColumns = @JoinColumn(name = "pollutant", referencedColumnName = "pollutantId", foreignKey = @ForeignKey(name = "fk_pollutant_impact_pollutant")),
-            inverseJoinColumns = @JoinColumn(name = "organ", referencedColumnName = "organId", foreignKey = @ForeignKey(name = "fk_pollutant_impact_organ")))
+            joinColumns = @JoinColumn(name = "pollutant"),
+            inverseJoinColumns = @JoinColumn(name = "organ"))
     private List<CriticalOrgan> impact;
 
     private Integer hazardClass;

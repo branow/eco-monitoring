@@ -14,23 +14,21 @@ import lombok.NoArgsConstructor;
 public class Pollution {
 
     @Id
-    @GeneratedValue
-    private Long pollutionId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer pollutionId;
 
-    @Column(scale = 3, nullable = false)
     private Double emissionMass;
 
-    @Column(scale = 3, nullable = false)
     private Double concentration;
 
     private Integer year;
 
     @ManyToOne()
-    @JoinColumn(nullable = false, name = "company", referencedColumnName = "companyId", foreignKey = @ForeignKey(name = "fk_pollution_company"))
+    @JoinColumn(name = "company")
     private Company company;
 
     @ManyToOne()
-    @JoinColumn(nullable = false, name = "pollutant", referencedColumnName = "pollutantId", foreignKey = @ForeignKey(name = "fk_pollution_pollutant"))
+    @JoinColumn(name = "pollutant")
     private Pollutant pollutant;
 
 }
