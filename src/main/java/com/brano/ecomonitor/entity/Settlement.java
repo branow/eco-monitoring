@@ -11,22 +11,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Company {
+public class Settlement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer companyId;
-
-    private String companyName;
-
-    private String ownership;
-
-    private String economicActivity;
-
-    private String address;
-
-    @ManyToOne
-    @JoinColumn(name = "settlement")
-    private Settlement settlement;
+    private Integer settlementId;
+    private String settlementName;
+    private String settlementType;
+    @MapsId
+    @OneToOne
+    private SettlementFactors factors;
 
 }
