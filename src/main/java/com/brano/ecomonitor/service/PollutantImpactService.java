@@ -1,5 +1,6 @@
 package com.brano.ecomonitor.service;
 
+import com.brano.ecomonitor.model.CriticalOrgan;
 import com.brano.ecomonitor.model.PollutantImpact;
 import com.brano.ecomonitor.dto.PollutantImpactModel;
 import com.brano.ecomonitor.repository.PollutantImpactRepository;
@@ -28,6 +29,10 @@ public class PollutantImpactService {
         return repository.findAllByPollutantPollutantId(id);
     }
 
+
+    public List<CriticalOrgan> findAllOrgansByPollutantId(Integer id) {
+        return repository.findAllOrganByPollutantPollutantId(id);
+    }
 
     public List<PollutantImpact> findAll() {
         return repository.findAll();

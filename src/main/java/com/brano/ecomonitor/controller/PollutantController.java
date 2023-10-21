@@ -1,39 +1,33 @@
 package com.brano.ecomonitor.controller;
 
-import com.brano.ecomonitor.dto.PollutantModel;
+import com.brano.ecomonitor.dto.pollutant.PollutantDto;
 import com.brano.ecomonitor.service.PollutantService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import static com.brano.ecomonitor.controller.ResponseWrapper.wrap;
 
+@RequiredArgsConstructor
 @RestController
 public class PollutantController {
 
     private final PollutantService pollutantService;
 
-    public PollutantController(PollutantService pollutantService) {
-        this.pollutantService = pollutantService;
-    }
 
     @GetMapping("/pollutant")
-    public ResponseEntity<?> pollutant() {
+    public ResponseEntity<?> get() {
         return wrap(pollutantService::findAll, HttpStatus.OK);
     }
 
     @PostMapping("/pollutant")
-    public ResponseEntity<?> addPollutant(@RequestBody PollutantModel pollutant) {
-        return wrap(() -> pollutantService.save(pollutant), HttpStatus.CREATED);
-    }
-
-    @PutMapping("/pollutant")
-    public ResponseEntity<?> updatePollutant(@RequestBody PollutantModel pollutant) {
+    public ResponseEntity<?> save(@RequestBody PollutantDto pollutant) {
         return wrap(() -> pollutantService.save(pollutant), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/pollutant")
-    public ResponseEntity<?> deletePollutant(@RequestParam String id) {
+    public ResponseEntity<?> delete(@RequestParam String id) {
         return wrap(() -> {
             pollutantService.deleteById(Integer.parseInt(id));
             return "Success";
