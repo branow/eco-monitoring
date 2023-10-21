@@ -1,9 +1,8 @@
 package com.brano.ecomonitor.service;
 
-import com.brano.ecomonitor.entity.Company;
 import com.brano.ecomonitor.entity.Pollutant;
 import com.brano.ecomonitor.entity.PollutantImpact;
-import com.brano.ecomonitor.model.PollutantModel;
+import com.brano.ecomonitor.dto.PollutantModel;
 import com.brano.ecomonitor.repository.PollutantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +24,7 @@ public class PollutantService {
         this.repository = repository;
     }
 
-    public Pollutant findById(Long id) {
+    public Pollutant findById(Integer id) {
         return repository.findById(id).orElseThrow();
     }
 
@@ -38,7 +37,7 @@ public class PollutantService {
     }
 
     @Transactional
-    public void deleteById(Long id) {
+    public void deleteById(Integer id) {
         pollutantImpactService.deleteAllByPollutantId(id);
         pollutionService.deleteAllByPollutantId(id);
         repository.deleteById(id);

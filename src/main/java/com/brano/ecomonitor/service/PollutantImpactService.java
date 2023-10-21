@@ -1,13 +1,8 @@
 package com.brano.ecomonitor.service;
 
-import com.brano.ecomonitor.entity.CriticalOrgan;
 import com.brano.ecomonitor.entity.PollutantImpact;
-import com.brano.ecomonitor.entity.Pollution;
-import com.brano.ecomonitor.model.PollutantImpactModel;
-import com.brano.ecomonitor.model.PollutionModel;
-import com.brano.ecomonitor.repository.CriticalOrganRepository;
+import com.brano.ecomonitor.dto.PollutantImpactModel;
 import com.brano.ecomonitor.repository.PollutantImpactRepository;
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +24,7 @@ public class PollutantImpactService {
     }
 
 
-    public List<PollutantImpact> findAllByPollutantId(Long id) {
+    public List<PollutantImpact> findAllByPollutantId(Integer id) {
         return repository.findAllByPollutantPollutantId(id);
     }
 
@@ -42,15 +37,15 @@ public class PollutantImpactService {
         return repository.save(toPollutantImpact(organ));
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(Integer id) {
         repository.deleteById(id);
     }
 
-    public void deleteAllByOrganId(Long id) {
+    public void deleteAllByOrganId(Integer id) {
         repository.deleteAllByOrganOrganId(id);
     }
 
-    public void deleteAllByPollutantId(Long id) {
+    public void deleteAllByPollutantId(Integer id) {
         repository.deleteAllByPollutantPollutantId(id);
     }
 

@@ -1,7 +1,7 @@
 package com.brano.ecomonitor.service;
 
 import com.brano.ecomonitor.entity.Pollution;
-import com.brano.ecomonitor.model.PollutionModel;
+import com.brano.ecomonitor.dto.PollutionModel;
 import com.brano.ecomonitor.repository.PollutionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,15 +22,15 @@ public class PollutionService {
     }
 
 
-    public List<Long> findAllDistinctYear() {
+    public List<Integer> findAllDistinctYear() {
         return repository.findAllDistinctYear();
     }
 
-    public List<Pollution> findAllByCompanyId(Long companyId) {
+    public List<Pollution> findAllByCompanyId(Integer companyId) {
         return repository.findAllByCompanyCompanyId(companyId);
     }
 
-    public List<Pollution> findAllByCompanyIdAndYear(Long companyId, Integer year) {
+    public List<Pollution> findAllByCompanyIdAndYear(Integer companyId, Integer year) {
         return repository.findAllByCompanyCompanyIdAndYear(companyId, year);
     }
 
@@ -46,16 +46,16 @@ public class PollutionService {
         return repository.save(toPollution(pollutionModel));
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(Integer id) {
         repository.deleteById(id);
     }
 
 
-    public void deleteAllByCompanyId(Long id) {
+    public void deleteAllByCompanyId(Integer id) {
         repository.deleteAllByCompanyCompanyId(id);
     }
 
-    public void deleteAllByPollutantId(Long id) {
+    public void deleteAllByPollutantId(Integer id) {
         repository.deleteAllByPollutantPollutantId(id);
     }
 

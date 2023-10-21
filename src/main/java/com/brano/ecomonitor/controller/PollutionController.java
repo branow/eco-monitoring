@@ -1,17 +1,10 @@
 package com.brano.ecomonitor.controller;
 
-import com.brano.ecomonitor.entity.Company;
-import com.brano.ecomonitor.entity.Pollutant;
-import com.brano.ecomonitor.entity.Pollution;
-import com.brano.ecomonitor.model.PollutionModel;
+import com.brano.ecomonitor.dto.PollutionModel;
 import com.brano.ecomonitor.service.PollutionService;
-import org.apache.tomcat.util.net.NioEndpoint;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
 
 import static com.brano.ecomonitor.controller.ResponseWrapper.wrap;
 
@@ -28,7 +21,7 @@ public class PollutionController {
     @GetMapping("/pollution-by-company")
     public ResponseEntity<?> getPollutionByCompanyId(@RequestParam("companyId") String companyId, @RequestParam("year") String year) {
         return wrap(() -> {
-            long id = Long.parseLong(companyId);
+            int id = Integer.parseInt(companyId);
             if (year.equals("all")) {
                 return pollutionService.findAllByCompanyId(id);
             } else  {
@@ -60,7 +53,7 @@ public class PollutionController {
     @DeleteMapping("/pollution")
     public ResponseEntity<?> deletePollution(@RequestParam String id) {
         return wrap(() -> {
-            pollutionService.deleteById(Long.parseLong(id));
+            pollutionService.deleteById(Integer.parseInt(id));
             return "Success";
         }, HttpStatus.ACCEPTED);
     }

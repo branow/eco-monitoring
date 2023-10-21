@@ -1,8 +1,6 @@
 package com.brano.ecomonitor.controller;
 
-import com.brano.ecomonitor.entity.CriticalOrgan;
-import com.brano.ecomonitor.model.PollutantImpactModel;
-import com.brano.ecomonitor.service.CriticalOrganService;
+import com.brano.ecomonitor.dto.PollutantImpactModel;
 import com.brano.ecomonitor.service.PollutantImpactService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +35,7 @@ public class PollutantImpactController {
     @DeleteMapping("/pollutant-impact")
     public ResponseEntity<?> deletePollutantImpact(@RequestParam String id) {
         return wrap(() -> {
-            pollutantImpactService.deleteById(Long.parseLong(id));
+            pollutantImpactService.deleteById(Integer.parseInt(id));
             return "Success";
         }, HttpStatus.ACCEPTED);
     }

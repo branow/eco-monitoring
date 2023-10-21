@@ -18,7 +18,7 @@ public class CriticalOrganService {
         this.repository = repository;
     }
 
-    public CriticalOrgan findById(Long organ) {
+    public CriticalOrgan findById(Integer organ) {
         return repository.findById(organ).orElseThrow();
     }
 
@@ -30,7 +30,7 @@ public class CriticalOrganService {
         return repository.save(organ);
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(Integer id) {
         pollutantImpactService.deleteAllByOrganId(id);
         repository.deleteById(id);
     }

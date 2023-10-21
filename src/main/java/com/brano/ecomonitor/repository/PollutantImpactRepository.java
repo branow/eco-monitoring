@@ -7,12 +7,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PollutantImpactRepository extends JpaRepository<PollutantImpact, Long> {
+public interface PollutantImpactRepository extends JpaRepository<PollutantImpact, Integer> {
 
-    List<PollutantImpact> findAllByPollutantPollutantId(Long id);
+    List<PollutantImpact> findAllByPollutantPollutantId(Integer id);
 
-    void deleteAllByPollutantPollutantId(Long id);
+    void deleteAllByPollutantPollutantId(Integer id);
 
-    void deleteAllByOrganOrganId(Long id);
+    void deleteAllByOrganOrganId(Integer id);
 
 }

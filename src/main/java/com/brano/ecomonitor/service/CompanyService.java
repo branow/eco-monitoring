@@ -19,7 +19,7 @@ public class CompanyService {
         this.repository = repository;
     }
 
-    public Company findById(Long id) {
+    public Company findById(Integer id) {
         return repository.findById(id).orElseThrow();
     }
 
@@ -32,7 +32,7 @@ public class CompanyService {
     }
 
     @Transactional
-    public void deleteById(Long id) {
+    public void deleteById(Integer id) {
         pollutionService.deleteAllByCompanyId(id);
         repository.deleteById(id);
     }

@@ -38,7 +38,7 @@ public class CriticalOrganController {
     @DeleteMapping("/organ")
     public ResponseEntity<?> deleteCompany(@RequestParam String id) {
         return wrap(() -> {
-            criticalOrganService.deleteById(Long.parseLong(id));
+            criticalOrganService.deleteById(Integer.parseInt(id));
             return "Success";
         }, HttpStatus.ACCEPTED);
     }

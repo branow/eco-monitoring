@@ -42,7 +42,7 @@ public class CompanyController {
     @DeleteMapping("/company")
     public ResponseEntity<?> deleteCompany(@RequestParam String id) {
         return wrap(() -> {
-            companyService.deleteById(Long.parseLong(id));
+            companyService.deleteById(Integer.parseInt(id));
             return "Success";
         }, HttpStatus.ACCEPTED);
     }
