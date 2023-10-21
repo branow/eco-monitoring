@@ -18,7 +18,7 @@ public class PollutantController {
 
     @GetMapping("/pollutant")
     public ResponseEntity<?> get() {
-        return wrap(pollutantService::findAll, HttpStatus.OK);
+        return wrap(pollutantService::findDtoAll, HttpStatus.OK);
     }
 
     @PostMapping("/pollutant")

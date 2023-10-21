@@ -3,16 +3,11 @@ package com.brano.ecomonitor.service;
 import com.brano.ecomonitor.dto.pollutant.PollutantDto;
 import com.brano.ecomonitor.mapper.PollutantMapper;
 import com.brano.ecomonitor.model.Pollutant;
-import com.brano.ecomonitor.model.PollutantImpact;
-import com.brano.ecomonitor.dto.PollutantModel;
 import com.brano.ecomonitor.repository.PollutantRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -22,11 +17,15 @@ public class PollutantService {
     private final PollutantMapper mapper;
 
 
-    public PollutantDto findById(Integer id) {
+    public PollutantDto findDtoById(Integer id) {
         return mapper.toPollutantDto(repository.findById(id).orElseThrow());
     }
 
-    public List<PollutantDto> findAll() {
+    public Pollutant findById(Integer id) {
+        return repository.findById(id).orElseThrow();
+    }
+
+    public List<PollutantDto> findDtoAll() {
         return repository.findAll().stream().map(mapper::toPollutantDto).toList();
     }
 

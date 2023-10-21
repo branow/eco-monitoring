@@ -1,7 +1,6 @@
 package com.brano.ecomonitor.controller;
 
 import com.brano.ecomonitor.dto.organ.OrganDto;
-import com.brano.ecomonitor.model.CriticalOrgan;
 import com.brano.ecomonitor.service.CriticalOrganService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,7 +18,7 @@ public class CriticalOrganController {
 
     @GetMapping("/organ")
     public ResponseEntity<?> get() {
-        return wrap(criticalOrganService::findAll, HttpStatus.OK);
+        return wrap(criticalOrganService::findDtoAll, HttpStatus.OK);
     }
 
     @PostMapping("/organ")

@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class PollutantImpactDto {
 
-    private Integer pollutantImpactId;
     private Pollutant pollutant;
     private CriticalOrgan organ;
 

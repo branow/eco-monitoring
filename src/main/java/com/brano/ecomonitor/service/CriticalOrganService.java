@@ -5,7 +5,6 @@ import com.brano.ecomonitor.mapper.OrganMapper;
 import com.brano.ecomonitor.model.CriticalOrgan;
 import com.brano.ecomonitor.repository.CriticalOrganRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,11 +17,11 @@ public class CriticalOrganService {
     private final OrganMapper organMapper;
 
 
-    public OrganDto findById(Integer organ) {
-        return organMapper.toOrganDto(repository.findById(organ).orElseThrow());
+    public CriticalOrgan findById(Integer organ) {
+        return repository.findById(organ).orElseThrow();
     }
 
-    public List<OrganDto> findAll() {
+    public List<OrganDto> findDtoAll() {
         return repository.findAll().stream().map(organMapper::toOrganDto).toList();
     }
 
