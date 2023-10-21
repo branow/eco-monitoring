@@ -1,6 +1,6 @@
 package com.brano.ecomonitor.dto.settlement;
 
-import com.brano.ecomonitor.entity.SettlementFactors;
+import com.brano.ecomonitor.model.SettlementFactors;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -1,7 +1,7 @@
 package com.brano.ecomonitor.dto.pollutantimpact;
 
-import com.brano.ecomonitor.entity.CriticalOrgan;
-import com.brano.ecomonitor.entity.Pollutant;
+import com.brano.ecomonitor.model.CriticalOrgan;
+import com.brano.ecomonitor.model.Pollutant;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

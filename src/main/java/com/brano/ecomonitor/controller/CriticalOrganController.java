@@ -1,8 +1,6 @@
 package com.brano.ecomonitor.controller;
 
-import com.brano.ecomonitor.entity.Company;
-import com.brano.ecomonitor.entity.CriticalOrgan;
-import com.brano.ecomonitor.service.CompanyService;
+import com.brano.ecomonitor.model.CriticalOrgan;
 import com.brano.ecomonitor.service.CriticalOrganService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

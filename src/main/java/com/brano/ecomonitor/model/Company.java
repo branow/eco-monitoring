@@ -1,4 +1,4 @@
-package com.brano.ecomonitor.entity;
+package com.brano.ecomonitor.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

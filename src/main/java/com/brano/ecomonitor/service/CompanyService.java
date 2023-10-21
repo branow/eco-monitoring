@@ -1,6 +1,6 @@
 package com.brano.ecomonitor.service;
 
-import com.brano.ecomonitor.entity.Company;
+import com.brano.ecomonitor.model.Company;
 import com.brano.ecomonitor.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

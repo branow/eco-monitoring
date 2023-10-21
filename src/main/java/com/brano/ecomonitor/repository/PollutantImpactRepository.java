@@ -1,6 +1,6 @@
 package com.brano.ecomonitor.repository;
 
-import com.brano.ecomonitor.entity.PollutantImpact;
+import com.brano.ecomonitor.model.PollutantImpact;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

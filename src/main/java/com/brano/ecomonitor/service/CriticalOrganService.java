@@ -1,6 +1,6 @@
 package com.brano.ecomonitor.service;
 
-import com.brano.ecomonitor.entity.CriticalOrgan;
+import com.brano.ecomonitor.model.CriticalOrgan;
 import com.brano.ecomonitor.repository.CriticalOrganRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

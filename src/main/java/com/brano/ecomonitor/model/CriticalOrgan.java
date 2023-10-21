@@ -1,4 +1,4 @@
-package com.brano.ecomonitor.entity;
+package com.brano.ecomonitor.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,15 +11,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Settlement {
+public class CriticalOrgan {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer settlementId;
-    private String settlementName;
-    private String settlementType;
-    @MapsId
-    @OneToOne
-    private SettlementFactors factors;
+    private Integer organId;
+
+    private String organName;
 
 }

@@ -1,7 +1,7 @@
 package com.brano.ecomonitor.service;
 
-import com.brano.ecomonitor.entity.Pollutant;
-import com.brano.ecomonitor.entity.PollutantImpact;
+import com.brano.ecomonitor.model.Pollutant;
+import com.brano.ecomonitor.model.PollutantImpact;
 import com.brano.ecomonitor.dto.PollutantModel;
 import com.brano.ecomonitor.repository.PollutantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
