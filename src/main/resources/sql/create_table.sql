@@ -18,11 +18,11 @@ create table settlement_type_factor (
 );
 
 create table settlement_factors (
-    settlement int primary key,
+    settlement_id int primary key,
     population_size_factor int not null,
     type_factor int not null,
     constraint fk_settlement_factors_settlement
-        foreign key (settlement)
+        foreign key (settlement_id)
         references settlement(settlement_id)
         on update cascade
         on delete cascade,
@@ -97,5 +97,6 @@ create table pollutant_impact (
         foreign key (organ)
         references critical_organ(organ_id)
         on update cascade
+        on delete cascade
 );
 

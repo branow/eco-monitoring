@@ -1,0 +1,3 @@
+settlement_id	settlement_name	settleme_type
+1	Запоріжжя	місто
+2	Енергодар	місто
