@@ -1,50 +1,64 @@
-# SET GLOBAL local_infile=1;
-# OPT_LOCAL_INFILE=1
 
-LOAD DATA LOCAL INFILE "D:/java-project/kpi/eco/eco-monitor/src/main/resources/sql/critical_organ.txt"
-    INTO TABLE eco_monitoring.critical_organ
-    FIELDS TERMINATED BY '\t'
-    LINES TERMINATED BY '\r\n'
-    IGNORE 1 LINES
-    (organ_id, organ_name);
+load data local infile "src/main/resources/sql/data/settlement.txt"
+    into table settlement
+    fields terminated by '\t'
+    lines terminated by '\r\n'
+    ignore 1 lines
+    (settlement_id, settlement_name, settlement_type);
 
-LOAD DATA LOCAL INFILE "D:/java-project/kpi/eco/eco-monitor/src/main/resources/sql/company.txt"
-    INTO TABLE eco_monitoring.company
-    FIELDS TERMINATED BY '\t'
-    LINES TERMINATED BY '\r\n'
-    IGNORE 1 LINES
-    (company_id, company_name, ownership, economic_activity, address);
+load data local infile "src/main/resources/sql/data/population_size_factor.txt"
+    into table population_size_factor
+    fields terminated by '\t'
+    lines terminated by '\r\n'
+    ignore 1 lines
+    (factor_id, factor, min_size, max_size);
 
-LOAD DATA LOCAL INFILE "D:/java-project/kpi/eco/eco-monitor/src/main/resources/sql/pollutant.txt"
-    INTO TABLE eco_monitoring.pollutant
-    FIELDS TERMINATED BY '\t'
-    LINES TERMINATED BY '\r\n'
-    IGNORE 1 LINES
+load data local infile "src/main/resources/sql/data/settlement_type_factor.txt"
+    into table settlement_type_factor
+    fields terminated by '\t'
+    lines terminated by '\r\n'
+    ignore 1 lines
+    (factor_id, factor, settlement_type);
+
+load data local infile "src/main/resources/sql/data/settlement_factors.txt"
+    into table settlement_factors
+    fields terminated by '\t'
+    lines terminated by '\r\n'
+    ignore 1 lines
+    (settlement_id, population_size_factor, type_factor);
+
+load data local infile "src/main/resources/sql/data/company.txt"
+    into table company
+    fields terminated by '\t'
+    lines terminated by '\r\n'
+    ignore 1 lines
+    (company_id, company_name, ownership, economic_activity, address, settlement);
+
+load data local infile "src/main/resources/sql/data/pollutant.txt"
+    into table pollutant
+    fields terminated by '\t'
+    lines terminated by '\r\n'
+    ignore 1 lines
     (pollutant_id, pollutant_name, mass_consumption, gdk, rfc, sf, hazard_class);
 
-LOAD DATA LOCAL INFILE "D:/java-project/kpi/eco/eco-monitor/src/main/resources/sql/pollutant_impact.txt"
-    INTO TABLE eco_monitoring.pollutant_impact
-    FIELDS TERMINATED BY '\t'
-    LINES TERMINATED BY '\r\n'
-    IGNORE 1 LINES
-    (pollutant_impact_id, pollutant, organ);
-
-LOAD DATA LOCAL INFILE "D:/java-project/kpi/eco/eco-monitor/src/main/resources/sql/pollution.txt"
-    INTO TABLE eco_monitoring.pollution
-    FIELDS TERMINATED BY '\t'
-    LINES TERMINATED BY '\r\n'
-    IGNORE 1 LINES
+load data local infile "src/main/resources/sql/data/pollution.txt"
+    into table pollution
+    fields terminated by '\t'
+    lines terminated by '\r\n'
+    ignore 1 lines
     (pollution_id, company, pollutant, emission_mass, concentration, year);
 
-select * from critical_organ;
-select * from company;
-select * from pollutant;
-select * from pollution;
-select * from pollutant_impact;
+load data local infile "src/main/resources/sql/data/critical_organ.txt"
+    into table critical_organ
+    fields terminated by '\t'
+    lines terminated by '\r\n'
+    ignore 1 lines
+    (organ_id, organ_name);
 
+load data local infile "src/main/resources/sql/data/pollutant_impact.txt"
+    into table pollutant_impact
+    fields terminated by '\t'
+    lines terminated by '\r\n'
+    ignore 1 lines
+    (pollutant, organ);
 
-delete from pollution;
-delete from pollutant_impact;
-delete from pollutant;
-delete from company;
-delete from critical_organ;
