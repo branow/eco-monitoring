@@ -1,8 +1,6 @@
 package com.brano.ecomonitor.controller;
 
-import com.brano.ecomonitor.dto.pollutant.PollutantDto;
 import com.brano.ecomonitor.dto.populationsizefactor.PopulationSizeFactorDto;
-import com.brano.ecomonitor.service.PollutantService;
 import com.brano.ecomonitor.service.PopulationSizeFactorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

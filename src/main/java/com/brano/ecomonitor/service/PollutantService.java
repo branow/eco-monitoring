@@ -1,6 +1,6 @@
 package com.brano.ecomonitor.service;
 
-import com.brano.ecomonitor.dto.pollutant.PollutantDto;
+import com.brano.ecomonitor.dto.pollutant.PollutantWithoutImpactDto;
 import com.brano.ecomonitor.mapper.PollutantMapper;
 import com.brano.ecomonitor.model.Pollutant;
 import com.brano.ecomonitor.repository.PollutantRepository;
@@ -17,7 +17,7 @@ public class PollutantService {
     private final PollutantMapper mapper;
 
 
-    public PollutantDto findDtoById(Integer id) {
+    public PollutantWithoutImpactDto findDtoById(Integer id) {
         return mapper.toPollutantDto(repository.findById(id).orElseThrow());
     }
 
@@ -25,11 +25,11 @@ public class PollutantService {
         return repository.findById(id).orElseThrow();
     }
 
-    public List<PollutantDto> findDtoAll() {
+    public List<PollutantWithoutImpactDto> findDtoAll() {
         return repository.findAll().stream().map(mapper::toPollutantDto).toList();
     }
 
-    public PollutantDto save(PollutantDto pollutantDto) {
+    public PollutantWithoutImpactDto save(PollutantWithoutImpactDto pollutantDto) {
         return mapper.toPollutantDto(repository.save(mapper.toPollutant(pollutantDto)));
     }
 

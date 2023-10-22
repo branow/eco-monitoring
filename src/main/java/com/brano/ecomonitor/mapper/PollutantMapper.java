@@ -1,6 +1,6 @@
 package com.brano.ecomonitor.mapper;
 
-import com.brano.ecomonitor.dto.pollutant.PollutantDto;
+import com.brano.ecomonitor.dto.pollutant.PollutantWithoutImpactDto;
 import com.brano.ecomonitor.model.Pollutant;
 import com.brano.ecomonitor.service.PollutantImpactService;
 import lombok.RequiredArgsConstructor;
@@ -12,8 +12,8 @@ public class PollutantMapper {
 
     private final PollutantImpactService pollutantImpactService;
 
-    public PollutantDto toPollutantDto(Pollutant pollutant) {
-        return PollutantDto.builder()
+    public PollutantWithoutImpactDto toPollutantDto(Pollutant pollutant) {
+        return PollutantWithoutImpactDto.builder()
                 .pollutantId(pollutant.getPollutantId())
                 .pollutantName(pollutant.getPollutantName())
                 .massConsumption(pollutant.getMassConsumption())
@@ -25,7 +25,7 @@ public class PollutantMapper {
     }
 
 
-    public Pollutant toPollutant(PollutantDto pollutantDto) {
+    public Pollutant toPollutant(PollutantWithoutImpactDto pollutantDto) {
         return Pollutant.builder()
                 .pollutantId(pollutantDto.getPollutantId())
                 .pollutantName(pollutantDto.getPollutantName())

@@ -1,6 +1,6 @@
 package com.brano.ecomonitor.controller;
 
-import com.brano.ecomonitor.dto.pollutant.PollutantDto;
+import com.brano.ecomonitor.dto.pollutant.PollutantWithoutImpactDto;
 import com.brano.ecomonitor.service.PollutantService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,7 +22,7 @@ public class PollutantController {
     }
 
     @PostMapping("/pollutant")
-    public ResponseEntity<?> save(@RequestBody PollutantDto pollutant) {
+    public ResponseEntity<?> save(@RequestBody PollutantWithoutImpactDto pollutant) {
         return wrap(() -> pollutantService.save(pollutant), HttpStatus.CREATED);
     }
 

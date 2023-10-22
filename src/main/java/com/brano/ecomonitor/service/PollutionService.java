@@ -63,7 +63,7 @@ public class PollutionService {
         return Pollution.builder()
                 .pollutionId(model.getPollutionId())
                 .company(companyService.findById(model.getCompany()))
-                .pollutant(pollutantService.findById(model.getPollutant()))
+                .pollutant(pollutantService.findDtoById(model.getPollutant()))
                 .emissionMass(model.getEmissionMass())
                 .concentration(model.getConcentration())
                 .year(model.getYear())
