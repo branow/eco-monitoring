@@ -1,8 +1,8 @@
 package com.brano.ecomonitor.controller;
 
-import com.brano.ecomonitor.dto.populationsizefactor.PopulationSizeFactorDto;
+import com.brano.ecomonitor.dto.organ.OrganDto;
 import com.brano.ecomonitor.dto.settlementtypefactor.SettlementTypeFactorDto;
-import com.brano.ecomonitor.service.PopulationSizeFactorService;
+import com.brano.ecomonitor.service.CriticalOrganService;
 import com.brano.ecomonitor.service.SettlementTypeFactorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,22 +13,23 @@ import static com.brano.ecomonitor.controller.ResponseWrapper.wrap;
 
 @RequiredArgsConstructor
 @RestController
-public class PopulationSizeFactorController {
-
-    private final PopulationSizeFactorService service;
+public class SettlementTypeFactorController {
 
 
-    @GetMapping("/population-size-factor")
+    private final SettlementTypeFactorService service;
+
+
+    @GetMapping("/settlement-type-factor")
     public ResponseEntity<?> get() {
         return wrap(service::findDtoAll, HttpStatus.OK);
     }
 
-    @PostMapping("/population-size-factor")
-    public ResponseEntity<?> save(@RequestBody PopulationSizeFactorDto dto) {
+    @PostMapping("/settlement-type-factor")
+    public ResponseEntity<?> save(@RequestBody SettlementTypeFactorDto dto) {
         return wrap(() -> service.save(dto), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/population-size-factor")
+    @DeleteMapping("/settlement-type-factor")
     public ResponseEntity<?> delete(@RequestParam String id) {
         return wrap(() -> {
             service.deleteById(Integer.parseInt(id));
