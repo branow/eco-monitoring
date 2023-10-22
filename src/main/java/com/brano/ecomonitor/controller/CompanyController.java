@@ -1,14 +1,13 @@
 package com.brano.ecomonitor.controller;
 
 import com.brano.ecomonitor.dto.company.CompanyPostDto;
-import com.brano.ecomonitor.model.Company;
 import com.brano.ecomonitor.service.CompanyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import static com.brano.ecomonitor.controller.ResponseWrapper.wrap;
+import static com.brano.ecomonitor.controller.response.ResponseWrapper.wrap;
 
 @RequiredArgsConstructor
 @RestController
