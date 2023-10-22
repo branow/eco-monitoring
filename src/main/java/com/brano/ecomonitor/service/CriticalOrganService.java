@@ -17,8 +17,12 @@ public class CriticalOrganService {
     private final OrganMapper organMapper;
 
 
-    public CriticalOrgan findById(Integer organ) {
-        return repository.findById(organ).orElseThrow();
+    public CriticalOrgan findById(Integer id) {
+        return repository.findById(id).orElseThrow();
+    }
+
+    public List<CriticalOrgan> findAllByPollutantId(Integer id) {
+        return repository.findAllByPollutantId(id);
     }
 
     public List<OrganDto> findDtoAll() {

@@ -19,7 +19,7 @@ public class PollutantService {
 
 
     public PollutantWithoutImpactDto findDtoById(Integer id) {
-        return mapper.toPollutantDto(repository.findById(id).orElseThrow(() -> new PollutantNotFoundException("id", id)));
+        return mapper.toPollutantWithoutImpactDto(repository.findById(id).orElseThrow(() -> new PollutantNotFoundException("id", id)));
     }
 
     public Pollutant findById(Integer id) {
@@ -27,11 +27,11 @@ public class PollutantService {
     }
 
     public List<PollutantWithoutImpactDto> findDtoAll() {
-        return repository.findAll().stream().map(mapper::toPollutantDto).toList();
+        return repository.findAll().stream().map(mapper::toPollutantWithoutImpactDto).toList();
     }
 
     public PollutantWithoutImpactDto save(PollutantWithoutImpactDto pollutantDto) {
-        return mapper.toPollutantDto(repository.save(mapper.toPollutant(pollutantDto)));
+        return mapper.toPollutantWithoutImpactDto(repository.save(mapper.toPollutant(pollutantDto)));
     }
 
     public void deleteById(Integer id) {

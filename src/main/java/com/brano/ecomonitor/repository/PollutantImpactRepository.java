@@ -10,14 +10,8 @@ import java.util.List;
 
 @Repository
 public interface PollutantImpactRepository extends JpaRepository<PollutantImpact, Integer> {
-
-    List<PollutantImpact> findAllByPollutantPollutantId(Integer id);
-
-    @Query(value = "select pi.organ from PollutantImpact pi where pi.pollutant.pollutantId = ?1")
+    
+    @Query(value = "select pi.pollutantImpactId.organ from PollutantImpact pi where pi.pollutantImpactId.pollutant.pollutantId = ?1")
     List<CriticalOrgan> findAllOrganByPollutantPollutantId(Integer id);
-
-    void deleteAllByPollutantPollutantId(Integer id);
-
-    void deleteAllByOrganOrganId(Integer id);
 
 }

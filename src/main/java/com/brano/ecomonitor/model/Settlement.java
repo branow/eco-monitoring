@@ -20,6 +20,7 @@ public class Settlement {
     private String settlementType;
     @MapsId
     @OneToOne
+    @JoinColumn(name = "settlementId")
     private SettlementFactors factors;
 
 }

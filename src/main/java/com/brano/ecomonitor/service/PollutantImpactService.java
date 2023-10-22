@@ -4,11 +4,8 @@ import com.brano.ecomonitor.dto.pollutantimpact.PollutantImpactDto;
 import com.brano.ecomonitor.dto.pollutantimpact.PollutantImpactPostDto;
 import com.brano.ecomonitor.mapper.PollutantImpactMapper;
 import com.brano.ecomonitor.model.CriticalOrgan;
-import com.brano.ecomonitor.model.PollutantImpact;
-import com.brano.ecomonitor.dto.PollutantImpactModel;
 import com.brano.ecomonitor.repository.PollutantImpactRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
