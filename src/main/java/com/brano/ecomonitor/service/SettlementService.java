@@ -20,8 +20,7 @@ public class SettlementService {
 
 
     public Settlement findById(Integer id) {
-        return repository.findById(id).orElseThrow(() ->
-                new SettlementNotFoundException("Settlement with such id not found: " + id));
+        return repository.findById(id).orElseThrow(() -> new SettlementNotFoundException("id", id));
     }
 
     public List<SettlementDto> findDtoAll() {

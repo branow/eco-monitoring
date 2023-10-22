@@ -1,4 +1,4 @@
-package com.brano.ecomonitor.dto;
+package com.brano.ecomonitor.dto.pollution;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class PollutionModel {
+public class PollutionPostDto {
 
     private Integer pollutionId;
     private Double emissionMass;

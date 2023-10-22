@@ -1,73 +1,44 @@
 package com.brano.ecomonitor.service;
 
-import com.brano.ecomonitor.model.Pollution;
-import com.brano.ecomonitor.dto.PollutionModel;
+import com.brano.ecomonitor.dto.pollution.PollutionDto;
+import com.brano.ecomonitor.dto.pollution.PollutionPostDto;
+import com.brano.ecomonitor.mapper.PollutionMapper;
 import com.brano.ecomonitor.repository.PollutionRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class PollutionService {
 
     private final PollutionRepository repository;
-    @Autowired
-    private CompanyService companyService;
-    @Autowired
-    private PollutantService pollutantService;
+    private final PollutionMapper mapper;
 
-    public PollutionService(PollutionRepository repository) {
-        this.repository = repository;
+
+    public List<Integer> findDistinctYearAll() {
+        return repository.findDistinctYearAll();
     }
 
-
-    public List<Integer> findAllDistinctYear() {
-        return repository.findAllDistinctYear();
+    public List<PollutionDto> findDtoAllByCompanyId(Integer companyId) {
+        return repository.findAllByCompanyCompanyId(companyId).stream().map(mapper::toPollutionDto).toList();
     }
 
-    public List<Pollution> findAllByCompanyId(Integer companyId) {
-        return repository.findAllByCompanyCompanyId(companyId);
+    public List<PollutionDto> findDtoAllByCompanyIdAndYear(Integer companyId, Integer year) {
+        return repository.findAllByCompanyCompanyIdAndYear(companyId, year).stream().map(mapper::toPollutionDto).toList();
     }
 
-    public List<Pollution> findAllByCompanyIdAndYear(Integer companyId, Integer year) {
-        return repository.findAllByCompanyCompanyIdAndYear(companyId, year);
+    public List<PollutionDto> findDtoAll() {
+        return repository.findAll().stream().map(mapper::toPollutionDto).toList();
     }
 
-    public List<Pollution> findAll() {
-        return repository.findAll();
-    }
-
-    public Pollution save(Pollution pollution) {
-        return repository.save(pollution);
-    }
-
-    public Pollution save(PollutionModel pollutionModel) {
-        return repository.save(toPollution(pollutionModel));
+    public PollutionDto save(PollutionPostDto postDto) {
+        return mapper.toPollutionDto(repository.save(mapper.toPollution(postDto)));
     }
 
     public void deleteById(Integer id) {
         repository.deleteById(id);
-    }
-
-
-    public void deleteAllByCompanyId(Integer id) {
-        repository.deleteAllByCompanyCompanyId(id);
-    }
-
-    public void deleteAllByPollutantId(Integer id) {
-        repository.deleteAllByPollutantPollutantId(id);
-    }
-
-    private Pollution toPollution(PollutionModel model) {
-        return Pollution.builder()
-                .pollutionId(model.getPollutionId())
-                .company(companyService.findById(model.getCompany()))
-                .pollutant(pollutantService.findDtoById(model.getPollutant()))
-                .emissionMass(model.getEmissionMass())
-                .concentration(model.getConcentration())
-                .year(model.getYear())
-                .build();
     }
 
 }

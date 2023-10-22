@@ -11,7 +11,7 @@ import java.util.List;
 public interface PollutionRepository extends JpaRepository<Pollution, Integer> {
 
     @Query("SELECT DISTINCT p.year FROM Pollution p")
-    List<Integer> findAllDistinctYear();
+    List<Integer> findDistinctYearAll();
 
     List<Pollution> findAllByCompanyCompanyId(Integer id);
 

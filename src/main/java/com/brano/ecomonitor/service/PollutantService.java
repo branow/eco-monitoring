@@ -1,6 +1,7 @@
 package com.brano.ecomonitor.service;
 
 import com.brano.ecomonitor.dto.pollutant.PollutantWithoutImpactDto;
+import com.brano.ecomonitor.exception.PollutantNotFoundException;
 import com.brano.ecomonitor.mapper.PollutantMapper;
 import com.brano.ecomonitor.model.Pollutant;
 import com.brano.ecomonitor.repository.PollutantRepository;
@@ -18,7 +19,7 @@ public class PollutantService {
 
 
     public PollutantWithoutImpactDto findDtoById(Integer id) {
-        return mapper.toPollutantDto(repository.findById(id).orElseThrow());
+        return mapper.toPollutantDto(repository.findById(id).orElseThrow(() -> new PollutantNotFoundException("id", id)));
     }
 
     public Pollutant findById(Integer id) {
