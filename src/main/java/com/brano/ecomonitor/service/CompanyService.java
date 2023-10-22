@@ -1,39 +1,35 @@
 package com.brano.ecomonitor.service;
 
+import com.brano.ecomonitor.dto.company.CompanyDto;
+import com.brano.ecomonitor.dto.company.CompanyPostDto;
+import com.brano.ecomonitor.mapper.CompanyMapper;
 import com.brano.ecomonitor.model.Company;
 import com.brano.ecomonitor.repository.CompanyRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class CompanyService {
 
     private final CompanyRepository repository;
-    @Autowired
-    private PollutionService pollutionService;
+    private final CompanyMapper mapper;
 
-    public CompanyService(CompanyRepository repository) {
-        this.repository = repository;
+
+    public List<CompanyDto> findDtoAll() {
+        return repository.findAll().stream().map(mapper::toCompanyDto).toList();
     }
 
-    public Company findById(Integer id) {
-        return repository.findById(id).orElseThrow();
+    public CompanyDto save(CompanyPostDto postDto) {
+        return mapper.toCompanyDto(repository.save(mapper.toCompany(postDto)));
     }
 
-    public List<Company> findAll() {
-        return repository.findAll();
-    }
-
-    public Company save(Company company) {
-        return repository.save(company);
-    }
-
-    @Transactional
     public void deleteById(Integer id) {
-        pollutionService.deleteAllByCompanyId(id);
         repository.deleteById(id);
     }
+
 }
