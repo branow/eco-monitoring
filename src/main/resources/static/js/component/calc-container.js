@@ -39,7 +39,8 @@ function ControlRiskSelectContainer(){
     selectWrapper.append(compSelectCon);
     selectWrapper.append(yearSelectCon);
     selectWrapper.append(butSelectCon);
-    return selectWrapper;
+    controlDiv.append(selectWrapper);
+    return controlDiv;
 }
 
 function HazardRatioResultContainer(result) {

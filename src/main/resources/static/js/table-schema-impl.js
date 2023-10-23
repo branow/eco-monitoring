@@ -37,6 +37,9 @@ function tableSchemas() {
     ];
 }
 
+function damagesCalculationsTableSchema(){
+    return new TableSchema('Damage calculations', 'damage', damageCalculationsColumnSchemas(), false);
+}
 function hazardRatioTableSchema() {
     return new TableSchema('Hazard Ratio', 'hazard-ratio', hazardRationColumnSchemas(), false);
 }
@@ -81,7 +84,46 @@ function settlementTypeFactorTableSchema() {
     return new TableSchema("Settlement Type Factor","settlement-type-factor", settlementTypeFactorColumnSchemas(), true);
 }
 
-
+function damageCalculationsColumnSchemas(){
+    return [
+        new ColumnSchema(
+            'Pollutant',
+            'pollutant',
+        ),
+        new ColumnSchema(
+            'Qmi',
+            'qmi',
+        ),
+        new ColumnSchema(
+            'Qn',
+            'qn',
+        ),
+        new ColumnSchema(
+            'Mi',
+            'mi',
+        ),
+        new ColumnSchema(
+            'Gdk',
+            'gdk',
+        ),
+        new ColumnSchema(
+            'Po',
+            'po',
+        ),
+        new ColumnSchema(
+            'Ai',
+            'ai',
+        ),
+        new ColumnSchema(
+            'Kzi',
+            'kzi',
+        ),
+        new ColumnSchema(
+            'Fine sum',
+            'fineSum',
+        ),
+    ];
+}
 function carcinogenicRiskColumnSchemas() {
     return [
         new ColumnSchema(

@@ -36,7 +36,8 @@ function ControlDamagesSelectContainer(){
     selectWrapper.append(compSelectCon);
     selectWrapper.append(yearSelectCon);
     selectWrapper.append(butSelectCon);
-    return selectWrapper;
+    controlDiv.append(selectWrapper);
+    return controlDiv;
 }
 
 function DamagesResultContainer(result) {
@@ -44,7 +45,7 @@ function DamagesResultContainer(result) {
     damCalcRest.className = 'dam-calc-res';
 
     let tabDamages = document.createElement("div");
-    tabDamages.appendChild(ObjectTable(hazardRatioTableSchema(), result.table));
+    tabDamages.appendChild(ObjectTable(damagesCalculationsTableSchema(), result.table));
 
     let sumDam = document.createElement("div");
     sumDam.innerText = `Sum (HQ): ${result.hq}`

@@ -2,9 +2,9 @@
 
 function getPollutionsLosses(pollutionList){
     let objectList = [];
-    let pollutantList = [...new Set(pollutionList.map(pollution => pollution.pollutant))];
+    let pollutants = pollutionList.map(pollution => pollution.pollutant);
+    let pollutantList = distinct(pollutants, (p1, p2) => p1.pollutantId === p2.pollutantId);
     for (let i = 0; i < pollutantList.length; i++){
-        if (pollutantList[i].sf !== 0 || pollutantList[i].rfc === 0) continue;
         let emissionAndConcentrationValues = getEmissionAndConcentration(pollutionList, pollutantList[i], pollutantList.length);
         let kValues = getKValues(pollutionList, pollutantList[i], pollutantList.length);
         let qmi = emissionAndConcentrationValues[0];
