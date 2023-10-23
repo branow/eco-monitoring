@@ -28,6 +28,7 @@ function CompanySelect() {
             let option = new CompanyOption(companies[i]);
             select.append(option);
         }
+        select.append(Option("all-option", "all", "all", false));
     }
     findAllByObject("company", success)
     return select;

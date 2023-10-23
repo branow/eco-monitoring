@@ -47,7 +47,7 @@
     font-family: 'Inter', sans-serif;
 }
 
-.haz-rat-con, .car-risk-con{
+.haz-rat-con, .car-risk-con, .dam-con{
     position: relative;
     background-color: #efefef;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
@@ -101,4 +101,9 @@ top: 20vh;
 
 .mes-con{
 padding-top: 10px;
+}
+
+.res-table-div{
+    position: relative;
+    margin: auto;
 }

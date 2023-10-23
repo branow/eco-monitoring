@@ -25,6 +25,10 @@ public class DefaultController {
     public ModelAndView indexHealthRisk() {
         return new ModelAndView("health-risk-page");
     }
+    @GetMapping("/damages-calculations-page")
+    public ModelAndView indexDamagesCalculations() {
+        return new ModelAndView("damages-calculations-page");
+    }
 
     @GetMapping("/test")
     public ModelAndView indexTest() {

@@ -1,5 +1,25 @@
 
+function DamagesCalculateButton(){
+    let onclick = (event) => {
+        let div = event.target.closest('.damages-con');
+        let companyId = div.querySelector("select.comp-select").value;
+        let year = div.querySelector("select.year-select").value;
+        let success = (pollutions) => {
+            let damagesResult = getPollutionsLosses(pollutions)
 
+            let damCon = div.querySelector(".dam-con");
+
+            let damResCon = damCon.querySelector(".calc-res-container");
+            let oldDamRes = damResCon.querySelector(".dam-calc-res");
+            if (oldDamRes != null) oldDamRes.remove();
+            let newHazRes = DamagesResultContainer(damagesResult);
+            damResCon.append(newHazRes);
+        }
+
+        getPollutionsByCompanyIdAndYear(companyId, year, success, throwResponseError)
+    }
+    return new Button("calc", "calculate", onclick);
+}
 function HealthRiskCalculateButton() {
     let onclick = (event) => {
         let div = event.target.closest('.health-risk');

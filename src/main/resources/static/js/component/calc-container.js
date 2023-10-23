@@ -2,8 +2,26 @@
 function HealthRiskContainer() {
     let healthCon = document.createElement("div");
     healthCon.className = 'health-risk';
+    let controlRisksDiv= document.createElement("div");;
+    controlRisksDiv.append(ControlRiskSelectContainer());
+    let resultDiv = document.createElement("div");
+    resultDiv.className = "result-div"
+    resultDiv.innerHTML = `
+        <div class="haz-rat-con">
+            <div class="res-table-name"><span>Hazard Ratio</span></div>
+            <div class="calc-res-container"></div>
+        </div>
+        <div class="car-risk-con">
+            <div class="res-table-name"><span>Carcinogenic Risk</span></div>
+            <div class="calc-res-container"></div>
+        </div>`
 
+    healthCon.appendChild(controlRisksDiv);
+    healthCon.appendChild(resultDiv);
+    return healthCon;
+}
 
+function ControlRiskSelectContainer(){
     let selectWrapper = document.createElement("div");
     selectWrapper.className = "selectors-section-div";
     let compSelectCon = document.createElement("div");
@@ -21,24 +39,7 @@ function HealthRiskContainer() {
     selectWrapper.append(compSelectCon);
     selectWrapper.append(yearSelectCon);
     selectWrapper.append(butSelectCon);
-
-    controlDiv.append(selectWrapper);
-
-    let resultDiv = document.createElement("div");
-    resultDiv.className = "result-div"
-    resultDiv.innerHTML = `
-        <div class="haz-rat-con">
-            <div class="res-table-name"><span>Hazard Ratio</span></div>
-            <div class="calc-res-container"></div>
-        </div>
-        <div class="car-risk-con">
-            <div class="res-table-name"><span>Carcinogenic Risk</span></div>
-            <div class="calc-res-container"></div>
-        </div>`
-
-    healthCon.appendChild(controlDiv);
-    healthCon.appendChild(resultDiv);
-    return healthCon;
+    return selectWrapper;
 }
 
 function HazardRatioResultContainer(result) {
