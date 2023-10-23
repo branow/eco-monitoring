@@ -28,7 +28,7 @@ function CompanySelect() {
             select.append(option);
         }
     }
-    CompanyRequester().findAll(success, throwResponseError);
+    findAllByObject("company", success)
     return select;
 }
 

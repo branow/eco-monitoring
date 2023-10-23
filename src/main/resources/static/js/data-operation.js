@@ -36,7 +36,7 @@ function addObject(object, tableName, success) {
 }
 
 function updateObject(object, tableName, success, error) {
-    findRequester(tableName).update(object, success, throwResponseError);
+    findRequester(tableName).save(object, success, throwResponseError);
 }
 
 function deleteObject(id, tableName, success, error) {

@@ -1,42 +1,16 @@
 
-function OrganTableContainer() {
-    return ObjectTableContainer(new OrganRequester(), OrganTable);
-}
-
-function PollutantImpactTableContainer() {
-    return ObjectTableContainer(new PollutantImpactRequester(), PollutantImpactTable);
-}
-
-function PollutionTableContainer() {
-    return ObjectTableContainer(new PollutionRequester(), PollutionTable);
-}
-
-function PollutantTableContainer() {
-    return ObjectTableContainer(new PollutantRequester(), PollutantTable);
-}
-
-function CompanyTableContainer() {
-    return ObjectTableContainer(new CompanyRequester(), CompanyTable);
-}
-
-function ObjectTableContainer(requesterCRUD, tableConstructor) {
+function ObjectTableContainer(tableName) {
+    let tableSchema = findTableSchema(tableName);
     let div = document.createElement('div');
     div.className = 'table-container';
+    let label = document.createElement('div');
+    label.className = 'tab-label';
+    label.innerText = tableSchema.viewName;
+    div.appendChild(label);
     let success = (response) => {
-        div.appendChild(tableConstructor(response));
+
+        div.appendChild(ObjectTable(tableSchema, response));
     }
-    requesterCRUD.findAll(success, throwResponseError);
-    return div;
-}
-
-function TableContainer(className, table) {
-    let div = Container(className);
-    div.appendChild(table);
-    return div;
-}
-
-function Container(className) {
-    let div = document.createElement('div');
-    div.className = className;
+    findAllByObject(tableName, success);
     return div;
 }

@@ -1,7 +1,41 @@
 
+function Table(className, tableHead, tableBody, tableFoot) {
+    let table = document.createElement('table');
+    table.className = className;
+    table.append(tableHead);
+    table.append(tableBody);
+    table.append(tableFoot);
+    return table;
+}
+
+function StaticObjectTable(tableSchema, objects) {
+    let body = ObjectTableBody('tab-body', objects, FilledObjectTableRow, tableSchema);
+    let head = ObjectTableHead('tab-head', tableSchema.columns);
+    let foot = EmptyTableFoot('tab-foot')
+    let table = Table('tab', head, body, foot);
+    table.dataset.name = tableSchema.name;
+    return table;
+}
+
+function DynamicObjectTable(tableSchema, objects) {
+    let body = ObjectTableBody('tab-body', objects, DeletableObjectTableRow, tableSchema);
+    let head = ObjectTableHead('tab-head', tableSchema.columns);
+    let foot = AddRowButtonTableFoot('tab-foot', tableSchema.columns.length)
+    let table = Table('tab', head, body, foot);
+    table.dataset.name = tableSchema.name;
+    return table;
+}
+
+function ObjectTable(tableSchema, objects) {
+    if (tableSchema.dynamic) {
+        return DynamicObjectTable(tableSchema, objects);
+    } else {
+        return StaticObjectTable(tableSchema, objects);
+    }
+}
 
 function AddRowAuxiliaryTable(parentTable, close) {
-    let table = foundObjectTable(parentTable.dataset.name, [{}]);
+    let table = DynamicObjectTable(findTableSchema(parentTable.dataset.name), [{}])
     let tfoot = table.querySelector('tfoot');
     tfoot.remove();
     let newTfoot =
@@ -13,63 +47,4 @@ function AddRowAuxiliaryTable(parentTable, close) {
 }
 
 
-function foundObjectTable(objectName, objects) {
-    if (objectName === 'company') {
-        return CompanyTable(objects);
-    } else if (objectName === 'pollutant') {
-        return PollutantTable(objects);
-    } else if (objectName === 'pollution') {
-        return PollutionTable(objects);
-    } else {
-        throwError('object table with such name not found: ' + objectName);
-    }
-}
-
-function CarcinogenicRiskTable(objects) {
-    return ObjectTable('carcinogenic-risk', objects, CarcinogenicRiskTableHead, CarcinogenicRiskTableBody, CarcinogenicRiskTableFoot);
-}
-
-function HazardRatioTable(objects) {
-    return ObjectTable('hazard-ratio', objects, HazardRatioTableHead, HazardRatioTableBody, HazardRatioTableFoot);
-}
-
-function OrganTable(objects) {
-    return ObjectTable('organ', objects, OrganTableHead, OrganTableBody, OrganTableFoot);
-}
-
-function PollutantImpactTable(objects) {
-    return ObjectTable('pollutant-impact', objects, PollutantImpactTableHead, PollutantImpactTableBody, PollutantImpactTableFoot);
-}
-
-
-function PollutionTable(objects) {
-    return ObjectTable('pollution', objects, PollutionTableHead, PollutionTableBody, PollutionTableFoot);
-}
-
-function PollutantTable(objects) {
-    return ObjectTable('pollutant', objects, PollutantTableHead, PollutantTableBody, PollutantTableFoot);
-}
-
-function CompanyTable(objects) {
-    return ObjectTable('company', objects, CompanyTableHead, CompanyTableBody, CompanyTableFoot);
-}
-
-function ObjectTable(name, objects, tableHeadConstructor, tableBodyConstructor, tableFootConstructor) {
-    let table = Table('tab',
-        tableHeadConstructor('tab-head'),
-        tableBodyConstructor('tab-body', objects),
-        tableFootConstructor('tab-foot'));
-    table.dataset.name = name;
-    return table;
-}
-
-
-function Table(className, tableHead, tableBody, tableFoot) {
-    let table = document.createElement('table');
-    table.className = className;
-    table.append(tableHead);
-    table.append(tableBody);
-    table.append(tableFoot);
-    return table;
-}
 

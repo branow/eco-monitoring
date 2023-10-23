@@ -1,23 +1,3 @@
-function PollutantImpactTableFoot(className) {
-    return AddRowButtonTableFoot(className, findTableSchema('pollutant-impact').columns.length);
-}
-
-function OrganTableFoot(className) {
-    return AddRowButtonTableFoot(className, findTableSchema('organ').columns.length);
-}
-
-
-function PollutionTableFoot(className) {
-    return AddRowButtonTableFoot(className, findTableSchema('pollution').columns.length);
-}
-
-function PollutantTableFoot(className) {
-    return AddRowButtonTableFoot(className, findTableSchema('pollutant').columns.length);
-}
-
-function CompanyTableFoot(className) {
-    return AddRowButtonTableFoot(className, findTableSchema('company').columns.length);
-}
 
 function AddRowButtonTableFoot(className, callSpan) {
     let controller = new AddRowShowCloseController();
@@ -29,13 +9,6 @@ function AcceptCancelAddRowTableFoot(className, parentTable, close) {
         [AcceptCancelAddRowButtonsRow('accept-cancel-row', parentTable, close)])
 }
 
-function HazardRatioTableFoot(className) {
-    return new EmptyTableFoot(className);
-}
-
-function CarcinogenicRiskTableFoot(className) {
-    return new EmptyTableFoot(className);
-}
 
 function EmptyTableFoot(className) {
     return TableFoot(className, []);

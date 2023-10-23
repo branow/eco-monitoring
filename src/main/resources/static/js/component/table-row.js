@@ -17,35 +17,6 @@ function findObjectRow(className, tableName, object) {
 }
 
 
-function CarcinogenicRiskRow(className, object) {
-    return FilledObjectTableRow(className, object, carcinogenicRiskTableSchema());
-}
-
-function HazardRationRow(className, object) {
-    return FilledObjectTableRow(className, object, hazardRatioTableSchema());
-}
-
-function OrganRow(className, object) {
-    return DeletableObjectTableRow(className, object, organTableSchema());
-}
-
-function PollutantImpactRow(className, object) {
-    return DeletableObjectTableRow(className, object, pollutantImpactTableSchema());
-}
-
-function CompanyRow(className, object) {
-    return DeletableObjectTableRow(className, object, companyTableSchema());
-}
-
-function PollutantRow(className, object) {
-    return DeletableObjectTableRow(className, object, pollutantTableSchema());
-}
-
-function PollutionRow(className, object) {
-    return DeletableObjectTableRow(className, object, pollutionTableSchema());
-}
-
-
 function DeletableObjectTableRow(className, object, tableSchema) {
     let tr = DeletableObjectRow(className, cells(object, tableSchema));
     tr.dataset.object = tableSchema.name;
@@ -85,35 +56,6 @@ function DeletableObjectRow(className, cells) {
     let delCell = DeleteObjectRowButtonCell('del-cell');
     tr.append(delCell);
     return tr;
-}
-
-function HazardRationHeader(className) {
-    return ObjectHeadRow(className, hazardRationColumnSchemas());
-}
-
-function CarcinogenicRiskHeader(className) {
-    return ObjectHeadRow(className, carcinogenicRiskColumnSchemas());
-}
-
-
-function PollutantImpactHeader(className) {
-    return ObjectHeadRow(className, pollutantImpactColumnSchemas());
-}
-
-function OrganHeader(className) {
-    return ObjectHeadRow(className, organColumnSchemas());
-}
-
-function CompanyHeader(className) {
-    return ObjectHeadRow(className, companyColumnSchemas());
-}
-
-function PollutantHeader(className) {
-    return ObjectHeadRow(className, pollutantColumnSchemas());
-}
-
-function PollutionHeader(className) {
-    return ObjectHeadRow(className, pollutionColumnSchemas());
 }
 
 
