@@ -44,12 +44,10 @@ function calculateFineSum(qmi, mi, currentPollutant, kNas, kF){
     return [Ai, Kzi, fineSum];
 }
 
-function getKValues(pollutionList, pollutant, pollutantListLength) {
-    let kNas = 0;
-    let kF = 0;
+function getKValues(pollutionList, pollutant) {
     let pollutionsWithCurrentPollutant =
         pollutionList.filter(e => e.pollutant.pollutantId === pollutant.pollutantId);
-    kNas = pollutionsWithCurrentPollutant[0].company.settlement.factors.populationSizeFactor.factor;
-    kF = pollutionsWithCurrentPollutant[0].company.settlement.factors.settlementTypeFactor.factor;
+    let kNas = pollutionsWithCurrentPollutant[0].company.settlement.factors.populationSizeFactor.factor;
+    let kF = pollutionsWithCurrentPollutant[0].company.settlement.factors.settlementTypeFactor.factor;
     return [kNas, kF];
 }

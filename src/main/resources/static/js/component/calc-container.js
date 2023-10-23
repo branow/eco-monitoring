@@ -2,7 +2,7 @@
 function HealthRiskContainer() {
     let healthCon = document.createElement("div");
     healthCon.className = 'health-risk';
-    let controlRisksDiv= document.createElement("div");;
+    let controlRisksDiv= document.createElement("div");
     controlRisksDiv.append(ControlRiskSelectContainer());
     let resultDiv = document.createElement("div");
     resultDiv.className = "result-div"
