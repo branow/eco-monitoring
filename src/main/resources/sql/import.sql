@@ -18,7 +18,7 @@ load data local infile "src/main/resources/sql/data/settlement_type_factor.txt"
     fields terminated by '\t'
     lines terminated by '\r\n'
     ignore 1 lines
-    (factor_id, factor, settlement_type);
+    (factor_id, settlement_type, factor);
 
 load data local infile "src/main/resources/sql/data/settlement_factors.txt"
     into table settlement_factors
