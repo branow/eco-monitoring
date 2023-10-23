@@ -33,7 +33,8 @@ function calcCarcinogenicRisk(pollutions) {
 
 function getCarcinogenicValues(pollutionList){
     let objectList = [];
-    let pollutantList = [...new Set(pollutionList.map(pollution => pollution.pollutant))];
+    let pollutants = pollutionList.map(pollution => pollution.pollutant);
+    let pollutantList = distinct(pollutants, (p1, p2) => p1.pollutantId === p2.pollutantId);
     for (let i = 0; i < pollutantList.length; i++){
         if (pollutantList[i].sf === 0) continue;
         let crObj = {};
@@ -49,7 +50,6 @@ function getCarcinogenicValues(pollutionList){
         crObj['cr'] = round(concentration * urValue);
         objectList.push(crObj);
     }
-    console.log(objectList);
     return objectList;
 }
 
@@ -57,7 +57,8 @@ function getCarcinogenicValues(pollutionList){
 
 function getNonCarcinogenicValues(pollutionList){
     let objectList = [];
-    let pollutantList = [...new Set(pollutionList.map(pollution => pollution.pollutant))];
+    let pollutants = pollutionList.map(pollution => pollution.pollutant);
+    let pollutantList = distinct(pollutants, (p1, p2) => p1.pollutantId === p2.pollutantId);
     for (let i = 0; i < pollutantList.length; i++){
         if (pollutantList[i].sf !== 0 || pollutantList[i].rfc === 0) continue;
         let ncrObj = {};
@@ -71,7 +72,6 @@ function getNonCarcinogenicValues(pollutionList){
         ncrObj['hq'] = round(concentration / pollutantList[i].rfc);
         objectList.push(ncrObj);
     }
-    console.log(objectList);
     return objectList;
 }
 
@@ -94,7 +94,7 @@ function getAverageValues(pollutions){
     let emissionMassAvg = 0;
     let concentrationAvg = 0;
     let j = 0;
-    for ( ; pollutions.length; j++){
+    for (j in pollutions) {
         emissionMassAvg += pollutions[j].emissionMass;
         concentrationAvg += pollutions[j].concentration;
     }

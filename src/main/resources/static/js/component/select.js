@@ -10,6 +10,7 @@ function YearSelect() {
             let option = new YearOption(years[i]);
             select.append(option);
         }
+        select.append(Option('year-opt', 'all', 'all', true))
     }
     getPollutionsYears(success, throwResponseError);
     return select;

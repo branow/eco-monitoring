@@ -46,7 +46,7 @@ function HazardRatioResultContainer(result) {
     calcRest.className = 'calc-res';
 
     let tabCon = document.createElement("div");
-    tabCon.appendChild(HazardRatioTable(result.table));
+    tabCon.appendChild(ObjectTable(hazardRatioTableSchema(), result.table));
 
     let sumCon = document.createElement("div");
     sumCon.innerText = `Sum (HQ): ${result.hq}`
@@ -78,7 +78,7 @@ function CarcinogenicRiskResultContainer(result) {
 
     if (result.cr) {
         let tabCon = document.createElement("div");
-        tabCon.appendChild(CarcinogenicRiskTable(result.table));
+        tabCon.appendChild(ObjectTable(carcinogenicRiskTableSchema(), result.table));
 
         let sumCon = document.createElement("div");
         sumCon.innerText = `Sum  (RC): ${result.cr}`
