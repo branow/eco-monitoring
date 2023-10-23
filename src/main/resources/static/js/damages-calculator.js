@@ -1,5 +1,15 @@
 
-
+function calcDamages(pollutions) {
+    let table = getPollutionsLosses(pollutions);
+    let sum = 0;
+    for (let i in table) {
+        sum += table[i].fineSum;
+    }
+    return {
+        fineSum: round(sum),
+        table: table,
+    }
+}
 function getPollutionsLosses(pollutionList){
     let objectList = [];
     let pollutants = pollutionList.map(pollution => pollution.pollutant);

@@ -5,7 +5,7 @@ function DamagesCalculateButton(){
         let companyId = div.querySelector("select.comp-select").value;
         let year = div.querySelector("select.year-select").value;
         let success = (pollutions) => {
-            let damagesResult = getPollutionsLosses(pollutions)
+            let damagesResult = calcDamages(pollutions)
 
             let damCon = div.querySelector(".dam-con");
 
