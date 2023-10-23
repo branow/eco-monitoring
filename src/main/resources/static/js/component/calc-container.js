@@ -28,7 +28,7 @@ function ControlRiskSelectContainer(){
     compSelectCon.className = "company-select";
     compSelectCon.appendChild(CompanySelect());
     let yearSelectCon = document.createElement("div");
-    yearSelectCon.appendChild(YearSelect());
+    yearSelectCon.appendChild(YearSelectWithAll());
     yearSelectCon.className = "year-select";
     let butSelectCon = document.createElement("div");
     butSelectCon.appendChild(HealthRiskCalculateButton());

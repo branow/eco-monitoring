@@ -91,27 +91,27 @@ function damageCalculationsColumnSchemas(){
             'pollutant',
         ),
         new ColumnSchema(
-            'Qmi',
+            'Qmi (t/y)',
             'qmi',
         ),
         new ColumnSchema(
-            'Qn',
+            'Qn (t/y)',
             'qn',
         ),
         new ColumnSchema(
-            'Mi',
+            'Mi (t/y)',
             'mi',
         ),
         new ColumnSchema(
-            'Gdk',
+            'Gdk (mg/cub.m)',
             'gdk',
         ),
         new ColumnSchema(
-            'Po',
+            'Po (mg/cub.m)',
             'po',
         ),
         new ColumnSchema(
-            'Ai',
+            'Ai (cub.m/mg)',
             'ai',
         ),
         new ColumnSchema(
@@ -119,7 +119,7 @@ function damageCalculationsColumnSchemas(){
             'kzi',
         ),
         new ColumnSchema(
-            'Fine sum',
+            'Fine sum (k.grn)',
             'fineSum',
         ),
     ];

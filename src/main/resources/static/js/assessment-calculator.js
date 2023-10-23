@@ -111,3 +111,7 @@ function calculateUrForPollution(pollutantSfValue){
 function round(num) {
     return Math.round(num * 100_000) / 100_000
 }
+function roundScope(num, scope) {
+    let value = Math.pow(10, scope);
+    return Math.round(num * value) / value
+}

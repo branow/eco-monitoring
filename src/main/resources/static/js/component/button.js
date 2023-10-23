@@ -10,10 +10,12 @@ function DamagesCalculateButton(){
             let damCon = div.querySelector(".dam-con");
 
             let damResCon = damCon.querySelector(".calc-res-container");
+            damResCon.id = 'result';
             let oldDamRes = damResCon.querySelector(".dam-calc-res");
             if (oldDamRes != null) oldDamRes.remove();
             let newHazRes = DamagesResultContainer(damagesResult);
             damResCon.append(newHazRes);
+            location.href = '#result'
         }
 
         getPollutionsByCompanyIdAndYear(companyId, year, success, throwResponseError)

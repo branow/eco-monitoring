@@ -1,4 +1,22 @@
+
 function YearSelect() {
+    let onchange = (event) => {
+        let div = event.target.closest('div.cntrl');
+        let button = div.querySelector('button');
+        button.click();
+    }
+    let select = Select('year-select', [], onchange)
+    let success = (years) => {
+        for (let i in years) {
+            let option = new YearOption(years[i]);
+            select.append(option);
+        }
+    }
+    getPollutionsYears(success, throwResponseError);
+    return select;
+}
+
+function YearSelectWithAll() {
     let onchange = (event) => {
         let div = event.target.closest('div.cntrl');
         let button = div.querySelector('button');
