@@ -60,10 +60,18 @@
 
 /*----------------TABLE-----------------*/
 
+.tab-label {
+    color: #222222;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    margin: auto;
+}
+
 .tab {
     border-collapse: collapse;
     color: #222222;
-    margin: 5vh 0;
+    margin: 2vh auto;
     font-size: 18px;
 }
 

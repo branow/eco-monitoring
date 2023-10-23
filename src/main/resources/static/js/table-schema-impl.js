@@ -30,35 +30,55 @@ function tableSchemas() {
         organTableSchema(),
         hazardRatioTableSchema(),
         carcinogenicRiskTableSchema(),
+        settlementTableSchema(),
+        settlementFactorsTableSchema(),
+        settlementTypeFactorTableSchema(),
+        populationSizeFactorTableSchema(),
     ];
 }
 
 function hazardRatioTableSchema() {
-    return new TableSchema('hazard-ratio', hazardRationColumnSchemas());
+    return new TableSchema('Hazard Ratio', 'hazard-ratio', hazardRationColumnSchemas(), false);
 }
 
 function carcinogenicRiskTableSchema() {
-    return new TableSchema('carcinogenic-risk', carcinogenicRiskColumnSchemas());
+    return new TableSchema('Carcinogenic Risk', 'carcinogenic-risk', carcinogenicRiskColumnSchemas(), false);
 }
 
 function pollutantImpactTableSchema() {
-    return new TableSchema('pollutant-impact', pollutantImpactColumnSchemas());
+    return new TableSchema('Pollutant Impact','pollutant-impact', pollutantImpactColumnSchemas(), true);
 }
 
 function organTableSchema() {
-    return new TableSchema('organ', organColumnSchemas());
+    return new TableSchema('Critical Organ/System','organ', organColumnSchemas(), true);
 }
 
 function pollutionTableSchema() {
-    return new TableSchema('pollution', pollutionColumnSchemas());
+    return new TableSchema('Pollution', 'pollution', pollutionColumnSchemas(), true);
 }
 
 function pollutantTableSchema() {
-    return new TableSchema('pollutant', pollutantColumnSchemas());
+    return new TableSchema('Pollutant','pollutant', pollutantColumnSchemas(), true);
 }
 
 function companyTableSchema() {
-    return new TableSchema('company', companyColumnSchemas());
+    return new TableSchema('Company','company', companyColumnSchemas(), true);
+}
+
+function settlementTableSchema() {
+    return new TableSchema("Settlement","settlement", settlementColumnSchemas(), true);
+}
+
+function settlementFactorsTableSchema() {
+    return new TableSchema("Settlement Factors","settlement-factors", settlementFactorsColumnSchemas(), true);
+}
+
+function populationSizeFactorTableSchema() {
+    return new TableSchema("Population Size Factor","population-size-factor", populationSizeFactorColumnSchemas(), true);
+}
+
+function settlementTypeFactorTableSchema() {
+    return new TableSchema("Settlement Type Factor","settlement-type-factor", settlementTypeFactorColumnSchemas(), true);
 }
 
 
@@ -69,19 +89,19 @@ function carcinogenicRiskColumnSchemas() {
             'pollutant',
             ),
         new ColumnSchema(
-            'Emission Mass',
+            'Emission Mass (t/y)',
             'emissionMass',
             ),
         new ColumnSchema(
-            'Concentration',
+            'Concentration (mg/cub.m)',
             'concentration',
             ),
         new ColumnSchema(
-            'SF',
+            'SF (mg/(kg*d)^-1)',
             'sf',
             ),
         new ColumnSchema(
-            'UR',
+            'UR (cub.m/mg)',
             'ur',
             ),
         new ColumnSchema(
@@ -98,11 +118,11 @@ function hazardRationColumnSchemas() {
             'pollutant',
             ),
         new ColumnSchema(
-            'Emission Mass',
+            'Emission Mass (t/y)',
             'emissionMass',
             ),
         new ColumnSchema(
-            'Concentration',
+            'Concentration (mg/cub.m)',
             'concentration',
             ),
         new ColumnSchema(
@@ -119,20 +139,16 @@ function hazardRationColumnSchemas() {
 function pollutantImpactColumnSchemas() {
     return [
         new ColumnSchema(
-            'Pollutant Impact Id',
-            'pollutantImpactId'
-            ),
-        new ColumnSchema(
             'Pollutant',
             'pollutant',
-            true,
-            new Joint('pollutantId', 'pollutantName')
+                true,
+                new Joint('pollutantId', 'pollutantName'),
             ),
         new ColumnSchema(
             'Organ/System',
             'organ',
             true,
-            new Joint('organId', 'organName')
+                new Joint('organId', 'organName'),
             ),
     ];
 }
@@ -172,14 +188,14 @@ function pollutionColumnSchemas() {
             new Joint('pollutantId', 'pollutantName')
             ),
         new ColumnSchema(
-            'Emission Mass',
+            'Emission Mass (t/y)',
             'emissionMass',
             true,
             null,
             new ValidatorNotEmptyNotNegativeDouble('Emission Mass')
             ),
         new ColumnSchema(
-            'Concentration',
+            'Concentration (mg/cub.m)',
             'concentration',
             true,
             null,
@@ -209,28 +225,28 @@ function pollutantColumnSchemas() {
             new ValidatorNotEmpty('Pollutant Name')
             ),
         new ColumnSchema(
-            'Mass Consumption',
+            'Mass Consumption (t/y)',
             'massConsumption',
             true,
             null,
             new ValidatorNotEmptyNotNegativeDouble('Mass Consumption'),
             ),
         new ColumnSchema(
-            'GDK',
+            'GDK (mg/cub.m)',
             'gdk',
             true,
             null,
             new ValidatorNotEmptyNotNegativeDouble('GDK'),
             ),
         new ColumnSchema(
-            'RFC',
+            'RFC (mg/cub.m)',
             'rfc',
             true,
             null,
             new ValidatorNotNegativeDouble('RFC'),
             ),
         new ColumnSchema(
-            'SF',
+            'SF (mg/(kg*d)^-1)',
             'sf',
             true,
             null,
@@ -268,6 +284,12 @@ function companyColumnSchemas() {
             true
             ),
         new ColumnSchema(
+            'Settlement',
+            'settlement',
+            true,
+            new Joint('settlementId', 'settlementName')
+            ),
+        new ColumnSchema(
             'Address',
             'address',
             true
@@ -275,6 +297,100 @@ function companyColumnSchemas() {
     ];
 }
 
+function settlementColumnSchemas() {
+    return [
+        new ColumnSchema(
+            'Settlement Id',
+            'settlementId',
+            ),
+        new ColumnSchema(
+            'Settlement Name',
+            'settlementName',
+            true,
+            null,
+            new ValidatorNotEmpty('Company Name')
+            ),
+        new ColumnSchema(
+            'settlement Type',
+            'settlementType',
+            true,
+            ),
+    ];
+}
+
+function settlementFactorsColumnSchemas() {
+    return [
+        new ColumnSchema(
+            'Settlement Id',
+            'settlementId',
+            ),
+        new ColumnSchema(
+            'Population Size Factor',
+            'populationSizeFactor',
+            true,
+            new Joint("factorId", "factor"),
+            ),
+        new ColumnSchema(
+            'Settlement Type Factor',
+            'settlementTypeFactor',
+            true,
+            new Joint("factorId", "factor"),
+            ),
+    ];
+}
+
+function settlementTypeFactorColumnSchemas() {
+    return [
+        new ColumnSchema(
+            'Factor Id',
+            'factorId',
+            ),
+        new ColumnSchema(
+            'Factor',
+            'factor',
+            true,
+            null,
+            new ValidatorNotEmptyNotNegativeDouble('Factor')
+            ),
+        new ColumnSchema(
+            'Settlement Type',
+            'settlementType',
+            true,
+            null,
+            new ValidatorNotEmpty('Settlement Type'),
+            ),
+    ];
+}
+
+function populationSizeFactorColumnSchemas() {
+    return [
+        new ColumnSchema(
+            'Factor Id',
+            'factorId',
+            ),
+        new ColumnSchema(
+            'Factor',
+            'factor',
+            true,
+            null,
+            new ValidatorNotEmptyNotNegativeDouble('Factor')
+            ),
+        new ColumnSchema(
+            'Min Size (k)',
+            'minSize',
+            true,
+            null,
+            new ValidatorNotEmptyNotNegativeInteger('Min Size'),
+            ),
+        new ColumnSchema(
+            'Max Size (k)',
+            'maxSize',
+            true,
+            null,
+            new ValidatorNotEmptyNotNegativeInteger('Max Size')
+            ),
+    ];
+}
 
 
 

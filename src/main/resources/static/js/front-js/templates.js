@@ -19,11 +19,15 @@ class MyHeader extends HTMLElement {
         <div class="dropdown">
          <button class="dropbtn">Atmospheric air</button>
             <div class="dropdown-content">
-                <a href="/atmosphere-page?tables=companies">Companies</a>
-                <a href="/atmosphere-page?tables=pollutants">Pollutants</a>
-                <a href="/atmosphere-page?tables=pollutions" >Pollutions</a>
+                <a href="/atmosphere-page?tables=company">Companies</a>
+                <a href="/atmosphere-page?tables=pollutant">Pollutants</a>
+                <a href="/atmosphere-page?tables=pollution" >Pollutions</a>
                 <a href="/atmosphere-page?tables=organ">Organs</a>
                 <a href="/atmosphere-page?tables=pollutant-impact" >Pollutants impact</a>
+                <a href="/atmosphere-page?tables=settlement">Settlement</a>
+                <a href="/atmosphere-page?tables=settlement-factors" >Settlement Factors</a>
+                <a href="/atmosphere-page?tables=settlement-type-factor">Settlement Type Factor</a>
+                <a href="/atmosphere-page?tables=population-size-factor" >Population Type Factor</a>
             </div>
         </div>
    

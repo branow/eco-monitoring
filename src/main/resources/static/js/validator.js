@@ -20,6 +20,10 @@ function ValidatorNotEmptyInteger(name) {
     return new Validator(name, [notEmptyCondition(), isInteger()]);
 }
 
+function ValidatorNotEmptyNotNegativeInteger(name) {
+    return new Validator(name, [notEmptyCondition(), isInteger(), notNegative()]);
+}
+
 function ValidatorNotEmptyIntegerInScope(name, min, max) {
     return new Validator(name, [notEmptyCondition(), isInteger(), isInScope(min, max)]);
 }
