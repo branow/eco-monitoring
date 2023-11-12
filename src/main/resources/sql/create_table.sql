@@ -100,3 +100,30 @@ create table pollutant_impact (
         on delete cascade
 );
 
+
+create table pollutant_tax_rate (
+    pollutant int primary key,
+    tax double(10, 2) not null,
+    constraint fk_pollutant_pollutant_tax_rate
+        foreign key (pollutant)
+        references pollutant(pollutant_id)
+        on update cascade
+        on delete cascade
+);
+
+
+create table pollutant_class_tax_rate (
+    hazard_class int primary key,
+    tax double(10, 2) not null
+);
+
+
+create table pollutant_gdk_tax_rate (
+    tax_id int primary key,
+    gdk_min double(12, 5) not null,
+    gdk_max double(12, 5) not null,
+    tax double(10, 2) not null
+);
+
+
+

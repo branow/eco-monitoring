@@ -62,3 +62,27 @@ load data local infile "src/main/resources/sql/data/pollutant_impact.txt"
     ignore 1 lines
     (pollutant, organ);
 
+load data local infile 'src/main/resources/sql/data/pollutant_tax_rate.csv'
+    into table pollutant_tax_rate
+    fields terminated by ';'
+    optionally enclosed by '"'
+    lines terminated by '\r\n'
+    ignore 1 lines
+    (pollutant, tax);
+
+load data local infile 'src/main/resources/sql/data/pollutant_class_tax_rate.csv'
+    into table pollutant_class_tax_rate
+    fields terminated by ';'
+    optionally enclosed by '"'
+    lines terminated by '\r\n'
+    ignore 1 lines
+    (hazard_class, tax);
+
+load data local infile 'src/main/resources/sql/data/pollutant_gdk_tax_rate.csv'
+    into table pollutant_gdk_tax_rate
+    fields terminated by ';'
+    optionally enclosed by '"'
+    lines terminated by '\r\n'
+    ignore 1 lines
+    (tax_id, gdk_min, gdk_max, tax);
+
