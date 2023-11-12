@@ -34,9 +34,6 @@ public class DefaultController {
         return new ModelAndView("taxes-page");
     }
 
-    @GetMapping("/test")
-    public ModelAndView indexTest() {
-        return new ModelAndView("test");
-    }
+
 
 }
