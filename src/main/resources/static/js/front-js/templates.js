@@ -29,6 +29,9 @@ class MyHeader extends HTMLElement {
                 <a href="/atmosphere-page?tables=settlement-factors" >Settlement Factors</a>
                 <a href="/atmosphere-page?tables=settlement-type-factor">Settlement Type Factor</a>
                 <a href="/atmosphere-page?tables=population-size-factor" >Population Type Factor</a>
+                <a href="/atmosphere-page?tables=pollutant-tax-rate" >Pollutant Tax Rate</a>
+                <a href="/atmosphere-page?tables=pollutant-class-tax-rate" >Pollutant Class Tax Rate</a>
+                <a href="/atmosphere-page?tables=pollutant-gdk-tax-rate" >Pollutant Gdk Tax Rate</a>
             </div>
         </div>
    

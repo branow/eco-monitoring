@@ -28,17 +28,17 @@ function updateObjectOfRowConnected(row, success) {
 
 
 function findAllByObject(tableName, success) {
-    findRequester(tableName).findAll(success, throwResponseError);
+    buildCRUDRequester(tableName).findAll(success, throwResponseError);
 }
 
 function addObject(object, tableName, success) {
-    findRequester(tableName).add(object, success, throwResponseError);
+    buildCRUDRequester(tableName).add(object, success, throwResponseError);
 }
 
 function updateObject(object, tableName, success, error) {
-    findRequester(tableName).save(object, success, throwResponseError);
+    buildCRUDRequester(tableName).save(object, success, throwResponseError);
 }
 
 function deleteObject(id, tableName, success, error) {
-    findRequester(tableName).delete(id, success, throwResponseError);
+    buildCRUDRequester(tableName).delete(id, success, throwResponseError);
 }

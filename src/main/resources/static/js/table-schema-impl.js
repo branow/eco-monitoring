@@ -34,6 +34,9 @@ function tableSchemas() {
         settlementFactorsTableSchema(),
         settlementTypeFactorTableSchema(),
         populationSizeFactorTableSchema(),
+        pollutantTaxRateTableSchema(),
+        pollutantClassTaxRateTableSchema(),
+        pollutantGdkTaxRateTableSchema(),
     ];
 }
 
@@ -82,6 +85,18 @@ function populationSizeFactorTableSchema() {
 
 function settlementTypeFactorTableSchema() {
     return new TableSchema("Settlement Type Factor","settlement-type-factor", settlementTypeFactorColumnSchemas(), true);
+}
+
+function pollutantTaxRateTableSchema() {
+    return new TableSchema("Pollutant Tax Rate","pollutant-tax-rate", pollutantTaxRateColumnSchemas(), true);
+}
+
+function pollutantClassTaxRateTableSchema() {
+    return new TableSchema("Pollutant Class Tax Rate","pollutant-class-tax-rate", pollutantClassTaxRateColumnSchemas(), true);
+}
+
+function pollutantGdkTaxRateTableSchema() {
+    return new TableSchema("Pollutant Gdk Tax Rate","pollutant-gdk-tax-rate", pollutantGdkTaxRateColumnSchemas(), true);
 }
 
 function damageCalculationsColumnSchemas(){
@@ -435,9 +450,69 @@ function populationSizeFactorColumnSchemas() {
 }
 
 
+function pollutantTaxRateColumnSchemas() {
+    return [
+        new ColumnSchema(
+            'Pollutant Id',
+            'pollutant',
+            ),
+        new ColumnSchema(
+            'Tax Rate (grn)',
+            'tax',
+            true,
+            null,
+            new ValidatorNotEmptyNotNegativeDouble('Tax Rate')
+            ),
+    ];
+}
 
 
+function pollutantClassTaxRateColumnSchemas() {
+    return [
+        new ColumnSchema(
+            'Pollutant Hazard Class',
+            'hazardClass',
+            ),
+        new ColumnSchema(
+            'Tax Rate (grn)',
+            'tax',
+            true,
+            null,
+            new ValidatorNotEmptyNotNegativeDouble('Tax Rate')
+            ),
+    ];
+}
 
+
+function pollutantGdkTaxRateColumnSchemas() {
+    return [
+        new ColumnSchema(
+            'Tax Id',
+            'taxId',
+            ),
+        new ColumnSchema(
+            'Gdk min (mg/cub.m)',
+            'gdkMin',
+            true,
+            null,
+            new ValidatorNotEmptyNotNegativeDouble('Gdk min')
+            ),
+        new ColumnSchema(
+            'Gdk max (mg/cub.m)',
+            'gdkMax',
+            true,
+            null,
+            new ValidatorNotEmptyNotNegativeDouble('Gdk max')
+            ),
+        new ColumnSchema(
+            'Tax Rate (grn)',
+            'tax',
+            true,
+            null,
+            new ValidatorNotEmptyNotNegativeDouble('Tax Rate')
+            ),
+    ];
+}
 
 
 

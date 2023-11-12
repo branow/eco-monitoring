@@ -1,5 +1,5 @@
 
-function findRequester(tableName) {
+function buildCRUDRequester(tableName) {
     return new RequesterCRUD(tableName);
 }
 
