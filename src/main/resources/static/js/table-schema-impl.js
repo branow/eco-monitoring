@@ -99,6 +99,10 @@ function pollutantGdkTaxRateTableSchema() {
     return new TableSchema("Pollutant Gdk Tax Rate","pollutant-gdk-tax-rate", pollutantGdkTaxRateColumnSchemas(), true);
 }
 
+function pollutantTaxTableSchema() {
+    return new TableSchema("Pollutant Tax","pollutant-tax", pollutantTaxColumnSchemas());
+}
+
 function damageCalculationsColumnSchemas(){
     return [
         new ColumnSchema(
@@ -510,6 +514,27 @@ function pollutantGdkTaxRateColumnSchemas() {
             true,
             null,
             new ValidatorNotEmptyNotNegativeDouble('Tax Rate')
+            ),
+    ];
+}
+
+function pollutantTaxColumnSchemas() {
+    return [
+        new ColumnSchema(
+            'Pollutant Name',
+            'pollutantName',
+            ),
+        new ColumnSchema(
+            'Emission Mass (t/year)',
+            'emissionMass',
+            ),
+        new ColumnSchema(
+            'Tax Rate (grn/t)',
+            'taxRate',
+            ),
+        new ColumnSchema(
+            'Tax',
+            'tax',
             ),
     ];
 }

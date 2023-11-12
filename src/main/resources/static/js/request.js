@@ -4,7 +4,16 @@ function buildCRUDRequester(tableName) {
 }
 
 
-
+function getCompanyTax(companyId, year, success, error) {
+    $.ajax(
+        {
+            method: 'GET',
+            url: `http://localhost:8080/tax-calculator/${companyId}/${year}`,
+            success: success,
+            error: error
+        }
+        )
+}
 
 function getPollutionsYears(success, error) {
     $.ajax(

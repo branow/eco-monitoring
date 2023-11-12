@@ -1,4 +1,19 @@
 
+function TaxCalculateButton(){
+    let onclick = (event) => {
+        let div = event.target.closest('.tax-con');
+        let companyId = div.querySelector("select.comp-select").value;
+        let year = div.querySelector("select.year-select").value;
+        let success = (companyTax) => {
+            ///set result
+            location.href = '#result'
+        }
+
+        getCompanyTax(companyId, year, success, throwResponseError);
+    }
+    return new Button("calc", "calculate", onclick);
+}
+
 function DamagesCalculateButton(){
     let onclick = (event) => {
         let div = event.target.closest('.damages-con');
