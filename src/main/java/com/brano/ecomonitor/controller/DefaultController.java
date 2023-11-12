@@ -29,6 +29,10 @@ public class DefaultController {
     public ModelAndView indexDamagesCalculations() {
         return new ModelAndView("damages-calculations-page");
     }
+    @GetMapping("/taxes-page")
+    public ModelAndView indexTaxes() {
+        return new ModelAndView("taxes-page");
+    }
 
     @GetMapping("/test")
     public ModelAndView indexTest() {

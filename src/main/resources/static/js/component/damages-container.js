@@ -3,7 +3,7 @@ function DamagesContainer() {
     let damageCon = document.createElement("div");
     damageCon.className = 'damages-con';
     let controlDamagesDiv= document.createElement("div");
-    controlDamagesDiv.append(ControlDamagesSelectContainer());
+    controlDamagesDiv.append(ControlSelectContainer(DamagesCalculateButton()));
 
     let resultDiv = document.createElement("div");
     resultDiv.className = "result-div"
@@ -22,29 +22,6 @@ function DamagesContainer() {
     damageCon.appendChild(resultDiv);
     return damageCon;
 }
-
-function ControlDamagesSelectContainer(){
-    let selectWrapper = document.createElement("div");
-    selectWrapper.className = "selectors-section-div";
-    let compSelectCon = document.createElement("div");
-    compSelectCon.className = "company-select";
-    compSelectCon.appendChild(CompanySelect());
-    let yearSelectCon = document.createElement("div");
-    yearSelectCon.appendChild(YearSelect());
-    yearSelectCon.className = "year-select";
-    let butSelectCon = document.createElement("div");
-    butSelectCon.appendChild(DamagesCalculateButton());
-    butSelectCon.className = "button-select";
-
-    let controlDiv = document.createElement("div");
-    controlDiv.className = 'cntrl';
-    selectWrapper.append(compSelectCon);
-    selectWrapper.append(yearSelectCon);
-    selectWrapper.append(butSelectCon);
-    controlDiv.append(selectWrapper);
-    return controlDiv;
-}
-
 
 function FormulasContainer() {
     let div = document.createElement("div");

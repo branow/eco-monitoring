@@ -13,6 +13,7 @@ class MyHeader extends HTMLElement {
         <div class="header-right">
         
         <div class="health-risk-nav-div">
+            <a class="taxes-btn" href="/taxes-page">Taxes</a>
             <a class="damages-btn" href="/damages-calculations-page">Damages calculations</a>
             <a class="health-btn" href="/health-risk-page">Health risk</a>
         </div>

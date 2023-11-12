@@ -184,7 +184,7 @@ input, select {
     z-index: 5;
 }
 
-.dropbtn, .health-btn, .damages-btn {
+.dropbtn, .health-btn, .damages-btn, .taxes-btn {
     background-color: inherit;
     font-family: 'Inter', sans-serif;
     color: white;
@@ -193,7 +193,7 @@ input, select {
     border: none;
 }
 
-.dropbtn:hover, .health-btn:hover, .damages-btn:hover {
+.dropbtn:hover, .health-btn:hover, .damages-btn:hover, .taxes-btn:hover {
     background: #227056;
 }
 

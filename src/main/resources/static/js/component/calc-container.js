@@ -3,7 +3,7 @@ function HealthRiskContainer() {
     let healthCon = document.createElement("div");
     healthCon.className = 'health-risk';
     let controlRisksDiv= document.createElement("div");
-    controlRisksDiv.append(ControlRiskSelectContainer());
+    controlRisksDiv.append(ControlSelectContainer(HealthRiskCalculateButton()));
     let resultDiv = document.createElement("div");
     resultDiv.className = "result-div"
     resultDiv.innerHTML = `
@@ -21,17 +21,17 @@ function HealthRiskContainer() {
     return healthCon;
 }
 
-function ControlRiskSelectContainer(){
+function ControlSelectContainer(button){
     let selectWrapper = document.createElement("div");
     selectWrapper.className = "selectors-section-div";
     let compSelectCon = document.createElement("div");
     compSelectCon.className = "company-select";
     compSelectCon.appendChild(CompanySelect());
     let yearSelectCon = document.createElement("div");
-    yearSelectCon.appendChild(YearSelectWithAll());
+    yearSelectCon.appendChild(YearSelect());
     yearSelectCon.className = "year-select";
     let butSelectCon = document.createElement("div");
-    butSelectCon.appendChild(HealthRiskCalculateButton());
+    butSelectCon.appendChild(button);
     butSelectCon.className = "button-select";
 
     let controlDiv = document.createElement("div");

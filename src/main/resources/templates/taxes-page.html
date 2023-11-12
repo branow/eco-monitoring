@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Taxes</title>
+    <script type="text/javascript" src="/js/component/image.js"></script>
+    <script type="text/javascript" src="/js/component/button.js"></script>
+    <script type="text/javascript" src="/js/component/table-data-cell.js"></script>
+    <script type="text/javascript" src="/js/component/input.js"></script>
+    <script type="text/javascript" src="/js/component/option.js"></script>
+    <script type="text/javascript" src="/js/component/table-row.js"></script>
+    <script type="text/javascript" src="/js/component/table-header-cell.js"></script>
+    <script type="text/javascript" src="/js/component/select.js"></script>
+    <script type="text/javascript" src="/js/component/table-body.js"></script>
+    <script type="text/javascript" src="/js/component/table-head.js"></script>
+    <script type="text/javascript" src="/js/component/table-foot.js"></script>
+    <script type="text/javascript" src="/js/component/table.js"></script>
+    <script type="text/javascript" src="/js/component/table-container.js"></script>
+    <script type="text/javascript" src="/js/validator.js"></script>
+    <script type="text/javascript" src="/js/error.js"></script>
+    <script type="text/javascript" src="/js/show-add-table-cntrl.js"></script>
+    <script type="text/javascript" src="/js/table-reader.js"></script>
+    <script type="text/javascript" src="/js/table-schema.js"></script>
+    <script type="text/javascript" src="/js/table-schema-impl.js"></script>
+    <script type="text/javascript" src="/js/request.js"></script>
+    <script type="text/javascript" src="/js/data-operation.js"></script>
+    <script type="text/javascript" src="/js/component/calc-container.js"></script>
+    <script type="text/javascript" src="/js/component/damages-container.js"></script>
+    <script type="text/javascript" src="/js/component/taxes-container.js"></script>
+    <script type="text/javascript" src="/js/assessment-calculator.js"></script>
+    <script type="text/javascript" src="/js/damages-calculator.js"></script>
+    <script type="text/javascript" src="/js/util.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/atmosphere-page-styles.css"/>
+    <link rel="stylesheet" href="/css/main-page-styles.css"/>
+    <link rel="stylesheet" href="/css/health-risk-page-styles.css"/>
+    <link rel="stylesheet" href="/css/damage-calculation-style.css"/>
+
+</head>
+<body>
+<my-header></my-header>
+<section class="selectors-section">
+    <div class="selectors-text">
+        <span>Select a company and a year to view calculations of taxes for emissions of polluting substances into the atmosphere by stationary sources of pollution</span>
+    </div>
+    <script>
+        const ChosenTableWrapper = document.querySelector('.selectors-section');
+        ChosenTableWrapper.appendChild(TaxesContainer());
+    </script>
+
+</section>
+
+<script src="/js/front-js/templates.js"></script>
+</body>
+</html>

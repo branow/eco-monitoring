@@ -1,11 +1,29 @@
 
 function TaxCalculateButton(){
     let onclick = (event) => {
-        let div = event.target.closest('.tax-con');
+        let div = event.target.closest('.taxes-con');
         let companyId = div.querySelector("select.comp-select").value;
         let year = div.querySelector("select.year-select").value;
         let success = (companyTax) => {
-            ///set result
+            let taxesResult = {
+                table : {
+                    pollutantName: companyTax.pollutantName,
+                    emissionMass:  companyTax.emissionMass,
+                    taxRate: companyTax.taxRate,
+                    tax: companyTax.tax,
+                },
+                sumTax : companyTax.sumTax,
+            };
+
+            let taxCon = div.querySelector(".tax-con");
+
+            let taxResCon = taxCon.querySelector(".tax-res-container");
+            taxResCon.id = 'result';
+            let oldTaxRes = taxResCon.querySelector(".tax-calc-res");
+            if (oldTaxRes != null) oldTaxRes.remove();
+            let newTaxRes = TaxesResultContainer(taxesResult);
+            taxResCon.append(newTaxRes);
+
             location.href = '#result'
         }
 
