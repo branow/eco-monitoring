@@ -10,23 +10,24 @@ import org.springframework.web.bind.annotation.*;
 import static com.brano.ecomonitor.controller.response.ResponseWrapper.wrap;
 
 @RequiredArgsConstructor
+@RequestMapping("/organ")
 @RestController
 public class CriticalOrganController {
 
     private final CriticalOrganService criticalOrganService;
 
 
-    @GetMapping("/organ")
+    @GetMapping("")
     public ResponseEntity<?> get() {
         return wrap(criticalOrganService::findDtoAll, HttpStatus.OK);
     }
 
-    @PostMapping("/organ")
+    @PostMapping("")
     public ResponseEntity<?> save(@RequestBody OrganDto organ) {
         return wrap(() -> criticalOrganService.save(organ), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/organ")
+    @DeleteMapping("")
     public ResponseEntity<?> delete(@RequestParam String id) {
         return wrap(() -> {
             criticalOrganService.deleteById(Integer.parseInt(id));

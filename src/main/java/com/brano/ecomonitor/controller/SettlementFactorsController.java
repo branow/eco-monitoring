@@ -12,23 +12,24 @@ import org.springframework.web.bind.annotation.*;
 import static com.brano.ecomonitor.controller.response.ResponseWrapper.wrap;
 
 @RequiredArgsConstructor
+@RequestMapping("/settlement-factors")
 @RestController
 public class SettlementFactorsController {
 
     private final SettlementFactorsService service;
 
 
-    @GetMapping("/settlement-factors")
+    @GetMapping()
     public ResponseEntity<?> get() {
         return wrap(service::findDtoAll, HttpStatus.OK);
     }
 
-    @PostMapping("/settlement-factors")
+    @PostMapping()
     public ResponseEntity<?> save(@RequestBody SettlementFactorsPostDto dto) {
         return wrap(() -> service.save(dto), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/settlement-factors")
+    @DeleteMapping()
     public ResponseEntity<?> delete(@RequestParam String id) {
         return wrap(() -> {
             service.deleteById(Integer.parseInt(id));

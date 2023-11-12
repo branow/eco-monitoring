@@ -10,23 +10,24 @@ import org.springframework.web.bind.annotation.*;
 import static com.brano.ecomonitor.controller.response.ResponseWrapper.wrap;
 
 @RequiredArgsConstructor
+@RequestMapping("/pollutant-impact")
 @RestController
 public class PollutantImpactController {
 
     private final PollutantImpactService pollutantImpactService;
 
 
-    @GetMapping("/pollutant-impact")
+    @GetMapping("")
     public ResponseEntity<?> get() {
         return wrap(pollutantImpactService::findAll, HttpStatus.OK);
     }
 
-    @PostMapping("/pollutant-impact")
+    @PostMapping("")
     public ResponseEntity<?> save(@RequestBody PollutantImpactPostDto dto) {
         return wrap(() -> pollutantImpactService.save(dto), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/pollutant-impact")
+    @DeleteMapping("")
     public ResponseEntity<?> delete(@RequestParam String id) {
         return wrap(() -> {
             pollutantImpactService.deleteById(Integer.parseInt(id));

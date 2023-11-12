@@ -12,23 +12,24 @@ import org.springframework.web.bind.annotation.*;
 import static com.brano.ecomonitor.controller.response.ResponseWrapper.wrap;
 
 @RequiredArgsConstructor
+@RequestMapping("/population-size-factor")
 @RestController
 public class PopulationSizeFactorController {
 
     private final PopulationSizeFactorService service;
 
 
-    @GetMapping("/population-size-factor")
+    @GetMapping()
     public ResponseEntity<?> get() {
         return wrap(service::findDtoAll, HttpStatus.OK);
     }
 
-    @PostMapping("/population-size-factor")
+    @PostMapping()
     public ResponseEntity<?> save(@RequestBody PopulationSizeFactorDto dto) {
         return wrap(() -> service.save(dto), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/population-size-factor")
+    @DeleteMapping()
     public ResponseEntity<?> delete(@RequestParam String id) {
         return wrap(() -> {
             service.deleteById(Integer.parseInt(id));
