@@ -20,7 +20,7 @@ public class TaxCalculatorController {
 
 
     @GetMapping("/{companyId}/{year}")
-    public ResponseEntity<?> calculate(@PathVariable Integer companyId, Integer year) {
+    public ResponseEntity<?> calculate(@PathVariable Integer companyId, @PathVariable Integer year) {
         return wrap(() -> taxCalculatorService.calculateTax(companyId, year), HttpStatus.OK);
     }
 

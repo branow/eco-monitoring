@@ -533,7 +533,7 @@ function pollutantTaxColumnSchemas() {
             'taxRate',
             ),
         new ColumnSchema(
-            'Tax',
+            'Tax (k.grn)',
             'tax',
             ),
     ];

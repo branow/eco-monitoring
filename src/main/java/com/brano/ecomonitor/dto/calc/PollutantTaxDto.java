@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class PollutantTaxDto {
 
     private String pollutantName;
-    private double emissionMas;
+    private double emissionMass;
     private double taxRate;
     private double tax;
 

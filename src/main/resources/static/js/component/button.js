@@ -6,18 +6,13 @@ function TaxCalculateButton(){
         let year = div.querySelector("select.year-select").value;
         let success = (companyTax) => {
             let taxesResult = {
-                table : {
-                    pollutantName: companyTax.pollutantName,
-                    emissionMass:  companyTax.emissionMass,
-                    taxRate: companyTax.taxRate,
-                    tax: companyTax.tax,
-                },
+                pollutantTaxes : companyTax.pollutantTaxes,
                 sumTax : companyTax.sumTax,
             };
 
             let taxCon = div.querySelector(".tax-con");
 
-            let taxResCon = taxCon.querySelector(".tax-res-container");
+            let taxResCon = taxCon.querySelector(".calc-res-container");
             taxResCon.id = 'result';
             let oldTaxRes = taxResCon.querySelector(".tax-calc-res");
             if (oldTaxRes != null) oldTaxRes.remove();

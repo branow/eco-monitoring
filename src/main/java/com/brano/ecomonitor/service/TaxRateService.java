@@ -29,7 +29,7 @@ public class TaxRateService {
         Optional<PollutantClassTaxRate> pollutantClassTaxRate =
                 pollutantClassTaxRateRepository.findById(pollutant.getHazardClass());
         if (pollutantClassTaxRate.isPresent()) {
-            return pollutantTaxRate.get().getTax();
+            return pollutantClassTaxRate.get().getTax();
         }
         Optional<PollutantGdkTaxRate> pollutantGdkTaxRate = pollutantGdkTaxRateRepository.findByGdk(pollutant.getGdk());
         return pollutantGdkTaxRate

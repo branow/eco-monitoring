@@ -11,7 +11,7 @@ function TaxesContainer() {
 
 
     let calcTaxesContainer = document.createElement('div');
-    calcTaxesContainer.className = 'tax-res-container';
+    calcTaxesContainer.className = 'calc-res-container';
     taxCon.appendChild(TaxesFormulasContainer());
     taxCon.appendChild(calcTaxesContainer);
 
@@ -31,15 +31,18 @@ function TaxesFormulasContainer() {
                 Розмір податку розраховується за наступною формулою:
             </p>
             <p class="formula">
-                Emission Mass (t/year) * Tax Rate (grn/t)
+                П<sub>р</sub> = В<sub>р</sub> * СП
             </p>
             <p class="param">
-                де Tax Rate (grn/t) - Ставка податку, гривень за 1 тонну, береться із таблиці Pollutant Tax Rate, 
-                якщо в цій таблиці дані відсутні, то із таблиці Pollutant Class Tax Rate, якщо і в цій таблиці даних немає,
-                то із таблиці Pollutant Gdk Tax Rate.
+                В<sub>р</sub> - маса викидів речовини на рік, т/р;
             </p>
             <p class="param">
-                Результат отриманий в тис. грн.
+                де СП - ставка податку, гривень за 1 тонну, шукається у таблиці за найменуванням речовини,
+                у разі відсутності, за класом небезпеки речовини, у разі відсутності занчення класу небезпеки,
+                за гранично допустипою конценрацією (ГДК) речовини.
+            </p>
+            <p class="param">
+                П<sub>р</sub> - сума податку в тис. грн на рік.
             </p>
         </div>
     `;
@@ -51,7 +54,7 @@ function TaxesResultContainer(result) {
     taxCalcRes.className = 'tax-calc-res';
 
     let tabTaxes = document.createElement("div");
-    tabTaxes.appendChild(ObjectTable(pollutantTaxTableSchema(), result.table));
+    tabTaxes.appendChild(ObjectTable(pollutantTaxTableSchema(), result.pollutantTaxes));
 
     let sumTax = document.createElement("div");
     sumTax.innerText = `Загальний розмір розрахованих податків: ${result.sumTax} тис.грн`
