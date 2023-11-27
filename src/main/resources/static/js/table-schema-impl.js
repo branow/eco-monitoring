@@ -37,12 +37,18 @@ function tableSchemas() {
         pollutantTaxRateTableSchema(),
         pollutantClassTaxRateTableSchema(),
         pollutantGdkTaxRateTableSchema(),
+        peopleDamageTableSchema(),
+        propertyDamageTableSchema(),
+        atmosphericDamageTableSchema(),
+        emergencyDamageTableSchema(),
+        emergencyTableSchema(),
     ];
 }
 
 function damagesCalculationsTableSchema(){
     return new TableSchema('Damage calculations', 'damage', damageCalculationsColumnSchemas(), false);
 }
+
 function hazardRatioTableSchema() {
     return new TableSchema('Hazard Ratio', 'hazard-ratio', hazardRationColumnSchemas(), false);
 }
@@ -103,6 +109,27 @@ function pollutantTaxTableSchema() {
     return new TableSchema("Pollutant Tax","pollutant-tax", pollutantTaxColumnSchemas());
 }
 
+function emergencyTableSchema() {
+    return new TableSchema("Emergency","emergency", emergencyColumnSchemas(), true);
+}
+
+function atmosphericDamageTableSchema() {
+    return new TableSchema("Damages from atmospheric air pollution","atmospheric-damage", atmosphericDamageColumnSchemas());
+}
+
+function peopleDamageTableSchema() {
+    return new TableSchema("Loss of life and health of the population","people-damage", peopleDamageColumnSchemas());
+}
+
+function propertyDamageTableSchema() {
+    return new TableSchema("Losses from fixed assets","property-damage", propertyDamageColumnSchemas());
+}
+
+function emergencyDamageTableSchema() {
+    return new TableSchema("Damages of an emergency","emergency-damage", emergencyDamageColumnSchemas());
+}
+
+
 function damageCalculationsColumnSchemas(){
     return [
         new ColumnSchema(
@@ -143,6 +170,7 @@ function damageCalculationsColumnSchemas(){
         ),
     ];
 }
+
 function carcinogenicRiskColumnSchemas() {
     return [
         new ColumnSchema(
@@ -539,10 +567,201 @@ function pollutantTaxColumnSchemas() {
     ];
 }
 
+function emergencyColumnSchemas() {
+    return [
+        new ColumnSchema(
+            'Emergency Id',
+            'emergencyId',
+            ),
+        new ColumnSchema(
+            'Emergency Name',
+            'emergencyName',
+            true,
+            null,
+            new ValidatorNotEmpty('Emergency Name')
+            ),
+        new ColumnSchema(
+            'Company',
+            'company',
+            true,
+            new Joint('companyId', 'companyName')
+            ),
+        new ColumnSchema(
+            'Year',
+            'year',
+            true,
+            null,
+            new ValidatorNotEmptyNotNegativeInteger("Year")
+            ),
+        new ColumnSchema(
+            'Minor accident (p)',
+            'minorAccident',
+            true,
+            null,
+            new ValidatorNotEmptyNotNegativeInteger("Minor accident")
+            ),
+        new ColumnSchema(
+            'Major accident (p)',
+            'majorAccident',
+            true,
+            null,
+            new ValidatorNotEmptyNotNegativeInteger("Major accident")
+            ),
+        new ColumnSchema(
+            'Disabled (p)',
+            'disability',
+            true,
+            null,
+            new ValidatorNotEmptyNotNegativeInteger("Disabled")
+            ),
+        new ColumnSchema(
+            'Dead (p)',
+            'dead',
+            true,
+            null,
+            new ValidatorNotEmptyNotNegativeInteger("Dead")
+            ),
+        new ColumnSchema(
+            'Losses of production funds (k.grn)',
+            'lps',
+            true,
+            null,
+            new ValidatorNotEmptyNotNegativeDouble('Losses of production funds')
+            ),
+        new ColumnSchema(
+            'Losses of non-productive funds (k.grn)',
+            'lnps',
+            true,
+            null,
+            new ValidatorNotEmptyNotNegativeDouble('Losses of non-productive funds')
+            ),
+        new ColumnSchema(
+            'Losses of finished production (k.grn)',
+            'lfp',
+            true,
+            null,
+            new ValidatorNotEmptyNotNegativeDouble('Losses of finished production')
+            ),
+        new ColumnSchema(
+            'Losses of raw material stocks (k.grn)',
+            'ls',
+            true,
+            null,
+            new ValidatorNotEmptyNotNegativeDouble('Losses of raw material stocks')
+            ),
+    ];
+}
 
+function atmosphericDamageColumnSchemas() {
+    return [
+        new ColumnSchema(
+            'Emergency Name',
+            'emergencyName',
+            ),
+        new ColumnSchema(
+            'Emission Mass (t/year)',
+            'mass',
+            ),
+        new ColumnSchema(
+            'Rate of compensation (k.grn/t)',
+            'tax',
+            ),
+        new ColumnSchema(
+            'Indicator of relative danger',
+            'dc',
+            ),
+        new ColumnSchema(
+            'Settlement factor',
+            'tc',
+            ),
+        new ColumnSchema(
+            'Air pollution coefficient',
+            'ec',
+            ),
+        new ColumnSchema(
+            'Damages from atmospheric air pollution (k.grn)',
+            'ad',
+            ),
+    ];
+}
 
+function propertyDamageColumnSchemas() {
+    return [
+        new ColumnSchema(
+            'Emergency Name',
+            'emergencyName',
+            ),
+        new ColumnSchema(
+            'Losses of production funds (k.grn)',
+            'lps',
+            ),
+        new ColumnSchema(
+            'Losses of non-productive funds (k.grn)',
+            'lnps',
+            ),
+        new ColumnSchema(
+            'Losses of finished production (k.grn)',
+            'lfp',
+            ),
+        new ColumnSchema(
+            'Losses of raw material stocks (k.grn)',
+            'ls',
+            ),
+        new ColumnSchema(
+            'Losses from fixed assets (k.grn)',
+            'lp',
+            ),
+    ];
+}
 
+function peopleDamageColumnSchemas() {
+    return [
+        new ColumnSchema(
+            'Emergency Name',
+            'emergencyName',
+            ),
+        new ColumnSchema(
+            'Disposal of labor resources (k.grn)',
+            'lp',
+            ),
+        new ColumnSchema(
+            'Payment of burial benefits (k.grn)',
+            'lh',
+            ),
+        new ColumnSchema(
+            'Payment of pensions in case of loss of breadwinner (k.grn)',
+            'lpp',
+            ),
+        new ColumnSchema(
+            'Loss of life and health of the population (k.grn)',
+            'pd',
+            ),
+    ];
+}
 
-
+function emergencyDamageColumnSchemas() {
+    return [
+        new ColumnSchema(
+            'Emergency Name',
+            'emergencyName',
+            ),
+        new ColumnSchema(
+            'Loss of life and health of the population (k.grn)',
+            'pd',
+            ),
+        new ColumnSchema(
+            'Losses from fixed assets (k.grn)',
+            'lp',
+            ),
+        new ColumnSchema(
+            'Damages from atmospheric air pollution (k.grn)',
+            'ad',
+            ),
+        new ColumnSchema(
+            'Damages of an emergency (k.grn)',
+            'losses',
+            ),
+    ];
+}
 
 

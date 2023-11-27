@@ -13,6 +13,7 @@ class MyHeader extends HTMLElement {
         <div class="header-right">
         
         <div class="health-risk-nav-div">
+            <a class="emergency-btn" href="/emergency-damage">Emergency Damage</a>
             <a class="taxes-btn" href="/taxes-page">Taxes</a>
             <a class="damages-btn" href="/damages-calculations-page">Damages calculations</a>
             <a class="health-btn" href="/health-risk-page">Health risk</a>
@@ -33,6 +34,7 @@ class MyHeader extends HTMLElement {
                 <a href="/atmosphere-page?tables=pollutant-tax-rate" >Pollutant Tax Rate</a>
                 <a href="/atmosphere-page?tables=pollutant-class-tax-rate" >Pollutant Class Tax Rate</a>
                 <a href="/atmosphere-page?tables=pollutant-gdk-tax-rate" >Pollutant Gdk Tax Rate</a>
+                <a href="/atmosphere-page?tables=emergency" >Emergency</a>
             </div>
         </div>
    
