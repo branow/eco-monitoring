@@ -125,5 +125,23 @@ create table pollutant_gdk_tax_rate (
     tax double(10, 2) not null
 );
 
-
+create table emergency (
+    emergency_id int primary key auto_increment,
+    company int not null,
+    year int not null,
+    emergency_name varchar(100) not null,
+    minor_accident int,
+    major_accident int,
+    disability int,
+    dead int,
+    lps decimal(9, 3),
+    lnps decimal(9, 3),
+    lfp decimal(9, 3),
+    ls decimal(9, 3),
+    constraint fk_emergency_company
+       foreign key (company)
+       references company(company_id)
+       on update cascade
+       on delete cascade
+);
 

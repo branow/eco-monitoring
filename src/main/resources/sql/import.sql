@@ -86,3 +86,10 @@ load data local infile 'src/main/resources/sql/data/pollutant_gdk_tax_rate.csv'
     ignore 1 lines
     (tax_id, gdk_min, gdk_max, tax);
 
+load data local infile 'src/main/resources/sql/data/emergency.csv'
+    into table emergency
+    fields terminated by ';'
+    optionally enclosed by '"'
+    lines terminated by '\r\n'
+    ignore 1 lines
+    (emergency_id, company, year, emergency_name, minor_accident, major_accident, disability, dead, lps, lnps, lfp, ls);
