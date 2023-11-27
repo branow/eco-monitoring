@@ -17,6 +17,8 @@ public interface PollutionRepository extends JpaRepository<Pollution, Integer> {
 
     List<Pollution> findAllByCompanyCompanyIdAndYear(Integer id, Integer year);
 
+    Pollution findAllByCompanyCompanyIdAndYearAndPollutantPollutantId(Integer id, Integer year, Integer pollutantId);
+
     void deleteAllByCompanyCompanyId(Integer id);
 
     void deleteAllByPollutantPollutantId(Integer id);
