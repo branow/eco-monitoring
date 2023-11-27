@@ -184,7 +184,7 @@ input, select {
     z-index: 5;
 }
 
-.dropbtn, .health-btn, .damages-btn, .taxes-btn {
+.dropbtn, .health-btn, .damages-btn, .taxes-btn, .emergency-btn:hover {
     background-color: inherit;
     font-family: 'Inter', sans-serif;
     color: white;
@@ -193,7 +193,7 @@ input, select {
     border: none;
 }
 
-.dropbtn:hover, .health-btn:hover, .damages-btn:hover, .taxes-btn:hover {
+.dropbtn:hover, .health-btn:hover, .damages-btn:hover, .taxes-btn:hover, .emergency-btn:hover {
     background: #227056;
 }
 
@@ -230,7 +230,7 @@ input, select {
     background-color: #efefef;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     border-radius: 5px;
-    width: 60%;
+    width: fit-content;
     margin: auto;
     padding: 1px 5%;
 }

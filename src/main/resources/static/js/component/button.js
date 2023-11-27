@@ -1,4 +1,28 @@
 
+function EmergencyDamageCalculateButton(){
+    let onclick = (event) => {
+        let div = event.target.closest('.damage-con');
+        let companyId = div.querySelector("select.comp-select").value;
+        let year = div.querySelector("select.year-select").value;
+        let success = (emergencyDamage) => {
+
+            let taxCon = div.querySelector(".dam-con");
+
+            let taxResCon = taxCon.querySelector(".calc-res-container");
+            taxResCon.id = 'result';
+            let oldTaxRes = taxResCon.querySelector(".dam-calc-res");
+            if (oldTaxRes != null) oldTaxRes.remove();
+            let newTaxRes = DamageResultContainer(emergencyDamage);
+            taxResCon.append(newTaxRes);
+
+            location.href = '#result'
+        }
+
+        getCompanyEmergencyDamage(companyId, year, success, throwResponseError);
+    }
+    return new Button("calc", "calculate", onclick);
+}
+
 function TaxCalculateButton(){
     let onclick = (event) => {
         let div = event.target.closest('.taxes-con');

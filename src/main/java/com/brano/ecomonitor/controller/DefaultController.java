@@ -34,6 +34,11 @@ public class DefaultController {
         return new ModelAndView("taxes-page");
     }
 
+    @GetMapping("/emergency-damage")
+    public ModelAndView indexEmergencyDamage() {
+        return new ModelAndView("emergency-damage-page");
+    }
+
 
 
 }

@@ -4,6 +4,17 @@ function buildCRUDRequester(tableName) {
 }
 
 
+function getCompanyEmergencyDamage(companyId, year, success, error) {
+    $.ajax(
+        {
+            method: 'GET',
+            url: `http://localhost:8080/emergency-damage-calculator/${companyId}/${year}`,
+            success: success,
+            error: error
+        }
+        )
+}
+
 function getCompanyTax(companyId, year, success, error) {
     $.ajax(
         {

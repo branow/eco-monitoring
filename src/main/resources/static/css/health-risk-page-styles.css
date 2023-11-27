@@ -52,7 +52,8 @@
     background-color: #efefef;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     border-radius: 5px;
-    width: 60%;
+    width: fit-content;
+    max-width: 90%;
     padding: 20px 5%;
     margin: 10px auto 50px;
     bottom: 5vh;
