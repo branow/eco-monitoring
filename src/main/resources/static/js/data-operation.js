@@ -32,7 +32,7 @@ function findAllByObject(tableName, success) {
 }
 
 function addObject(object, tableName, success) {
-    buildCRUDRequester(tableName).add(object, success, throwResponseError);
+    buildCRUDRequester(tableName).save(object, success, throwResponseError);
 }
 
 function updateObject(object, tableName, success, error) {
